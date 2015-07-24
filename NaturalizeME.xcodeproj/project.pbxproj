@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6168DFE41B61DEB100FAB344 /* SetupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6168DFE31B61DEB100FAB344 /* SetupInfo.m */; };
 		618387E91B5896B100DADA6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387E81B5896B100DADA6D /* main.m */; };
 		618387EC1B5896B100DADA6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387EB1B5896B100DADA6D /* AppDelegate.m */; };
 		618387EF1B5896B100DADA6D /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387EE1B5896B100DADA6D /* WelcomeViewController.m */; };
@@ -16,9 +17,6 @@
 		618387FA1B5896B100DADA6D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 618387F81B5896B100DADA6D /* LaunchScreen.xib */; };
 		618388061B5896B100DADA6D /* NaturalizeMETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388051B5896B100DADA6D /* NaturalizeMETests.m */; };
 		618388111B5897A100DADA6D /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388101B5897A100DADA6D /* SetupViewController.m */; };
-		618388141B589A4900DADA6D /* FullTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388131B589A4900DADA6D /* FullTestViewController.m */; };
-		618388171B589A5900DADA6D /* WrittenTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388161B589A5900DADA6D /* WrittenTestViewController.m */; };
-		6183881A1B589A6100DADA6D /* SpeakingTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388191B589A6100DADA6D /* SpeakingTestViewController.m */; };
 		6183881D1B589A6C00DADA6D /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183881C1B589A6C00DADA6D /* ScoreViewController.m */; };
 		618388231B589A8F00DADA6D /* AnswerStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388221B589A8F00DADA6D /* AnswerStudyViewController.m */; };
 		618388261B589AA200DADA6D /* QuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388251B589AA200DADA6D /* QuizViewController.m */; };
@@ -26,7 +24,6 @@
 		6183882C1B589D8000DADA6D /* ManualSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183882B1B589D8000DADA6D /* ManualSetupViewController.m */; };
 		6183882F1B589F8D00DADA6D /* StudyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183882E1B589F8D00DADA6D /* StudyController.m */; };
 		618388321B589FA600DADA6D /* QuizController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388311B589FA500DADA6D /* QuizController.m */; };
-		618388351B589FAF00DADA6D /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388341B589FAF00DADA6D /* TestController.m */; };
 		618388381B589FB800DADA6D /* Study.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388371B589FB800DADA6D /* Study.m */; };
 		61AE61F81B5F381D000CC6BD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61AE61F61B5F381D000CC6BD /* Model.xcdatamodeld */; };
 		61AE61FB1B5F3BF1000CC6BD /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE61FA1B5F3BF1000CC6BD /* Scores.m */; };
@@ -45,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6168DFE21B61DEB100FAB344 /* SetupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupInfo.h; sourceTree = "<group>"; };
+		6168DFE31B61DEB100FAB344 /* SetupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupInfo.m; sourceTree = "<group>"; };
 		618387E31B5896B100DADA6D /* NaturalizeME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaturalizeME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		618387E71B5896B100DADA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		618387E81B5896B100DADA6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,12 +61,6 @@
 		618388051B5896B100DADA6D /* NaturalizeMETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaturalizeMETests.m; sourceTree = "<group>"; };
 		6183880F1B5897A100DADA6D /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		618388101B5897A100DADA6D /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
-		618388121B589A4900DADA6D /* FullTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTestViewController.h; sourceTree = "<group>"; };
-		618388131B589A4900DADA6D /* FullTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTestViewController.m; sourceTree = "<group>"; };
-		618388151B589A5900DADA6D /* WrittenTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrittenTestViewController.h; sourceTree = "<group>"; };
-		618388161B589A5900DADA6D /* WrittenTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrittenTestViewController.m; sourceTree = "<group>"; };
-		618388181B589A6100DADA6D /* SpeakingTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakingTestViewController.h; sourceTree = "<group>"; };
-		618388191B589A6100DADA6D /* SpeakingTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakingTestViewController.m; sourceTree = "<group>"; };
 		6183881B1B589A6C00DADA6D /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
 		6183881C1B589A6C00DADA6D /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
 		618388211B589A8F00DADA6D /* AnswerStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerStudyViewController.h; sourceTree = "<group>"; };
@@ -82,8 +75,6 @@
 		6183882E1B589F8D00DADA6D /* StudyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyController.m; sourceTree = "<group>"; };
 		618388301B589FA500DADA6D /* QuizController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizController.h; sourceTree = "<group>"; };
 		618388311B589FA500DADA6D /* QuizController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizController.m; sourceTree = "<group>"; };
-		618388331B589FAF00DADA6D /* TestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
-		618388341B589FAF00DADA6D /* TestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
 		618388361B589FB800DADA6D /* Study.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Study.h; sourceTree = "<group>"; };
 		618388371B589FB800DADA6D /* Study.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Study.m; sourceTree = "<group>"; };
 		61AE61F71B5F381D000CC6BD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -143,12 +134,6 @@
 				618387F31B5896B100DADA6D /* Main.storyboard */,
 				6183882A1B589D8000DADA6D /* ManualSetupViewController.h */,
 				6183882B1B589D8000DADA6D /* ManualSetupViewController.m */,
-				618388121B589A4900DADA6D /* FullTestViewController.h */,
-				618388131B589A4900DADA6D /* FullTestViewController.m */,
-				618388151B589A5900DADA6D /* WrittenTestViewController.h */,
-				618388161B589A5900DADA6D /* WrittenTestViewController.m */,
-				618388181B589A6100DADA6D /* SpeakingTestViewController.h */,
-				618388191B589A6100DADA6D /* SpeakingTestViewController.m */,
 				6183881B1B589A6C00DADA6D /* ScoreViewController.h */,
 				6183881C1B589A6C00DADA6D /* ScoreViewController.m */,
 				618388211B589A8F00DADA6D /* AnswerStudyViewController.h */,
@@ -163,13 +148,13 @@
 				6183882E1B589F8D00DADA6D /* StudyController.m */,
 				618388301B589FA500DADA6D /* QuizController.h */,
 				618388311B589FA500DADA6D /* QuizController.m */,
-				618388331B589FAF00DADA6D /* TestController.h */,
-				618388341B589FAF00DADA6D /* TestController.m */,
 				618388361B589FB800DADA6D /* Study.h */,
 				618388371B589FB800DADA6D /* Study.m */,
 				618387F61B5896B100DADA6D /* Images.xcassets */,
 				618387F81B5896B100DADA6D /* LaunchScreen.xib */,
 				61AE61F61B5F381D000CC6BD /* Model.xcdatamodeld */,
+				6168DFE21B61DEB100FAB344 /* SetupInfo.h */,
+				6168DFE31B61DEB100FAB344 /* SetupInfo.m */,
 				61AE61F91B5F3BF1000CC6BD /* Scores.h */,
 				61AE61FA1B5F3BF1000CC6BD /* Scores.m */,
 				61AE61FC1B5F3C35000CC6BD /* Stack.h */,
@@ -263,7 +248,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 618387DE1B5896B100DADA6D /* Build configuration list for PBXProject "NaturalizeMe" */;
+			buildConfigurationList = 618387DE1B5896B100DADA6D /* Build configuration list for PBXProject "NaturalizeME" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -307,7 +292,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6183881A1B589A6100DADA6D /* SpeakingTestViewController.m in Sources */,
 				618388381B589FB800DADA6D /* Study.m in Sources */,
 				61AE61FB1B5F3BF1000CC6BD /* Scores.m in Sources */,
 				61AE62011B5F3CB0000CC6BD /* ScoreController.m in Sources */,
@@ -318,16 +302,14 @@
 				618387EF1B5896B100DADA6D /* WelcomeViewController.m in Sources */,
 				61AE61FE1B5F3C35000CC6BD /* Stack.m in Sources */,
 				618388231B589A8F00DADA6D /* AnswerStudyViewController.m in Sources */,
-				618388141B589A4900DADA6D /* FullTestViewController.m in Sources */,
 				6183882F1B589F8D00DADA6D /* StudyController.m in Sources */,
 				618388291B589AB400DADA6D /* ScoreHistoryViewController.m in Sources */,
 				618388111B5897A100DADA6D /* SetupViewController.m in Sources */,
+				6168DFE41B61DEB100FAB344 /* SetupInfo.m in Sources */,
 				618387E91B5896B100DADA6D /* main.m in Sources */,
-				618388171B589A5900DADA6D /* WrittenTestViewController.m in Sources */,
 				618388261B589AA200DADA6D /* QuizViewController.m in Sources */,
 				6183882C1B589D8000DADA6D /* ManualSetupViewController.m in Sources */,
 				61AE61F81B5F381D000CC6BD /* Model.xcdatamodeld in Sources */,
-				618388351B589FAF00DADA6D /* TestController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +490,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		618387DE1B5896B100DADA6D /* Build configuration list for PBXProject "NaturalizeMe" */ = {
+		618387DE1B5896B100DADA6D /* Build configuration list for PBXProject "NaturalizeME" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				618388071B5896B100DADA6D /* Debug */,

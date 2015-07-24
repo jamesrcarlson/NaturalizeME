@@ -17,6 +17,6 @@
 
 -(void)save;
 
--(void)removeScore: (Scores *)score
+-(void)removeScore: (Scores *)score;
 
 @end
