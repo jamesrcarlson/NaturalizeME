@@ -25,21 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.explanation.autoresizingMask = YES;
+
     self.explanation.lineBreakMode = NO;
     
-//    self.title = [Study questionNumberAtIndex:self.questionIndex];
 
-//    CGFloat topMargin = 45;
-    
-//    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-//    [self.view addSubview:scrollView];
-    
-    
-    
-//    CGFloat heightForQuestion = [self heightForQuestion:[Study questionTitleAtIndex:self.questionIndex]];
-    
-//    UILabel *question = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, self.view.frame.size.width - 2 * margin, heightForQuestion)];
     self.question.text = [Study questionTitleAtIndex:self.questionIndex];
     self.explanation.text = [Study explanationAtIndex:self.questionIndex];
     
@@ -49,53 +38,18 @@
     UIScrollView *scrollview = [[UIScrollView alloc]init];
     
     [[self explanation]addSubview:scrollview];
-//    [scrollView addSubview:question];
-    
-//    CGFloat top = topMargin + heightForQuestion + margin * 2;
-//    
-//    NSString *answer = [Study answerAtIndex:0 inQuestionAtIndex:self.questionIndex];
-//    
-//    if ([Study answerCountAtIndex:self.questionIndex]>=1) {
-//        for (int i = 1; i < [Study answerCountAtIndex:self.questionIndex]; i++) {
-//            
-//            
-//            answer = [answer stringByAppendingString:[Study answerAtIndex:i inQuestionAtIndex:self.questionIndex]];
-//            //        UILabel *answerLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin, top,self.view.frame.size.width - 2 * margin, 20)];
-//            //        answerLabel.font = [UIFont boldSystemFontOfSize:17];
-//            //        self.answerLabel.text = [Study answerAtIndex:i inQuestionAtIndex:self.questionIndex];
-//            //        [scrollView addSubview:answerLabel];
-//            
-//            top += (20 + margin);
-//        }
-//    }
-//    
-//    
-//    self.answerLabel.text = answer;
-//    
-//    top += margin;
-//    
-//    CGFloat heightForExplanation = [self heightForExplanation:[Study explanationAtIndex:self.questionIndex]];
-//    
-////    UILabel *explanation = [[UILabel alloc]initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, heightForExplanation)];
-//    self.explanation.text = [Study explanationAtIndex:self.questionIndex];
-////    [scrollView addSubview:explanation];
-//    
-//    top += heightForExplanation;
-//    
-////    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, top + margin);
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"answers"];
     cell.textLabel.text = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
-    cell.detailTextLabel.lineBreakMode =YES;
+    cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
+//    [cell.textLabel sizeToFit];
     return cell;
 }
 
@@ -103,25 +57,24 @@
     return [Study answerCountAtIndex:self.questionIndex];
 }
 
-//- (CGFloat)heightForQuestion:(NSString *)description {
-//    
-//    CGRect bounding = [description boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 2 * margin, CGFLOAT_MAX)
-//                                                options:NSStringDrawingUsesLineFragmentOrigin
-//                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
-//                                                context:nil];
-//    
-//    return bounding.size.height;
-//    
-//}
-//- (CGFloat)heightForExplanation:(NSString *)description {
-//    
-//    CGRect bounding = [description boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 2 * margin - 40, CGFLOAT_MAX)
-//                                                options:NSStringDrawingUsesLineFragmentOrigin
-//                                             attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]}
-//                                                context:nil];
-//    
-//    return bounding.size.height;
-//    
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *cellText = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
+                                                                         attributes:@{NSFontAttributeName: cellFont}];
+    
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    return rect.size.height + 20;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

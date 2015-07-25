@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Scores.h"
 
 @interface QuizViewController : UIViewController
+
+@property (strong) Scores *scores;
 
 @end

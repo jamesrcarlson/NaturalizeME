@@ -32,6 +32,16 @@
     return fetchedObjects;
 }
 
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSInteger)score {
+    Scores *scores = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Scores class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
+    scores.timestamp = [NSDate date];
+    scores.quizScore = score;
+    
+    [self saveToPersistentStorage];
+    
+    return scores;
+}
+
 -(void)save {
     [self saveToPersistentStorage];
 }

@@ -10,13 +10,9 @@
 
 @interface QuizController : NSObject
 
-//@property (nonatomic, strong)NSMutableArray *holderArray;
-
-//+(NSMutableArray *)holder;
 
 @property (assign)int questionIndex;
 
 + (QuizController *)sharedInstance;
-//-(NSArray *)questions;
 
 @end

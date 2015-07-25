@@ -26,10 +26,12 @@
 
 +(NSString *)answerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex;
 
++(NSString *)BadAnswerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex;
+
 +(NSString *)explanationAtIndex:(NSInteger)index;
 
 +(NSArray *)answers;
 
-@property (nonatomic, strong)NSMutableArray *holder;
+
 
 @end

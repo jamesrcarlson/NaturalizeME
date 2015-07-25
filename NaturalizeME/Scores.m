@@ -1,8 +1,8 @@
 //
 //  Scores.m
-//  NaturalizeMe
+//  NaturalizeME
 //
-//  Created by James Carlson on 7/21/15.
+//  Created by James Carlson on 7/25/15.
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
@@ -12,8 +12,6 @@
 @implementation Scores
 
 @dynamic quizScore;
-@dynamic fullTestScore;
-@dynamic readingScore;
-@dynamic speakingScore;
+@dynamic timestamp;
 
 @end

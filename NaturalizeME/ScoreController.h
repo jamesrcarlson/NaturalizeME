@@ -15,6 +15,8 @@
 
 + (ScoreController *)sharedInstance;
 
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSInteger)score;
+
 -(void)save;
 
 -(void)removeScore: (Scores *)score;

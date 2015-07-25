@@ -10,13 +10,20 @@
 
 @interface ScoreViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *numberOfQuestionsRightLabel;
+
+
+@property (strong, nonatomic) IBOutlet UILabel *percentageLabel;
+
+
 @end
 
 @implementation ScoreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self updateScore:self.scores];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +31,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)updateScore:(Scores *)scores {
+    
+    self.numberOfQuestionsRightLabel.text = [NSString stringWithFormat:@"%ld out of 100", (long)scores.quizScore];
 }
-*/
 
 @end
