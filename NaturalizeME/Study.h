@@ -30,6 +30,8 @@
 
 +(NSString *)explanationAtIndex:(NSInteger)index;
 
++(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName;
+
 +(NSArray *)answers;
 
 

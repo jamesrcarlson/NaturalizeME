@@ -37,7 +37,8 @@
     
     UIScrollView *scrollview = [[UIScrollView alloc]init];
     
-    [[self explanation]addSubview:scrollview];
+//    [[self explanation]addSubview:scrollview];
+    [self.explanation addSubview:scrollview];
 
 }
 

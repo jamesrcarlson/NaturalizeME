@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SetupInfo.h"
 
 @interface SetupViewController : UIViewController
+
+@property (strong) SetupInfo *civicsInfo;
 
 @end

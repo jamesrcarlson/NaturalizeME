@@ -9,9 +9,10 @@
         <attribute name="representative" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senatorOne" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="senatorTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateCapital" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Scores" positionX="-54" positionY="-9" width="128" height="75"/>
-        <element name="SetupInfo" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="SetupInfo" positionX="-54" positionY="18" width="128" height="120"/>
     </elements>
 </model>

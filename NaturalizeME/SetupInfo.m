@@ -2,7 +2,7 @@
 //  SetupInfo.m
 //  NaturalizeME
 //
-//  Created by James Carlson on 7/23/15.
+//  Created by James Carlson on 7/26/15.
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 @implementation SetupInfo
 
 @dynamic governnor;
-@dynamic senatorOne;
 @dynamic representative;
+@dynamic senatorOne;
 @dynamic senatorTwo;
+@dynamic stateCapital;
 
 @end
