@@ -181,6 +181,7 @@ static NSInteger currentScores = 0;
    
     NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];
     
+    
     int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
     self.answerOne.titleLabel.text = completeAnswerList[buttonOneTitle];
     [completeAnswerList removeObjectAtIndex:buttonOneTitle];
