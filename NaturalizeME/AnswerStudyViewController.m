@@ -15,7 +15,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *question;
 
-@property (strong, nonatomic) IBOutlet UILabel *explanation;
+@property (strong, nonatomic) IBOutlet UITextView *explanation;
+
 
 //@property (strong, nonatomic) IBOutlet UILabel *answerLabel;
 
@@ -26,21 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.explanation.lineBreakMode = NO;
-    
-
     self.question.text = [Study questionTitleAtIndex:self.questionIndex];
     self.explanation.text = [Study explanationAtIndex:self.questionIndex];
     
     self.question.numberOfLines = 0;
-    self.explanation.numberOfLines = 0;
-    
-    UIScrollView *scrollview = [[UIScrollView alloc]init];
-    
-//    [[self explanation]addSubview:scrollview];
-    [self.explanation addSubview:scrollview];
+    self.explanation.scrollEnabled = YES;
 
 }
+
+
 
 
 
@@ -50,7 +45,7 @@
     cell.textLabel.text = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.numberOfLines = 0;
-//    [cell.textLabel sizeToFit];
+
     return cell;
 }
 

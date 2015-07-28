@@ -9,7 +9,6 @@
 #import "StudyViewController.h"
 #import "AnswerStudyViewController.h"
 #import "Study.h"
-#import "StudyController.h"
 
 @interface StudyViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -54,14 +53,19 @@
 //    Study *answer = [StudyController sharedInstance].questions[indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questions"];
+    cell.textLabel.numberOfLines = 0;
     cell.textLabel.text = [Study questionTitleAtIndex:indexPath.row];
     
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 75;
+
+    return UITableViewAutomaticDimension;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension;
 }
 
 

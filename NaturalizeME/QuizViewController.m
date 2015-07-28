@@ -199,6 +199,8 @@ static NSInteger currentScores = 0;
     [completeAnswerList removeObjectAtIndex:buttonFourTitle];
     
     [self.holderArray removeObjectAtIndex:self.questionNumber];
+    
+    
 
 
 }
