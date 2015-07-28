@@ -84,39 +84,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-eE-KfW">
-                                <rect key="frame" x="16" y="140" width="568" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="Zcl-ds-hbM"/>
-                                </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Answer 1">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="selectAnswerOne:" destination="odJ-Kj-JTd" eventType="touchUpInside" id="EcD-mf-wQk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HSL-rU-NKU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSL-rU-NKU">
                                 <rect key="frame" x="16" y="205" width="568" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="Geh-zB-7lo"/>
                                     <constraint firstAttribute="height" constant="57" id="s0g-iB-nQJ"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Answer 2">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Answer 2"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="s0g-iB-nQJ"/>
@@ -126,21 +101,14 @@
                                     <action selector="selectAnswerTwo:" destination="odJ-Kj-JTd" eventType="touchUpInside" id="gIk-rS-r9V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-Eq-VUD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BuW-Eq-VUD">
                                 <rect key="frame" x="16" y="270" width="568" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="EDz-CQ-gAg"/>
                                     <constraint firstAttribute="height" constant="57" id="FDX-dG-Qo3"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Answer 3">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Answer 3"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="EDz-CQ-gAg"/>
@@ -162,21 +130,14 @@
                                     <segue destination="MbB-5b-T89" kind="show" id="RXG-wa-lJw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bh9-Oh-8gy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh9-Oh-8gy">
                                 <rect key="frame" x="16" y="335" width="568" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="pgb-JN-GOS"/>
                                     <constraint firstAttribute="height" constant="57" id="taA-Nj-gUe"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Answer 4">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Answer 4"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="pgb-JN-GOS"/>
@@ -187,11 +148,30 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLC-eY-r46">
-                                <rect key="frame" x="16" y="72" width="568" height="60"/>
+                                <rect key="frame" x="16" y="64" width="568" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-eE-KfW">
+                                <rect key="frame" x="16" y="140" width="568" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="Zcl-ds-hbM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Answer 1">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Answer 1">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="selectAnswerOne:" destination="odJ-Kj-JTd" eventType="touchUpInside" id="EcD-mf-wQk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -206,11 +186,11 @@
                             <constraint firstItem="bh9-Oh-8gy" firstAttribute="leading" secondItem="dUz-Kd-nkg" secondAttribute="leadingMargin" id="HXd-D5-ca6"/>
                             <constraint firstItem="AJb-eE-KfW" firstAttribute="trailing" secondItem="HSL-rU-NKU" secondAttribute="trailing" id="LvL-dK-bUp"/>
                             <constraint firstItem="bh9-Oh-8gy" firstAttribute="leading" secondItem="BuW-Eq-VUD" secondAttribute="leading" id="S0a-gq-xaR"/>
-                            <constraint firstItem="fLC-eY-r46" firstAttribute="top" secondItem="dXz-mD-Lap" secondAttribute="bottom" constant="8" symbolic="YES" id="cBF-tk-LrG"/>
+                            <constraint firstItem="fLC-eY-r46" firstAttribute="top" secondItem="dXz-mD-Lap" secondAttribute="bottom" id="cBF-tk-LrG"/>
                             <constraint firstItem="AJb-eE-KfW" firstAttribute="leading" secondItem="HSL-rU-NKU" secondAttribute="leading" id="i9Z-Ah-Av4"/>
                             <constraint firstItem="fLC-eY-r46" firstAttribute="trailing" secondItem="AJb-eE-KfW" secondAttribute="trailing" id="j2J-53-SRL"/>
                             <constraint firstItem="bh9-Oh-8gy" firstAttribute="top" secondItem="BuW-Eq-VUD" secondAttribute="bottom" constant="8" symbolic="YES" id="j3w-jd-vHa"/>
-                            <constraint firstItem="AJb-eE-KfW" firstAttribute="top" secondItem="fLC-eY-r46" secondAttribute="bottom" constant="8" symbolic="YES" id="jhu-Mu-DyF"/>
+                            <constraint firstItem="AJb-eE-KfW" firstAttribute="top" secondItem="fLC-eY-r46" secondAttribute="bottom" constant="1" id="jhu-Mu-DyF"/>
                             <constraint firstItem="HSL-rU-NKU" firstAttribute="top" secondItem="AJb-eE-KfW" secondAttribute="bottom" constant="8" symbolic="YES" id="mcL-gT-0CI"/>
                             <constraint firstItem="BuW-Eq-VUD" firstAttribute="top" secondItem="HSL-rU-NKU" secondAttribute="bottom" constant="8" symbolic="YES" id="qvi-Fu-8OJ"/>
                         </constraints>

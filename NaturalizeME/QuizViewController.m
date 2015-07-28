@@ -13,7 +13,7 @@
 
 //static int questionIndex;
 
-static NSInteger currentScores = 0;
+//static NSInteger currentScores = 0;
 
 @interface QuizViewController ()
 
@@ -31,6 +31,7 @@ static NSInteger currentScores = 0;
 
 @property (nonatomic, assign)NSInteger questionNumber;
 
+@property (assign)NSInteger currentScores;
 
 
 
@@ -45,6 +46,7 @@ static NSInteger currentScores = 0;
     [self.holderArray addObjectsFromArray:[self questionIndexNumbers]];
     
     [self setQuestionAndAnswers];
+    self.currentScores = 0;
         
     
    
@@ -60,19 +62,19 @@ static NSInteger currentScores = 0;
     if ([Study answerCountAtIndex:self.questionNumber] != 0) {
         for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
             if (self.answerOne.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
-                currentScores++;
+                self.currentScores++;
             }
         };
     } else {
         if (self.answerOne.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
-            currentScores++;
+            self.currentScores++;
         }
     };
     
     
     
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:currentScores];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:self.currentScores];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
     } else {
@@ -82,56 +84,82 @@ static NSInteger currentScores = 0;
 }
 
 - (IBAction)selectAnswerTwo:(id)sender {
-    for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-        if (self.answerTwo.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
-            currentScores++;
+    
+    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
+            if (self.answerTwo.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+                self.currentScores++;
+            }
+        };
+    } else {
+        if (self.answerTwo.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
+            self.currentScores++;
         }
     };
     
     
+    
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:currentScores];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:self.currentScores];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
     } else {
         [self setQuestionAndAnswers];
     }
+    
 }
+
 
 - (IBAction)selectAnswerThree:(id)sender {
     
-    for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-        if (self.answerThree.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
-            currentScores++;
+    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
+            if (self.answerThree.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+                self.currentScores++;
+            }
+        };
+    } else {
+        if (self.answerThree.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
+            self.currentScores++;
         }
     };
     
     
+    
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:currentScores];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:self.currentScores];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
     } else {
         [self setQuestionAndAnswers];
     }
+    
 }
 
 - (IBAction)selectAnswerFour:(id)sender {
     
-    for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-        if (self.answerFour.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
-            currentScores++;
+    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
+            if (self.answerFour.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+                self.currentScores++;
+            }
+        };
+    } else {
+        if (self.answerFour.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
+            self.currentScores++;
         }
     };
     
     
+    
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:currentScores];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:self.currentScores];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
     } else {
         [self setQuestionAndAnswers];
     }
+    
 }
 
 -(void)setQuestionAndAnswers {
@@ -181,22 +209,23 @@ static NSInteger currentScores = 0;
    
     NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];
     
-    
-    int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
-    self.answerOne.titleLabel.text = completeAnswerList[buttonOneTitle];
-    [completeAnswerList removeObjectAtIndex:buttonOneTitle];
-    
-    int buttonTwoTitle = arc4random_uniform((int)completeAnswerList.count);
-    self.answerTwo.titleLabel.text = completeAnswerList[buttonTwoTitle];
-    [completeAnswerList removeObjectAtIndex:buttonTwoTitle];
-    
-    int buttonThreeTitle = arc4random_uniform((int)completeAnswerList.count);
-    self.answerThree.titleLabel.text = completeAnswerList[buttonThreeTitle];
-    [completeAnswerList removeObjectAtIndex:buttonThreeTitle];
-    
-    int buttonFourTitle = arc4random_uniform((int)completeAnswerList.count);
-    self.answerFour.titleLabel.text = completeAnswerList[buttonFourTitle];
-    [completeAnswerList removeObjectAtIndex:buttonFourTitle];
+        
+        int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
+        self.answerOne.titleLabel.text = completeAnswerList[buttonOneTitle];
+        [completeAnswerList removeObjectAtIndex:buttonOneTitle];
+        
+        int buttonTwoTitle = arc4random_uniform((int)completeAnswerList.count);
+        self.answerTwo.titleLabel.text = completeAnswerList[buttonTwoTitle];
+        [completeAnswerList removeObjectAtIndex:buttonTwoTitle];
+        
+        int buttonThreeTitle = arc4random_uniform((int)completeAnswerList.count);
+        self.answerThree.titleLabel.text = completeAnswerList[buttonThreeTitle];
+        [completeAnswerList removeObjectAtIndex:buttonThreeTitle];
+        
+        int buttonFourTitle = arc4random_uniform((int)completeAnswerList.count);
+        self.answerFour.titleLabel.text = completeAnswerList[buttonFourTitle];
+        [completeAnswerList removeObjectAtIndex:buttonFourTitle];
+        
     
     [self.holderArray removeObjectAtIndex:self.questionNumber];
     
