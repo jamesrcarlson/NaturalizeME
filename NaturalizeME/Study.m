@@ -57,9 +57,11 @@ static NSString *const ExplanationKey = @"explanationTitle";
 +(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName  {
     self.answers[index][@"AnswerKey"][anIndex] = setName;
 }
++(NSMutableArray *)answers {
+    return [[NSMutableArray alloc]initWithArray:[self storedAnswers]];
+}
 
-
-+(NSArray *)answers {
++(NSArray *)storedAnswers {
     
     return @[
              @{QuestionNumberKey: @"1",

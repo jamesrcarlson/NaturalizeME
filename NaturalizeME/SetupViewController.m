@@ -20,12 +20,13 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *representativeLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *stateCapitalLabel;
+
 @property (strong) NSString *senatorOne;
 @property (strong) NSString *senatorTwo;
 @property (strong) NSString *representative;
 @property (strong) NSString *governor;
 @property (strong) NSString *stateCapital;
-
 
 
 @end
@@ -34,17 +35,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.governorLabel.numberOfLines = 0;
+    self.senatorLabel.numberOfLines = 0;
+    self.stateCapitalLabel.numberOfLines = 0;
+    self.representativeLabel.numberOfLines = 0;
     
-    [self notifications];
-    
+//    [self notifications];
     [self loadData:self.civicsInfo];
+    
+    
 }
+
+//-(void)viewDidAppear:(BOOL)animated {
+//    
+////    if (self.civicsInfo.governnor != nil) {
+//        [self loadData:self.civicsInfo];
+////    }
+//    
+//}
 
 -(void)loadData:(SetupInfo *)civicsInfo {
 
     self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", civicsInfo.governnor];
-    self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's Name is %@", civicsInfo.senatorOne];
+    self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", civicsInfo.senatorOne, civicsInfo.senatorTwo];
     self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",civicsInfo.representative];
+    self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",civicsInfo.stateCapital];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,9 +67,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)notifications {
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveData) name:@"infoCollected" object:nil];
-}
+//-(void)notifications {
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveData) name:@"infoCollected" object:nil];
+//}
 
 
 - (IBAction)findRepresentative:(id)sender {
@@ -65,7 +80,8 @@
 
 - (IBAction)acceptData:(id)sender {
     
-    [self saveData];
+    [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+    
 }
 
 -(void)getData{
@@ -86,7 +102,7 @@
         
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         
-        NSLog(@"%@", dict);
+//        NSLog(@"%@", dict);
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -97,9 +113,10 @@
             self.stateCapital = dict[@"officials"][5][@"address"][0][@"city"];
             
             self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
-            self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's Name is %@", self.senatorOne];
+            self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
+            self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
             self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"infoCollected" object:nil];
+//            [[NSNotificationCenter defaultCenter]postNotificationName:@"infoCollected" object:nil];
             
         });
         
@@ -115,30 +132,15 @@
 }
 
 
--(void)saveData {
-    
-    if (self.civicsInfo) {
-        self.civicsInfo.governnor = self.governor;
-        self.civicsInfo.senatorOne = self.senatorOne;
-        self.civicsInfo.senatorTwo = self.senatorTwo;
-        self.civicsInfo.representative = self.representative;
-    } else {
-        self.civicsInfo = [[SetupController sharedInstance] storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
-    }
-    
-    [[SetupController sharedInstance]save];
-    
-}
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
     return YES;
 }
 
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-}
+//-(void)dealloc {
+//    [[NSNotificationCenter defaultCenter]removeObserver:self];
+//}
 
 
 @end

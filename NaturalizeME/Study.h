@@ -11,6 +11,7 @@
 @interface Study : NSObject
 
 @property (nonatomic, retain) NSString * question;
+@property (nonatomic, strong) NSMutableArray * answers;
 
 +(NSInteger)questionCount;
 
@@ -32,7 +33,7 @@
 
 +(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName;
 
-+(NSArray *)answers;
++(NSArray *)storedAnswers;
 
 
 

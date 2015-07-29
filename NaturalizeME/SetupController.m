@@ -23,21 +23,22 @@
 
 - (SetupInfo *)storeCivicsInfo:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     
-    SetupInfo *setupInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
-    setupInfo.governnor = governor;
-    setupInfo.senatorOne = senatorOne;
-    setupInfo.senatorTwo = senatorTwo;
-    setupInfo.stateCapital = stateCapital;
-    
-    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
-    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
-    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
-    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
-    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
+    SetupInfo *civicsInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
+    civicsInfo.governnor = governor;
+    civicsInfo.senatorOne = senatorOne;
+    civicsInfo.senatorTwo = senatorTwo;
+    civicsInfo.representative = representative;
+    civicsInfo.stateCapital = stateCapital;
     
     [self saveToPersistentStorage];
     
-    return setupInfo;
+//    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
+//    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
+//    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
+//    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
+//    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
+
+    return civicsInfo;
     
 }
 
@@ -45,11 +46,13 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SetupInfo class])];
     
     NSArray *fetchedObjects = [[Stack sharedInstance].managedObjectContext executeFetchRequest:request error:nil];
+    
     return fetchedObjects;
 }
 
 
 -(void)saveToPersistentStorage {
+
     [[Stack sharedInstance].managedObjectContext save:nil];
 }
 
