@@ -42,6 +42,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.answerOne.titleLabel.numberOfLines = 0;
+    self.answerTwo.titleLabel.numberOfLines = 0;
+    self.answerThree.titleLabel.numberOfLines = 0;
+    self.answerFour.titleLabel.numberOfLines = 0;
+    
     self.holderArray = [NSMutableArray new];
     [self.holderArray addObjectsFromArray:[self questionIndexNumbers]];
     
@@ -65,11 +70,7 @@
                 self.currentScores++;
             }
         };
-    } else {
-        if (self.answerOne.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
-            self.currentScores++;
-        }
-    };
+    }
     
     
     
@@ -91,12 +92,7 @@
                 self.currentScores++;
             }
         };
-    } else {
-        if (self.answerTwo.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
-            self.currentScores++;
-        }
-    };
-    
+    }
     
     
     if (self.holderArray.count == 0) {
@@ -118,12 +114,7 @@
                 self.currentScores++;
             }
         };
-    } else {
-        if (self.answerThree.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
-            self.currentScores++;
-        }
-    };
-    
+    }
     
     
     if (self.holderArray.count == 0) {
@@ -144,12 +135,7 @@
                 self.currentScores++;
             }
         };
-    } else {
-        if (self.answerFour.titleLabel.text == [Study answerAtIndex:0 inQuestionAtIndex:self.questionNumber]) {
-            self.currentScores++;
-        }
-    };
-    
+    }
     
     
     if (self.holderArray.count == 0) {
@@ -210,21 +196,26 @@
     NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];
     
         
-        int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
-        self.answerOne.titleLabel.text = completeAnswerList[buttonOneTitle];
-        [completeAnswerList removeObjectAtIndex:buttonOneTitle];
-        
-        int buttonTwoTitle = arc4random_uniform((int)completeAnswerList.count);
-        self.answerTwo.titleLabel.text = completeAnswerList[buttonTwoTitle];
-        [completeAnswerList removeObjectAtIndex:buttonTwoTitle];
-        
-        int buttonThreeTitle = arc4random_uniform((int)completeAnswerList.count);
-        self.answerThree.titleLabel.text = completeAnswerList[buttonThreeTitle];
-        [completeAnswerList removeObjectAtIndex:buttonThreeTitle];
-        
-        int buttonFourTitle = arc4random_uniform((int)completeAnswerList.count);
-        self.answerFour.titleLabel.text = completeAnswerList[buttonFourTitle];
-        [completeAnswerList removeObjectAtIndex:buttonFourTitle];
+    int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
+    [self.answerOne setTitle:completeAnswerList[buttonOneTitle] forState:UIControlStateNormal];
+    //    self.answerOne.titleLabel.text = completeAnswerList[buttonOneTitle];
+    [completeAnswerList removeObjectAtIndex:buttonOneTitle];
+    
+    int buttonTwoTitle = arc4random_uniform((int)completeAnswerList.count);
+    [self.answerTwo setTitle:completeAnswerList[buttonTwoTitle] forState:UIControlStateNormal];
+    //    self.answerTwo.titleLabel.text = completeAnswerList[buttonTwoTitle];
+    [completeAnswerList removeObjectAtIndex:buttonTwoTitle];
+    
+    int buttonThreeTitle = arc4random_uniform((int)completeAnswerList.count);
+    [self.answerThree setTitle:completeAnswerList[buttonThreeTitle] forState:UIControlStateNormal];
+    //    self.answerThree.titleLabel.text = completeAnswerList[buttonThreeTitle];
+    [completeAnswerList removeObjectAtIndex:buttonThreeTitle];
+    
+    int buttonFourTitle = arc4random_uniform((int)completeAnswerList.count);
+    [self.answerFour setTitle:completeAnswerList[buttonFourTitle] forState:UIControlStateNormal];
+    //    self.answerFour.titleLabel.text = completeAnswerList[buttonFourTitle];
+    [completeAnswerList removeObjectAtIndex:buttonFourTitle];
+
         
     
     [self.holderArray removeObjectAtIndex:self.questionNumber];
