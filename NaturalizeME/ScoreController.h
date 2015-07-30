@@ -11,11 +11,11 @@
 
 @interface ScoreController : NSObject
 
-@property (strong, readonly) NSArray *scores;
+@property (strong, readonly, nonatomic) NSArray *scores;
 
 + (ScoreController *)sharedInstance;
 
--(Scores *)createScoreWithDate:(NSDate *)date score:(NSInteger)score;
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score;
 
 -(void)save;
 

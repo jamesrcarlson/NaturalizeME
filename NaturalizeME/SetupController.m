@@ -30,19 +30,21 @@
     civicsInfo.representative = representative;
     civicsInfo.stateCapital = stateCapital;
     
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
+    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
+
     [self saveToPersistentStorage];
-    
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
-//    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
 
     return civicsInfo;
-    
+
+  
 }
 
 -(NSArray *)civicsInfo {
+
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([SetupInfo class])];
     
     NSArray *fetchedObjects = [[Stack sharedInstance].managedObjectContext executeFetchRequest:request error:nil];

@@ -7,6 +7,8 @@
 //
 
 #import "ScoreHistoryViewController.h"
+#import "ScoreController.h"
+#import "Scores.h"
 
 @interface ScoreHistoryViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,17 +33,15 @@
 }
 
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
-}
-
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [ScoreController sharedInstance].scores.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [UITableViewCell new];
+    
+    Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scoreCell"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)scores.quizScore];
     return cell;
 }
 
