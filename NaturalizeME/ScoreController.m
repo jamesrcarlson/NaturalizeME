@@ -26,23 +26,13 @@
     return sharedInstance;
 }
 
--(void)saveToPersistentStorage {
-    [[Stack sharedInstance].managedObjectContext save:nil];
-}
-
--(NSArray *)scores {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Scores class])];
-    NSArray *fetchedObjects = [[Stack sharedInstance].managedObjectContext executeFetchRequest:request error:nil];
-    
-    return fetchedObjects;
-}
 
 -(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score {
     Scores *scores = [Scores new];
     scores.timestamp = [NSDate date];
     scores.quizScore = score;
     
-    [self saveToPersistentStorage];
+    [self storeScoresInFile];
     
     return scores;
 }
@@ -60,7 +50,7 @@
 }
 
 -(void)save {
-    [self saveToPersistentStorage];
+    [self storeScoresInFile];
 }
 
 -(void)removeScore: (Scores *)score {

@@ -70,7 +70,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                AnswerKey : @[@"The Constitution"],
                BadAnswerKey: @[@"The Golden Rule",
                                @"The State Laws",
-                               @"The The Declaration Of Independence",
+                               @"The Declaration Of Independence",
                                @"The word of the President",
                                @"The vote of a citizen",
                                @"The final round in Jeopardy"],
