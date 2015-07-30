@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Scores.h"
+
 @interface ScoreViewController : UIViewController
 
-@property (strong) Scores *scores;
 
 @end

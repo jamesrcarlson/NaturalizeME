@@ -13,6 +13,8 @@
 
 @property (strong, readonly, nonatomic) NSArray *scores;
 
+@property (strong)NSNumber *latestQuizScore;
+
 + (ScoreController *)sharedInstance;
 
 -(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score;

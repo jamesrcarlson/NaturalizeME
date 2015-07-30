@@ -7,14 +7,15 @@
 //
 
 #import "ScoreViewController.h"
+#import "ScoreController.h"
 
 @interface ScoreViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *numberOfQuestionsRightLabel;
 
-
 @property (strong, nonatomic) IBOutlet UILabel *percentageLabel;
 
+@property (strong)NSNumber *scoreHolder;
 
 @end
 
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self updateScore:self.scores];
+    [self updateScore];
     
 }
 
@@ -31,9 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)updateScore:(Scores *)scores {
+-(void)updateScore {
+    self.scoreHolder = [ScoreController sharedInstance].latestQuizScore;
     
-    self.numberOfQuestionsRightLabel.text = [NSString stringWithFormat:@"%ld out of 100", (long)scores.quizScore];
+    self.numberOfQuestionsRightLabel.text = [NSString stringWithFormat:@"%@ out of 100", self.scoreHolder];
+    self.percentageLabel.text = [NSString stringWithFormat:@"%@ ", self.scoreHolder];
 }
 
 @end

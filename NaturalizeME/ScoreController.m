@@ -7,7 +7,9 @@
 //
 
 #import "ScoreController.h"
-#import "Stack.h"
+
+static NSString * const AllScoresKey = @"allScores";
+
 
 @interface ScoreController ()
 
@@ -22,14 +24,17 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [ScoreController new];
+        [sharedInstance loadFromStorage];
     });
     return sharedInstance;
 }
 
 
+
 -(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score {
     Scores *scores = [Scores new];
     scores.timestamp = [NSDate date];
+    self.latestQuizScore = score;
     scores.quizScore = score;
     
     [self storeScoresInFile];
@@ -59,7 +64,9 @@
     }
     NSMutableArray *mutableEntries = self.scores.mutableCopy;
     [mutableEntries removeObject:score];
+    
     self.scores = mutableEntries;
+    [self storeScoresInFile];
 }
 
 -(void)storeScoresInFile {
@@ -68,11 +75,12 @@
     for (Scores *scores in self.scores) {
         [scoresDictionary addObject:[scores scoreDictionary]];
     }
-    [scoresDictionary writeToFile:self.pathToFile atomically:YES];
+    [[NSUserDefaults standardUserDefaults] setObject:scoresDictionary forKey:AllScoresKey];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void)loadFromStorage {
-    NSArray *scoresDictionaries = [NSArray arrayWithContentsOfFile:self.pathToFile];
+    NSArray *scoresDictionaries = [[NSUserDefaults standardUserDefaults]objectForKey:AllScoresKey];
     
     NSMutableArray *scores = [NSMutableArray new];
     for (NSDictionary *score in scoresDictionaries) {
@@ -81,19 +89,19 @@
     self.scores = scores;
 }
 
-- (NSString *)pathToFile {
-    
-    // Search for the app's documents directory (copy+paste from Documentation)
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    //Create the full path by appending the file name to the string
-    NSString *pathToFile = [documentsDirectory stringByAppendingString:@"scores.plist"];
-    
-    return pathToFile;
-    
-}
+//- (NSString *)pathToFile {
+//    
+//    // Search for the app's documents directory (copy+paste from Documentation)
+//    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    
+//    //Create the full path by appending the file name to the string
+//    NSString *pathToFile = [documentsDirectory stringByAppendingString:@"scores.plist"];
+//    
+//    return pathToFile;
+//    
+//}
 
 
 @end

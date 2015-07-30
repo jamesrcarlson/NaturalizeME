@@ -8,7 +8,6 @@
 
 #import "ScoreHistoryViewController.h"
 #import "ScoreController.h"
-#import "Scores.h"
 
 @interface ScoreHistoryViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -20,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -41,7 +40,7 @@
     
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scoreCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)scores.quizScore];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@",scores.quizScore];
     return cell;
 }
 

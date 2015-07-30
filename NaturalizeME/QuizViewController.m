@@ -33,6 +33,9 @@
 
 @property (assign)NSInteger currentScores;
 
+@property (strong)UILabel *rightAnswer;
+@property (strong)UILabel *wrongAnswer;
+
 
 
 @end
@@ -52,7 +55,20 @@
     
     [self setQuestionAndAnswers];
     self.currentScores = 0;
-        
+    
+    self.rightAnswer = [[UILabel alloc]initWithFrame:CGRectMake(20, -100, self.view.frame.size.width - 40, 75)];
+    self.rightAnswer.backgroundColor = [UIColor greenColor];
+    self.rightAnswer.textColor = [UIColor blackColor];
+    self.rightAnswer.numberOfLines = 0;
+    [self.view addSubview:self.rightAnswer];
+    
+    self.wrongAnswer = [[UILabel alloc]initWithFrame:CGRectMake(20, -100, self.view.frame.size.width - 40, 75)];
+    self.wrongAnswer.backgroundColor = [UIColor redColor];
+    self.wrongAnswer.textColor = [UIColor blackColor];
+    self.wrongAnswer.numberOfLines = 0;
+    [self.view addSubview:self.wrongAnswer];
+
+    
     
    
 }
@@ -69,141 +85,153 @@
     if ([Study answerCountAtIndex:self.questionNumber] != 0) {
         
         
-        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-            if (self.answerOne.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+            if (self.answerOne.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                 self.currentScores++;
                 
                 [self gotTheRightAnswer:self.answerOne.titleLabel.text];
-                [NSThread sleepForTimeInterval:2];
                 answerStatus = 1;
             }
         };
     }
     if (answerStatus == 0) {
         [self gotItWrong:self.answerOne.titleLabel.text];
-        [NSThread sleepForTimeInterval:2.0];
     };
     
     if (self.holderArray.count == 0) {
         self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        [[ScoreController sharedInstance]save];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
-    } else {
+    }else {
+        
+        [self setQuestionAndAnswers];
+
     }
     
 }
 
 - (IBAction)selectAnswerTwo:(id)sender {
+    int answerStatus = 0;
     
     if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-            if (self.answerTwo.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+            if (self.answerTwo.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                 self.currentScores++;
                 
                 [self gotTheRightAnswer:self.answerTwo.titleLabel.text];
+                answerStatus = 1;
             }
         };
     }
-    
-//    [NSThread sleepForTimeInterval:2.0];
+
+    if (answerStatus == 0) {
+        [self gotItWrong:self.answerTwo.titleLabel.text];
+    };
+
     
     if (self.holderArray.count == 0) {
+        [NSThread sleepForTimeInterval:2];
         self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        [[ScoreController sharedInstance]save];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
-    } else {
+    }else {
+        
         [self setQuestionAndAnswers];
+
     }
     
 }
 
 
 - (IBAction)selectAnswerThree:(id)sender {
-    
+    int answerStatus = 0;
     if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-            if (self.answerThree.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+            if (self.answerThree.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                 self.currentScores++;
                 
                 [self gotTheRightAnswer:self.answerThree.titleLabel.text];
+                answerStatus = 1;
             }
         };
     }
+    if (answerStatus == 0) {
+        [self gotItWrong:self.answerThree.titleLabel.text];
+    };
     
-//    [NSThread sleepForTimeInterval:2.0];
-
     if (self.holderArray.count == 0) {
         self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        [[ScoreController sharedInstance]save];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
-    } else {
-            }
+    }else {
+        [self setQuestionAndAnswers];
+        
+    }
     
 }
 
 - (IBAction)selectAnswerFour:(id)sender {
-    
+    int answerStatus = 0;
     if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int n = 0; n < [Study answerCountAtIndex:self.questionNumber]-1; n++) {
-            if (self.answerFour.titleLabel.text == [Study answerAtIndex:n inQuestionAtIndex:self.questionNumber]) {
+        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+            if (self.answerFour.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                 self.currentScores++;
                 
                 [self gotTheRightAnswer:self.answerFour.titleLabel.text];
+                answerStatus = 1;
             }
         };
     }
+    if (answerStatus == 0) {
+        [self gotItWrong:self.answerFour.titleLabel.text];
+    };
     
-//    [NSThread sleepForTimeInterval:2.0];
 
     if (self.holderArray.count == 0) {
         self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        [[ScoreController sharedInstance]save];
         ScoreViewController *scoreViewController =[ScoreViewController new];
         [self.navigationController pushViewController:scoreViewController animated:YES];
-    } else {
+    }else {
+        
         [self setQuestionAndAnswers];
+        
     }
     
+}
+- (IBAction)quitAndSeeScore:(id)sender {
+    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+    [[ScoreController sharedInstance]save];
 }
 
 -(void)gotTheRightAnswer:(NSString *)buttonTitle {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UILabel *answerRight = [[UILabel alloc]initWithFrame:CGRectMake(75, 100, 200, 75)];
-        answerRight.backgroundColor = [UIColor greenColor];
-        answerRight.text = buttonTitle;
-        answerRight.textColor = [UIColor blackColor];
-        answerRight.numberOfLines = 0;
-        [self.view addSubview:answerRight];
+        self.rightAnswer.text = [NSString stringWithFormat:@"%@ \n Is the correct answer",buttonTitle];
         CAKeyframeAnimation *keyFramAnimation = [CAKeyframeAnimation animation];
         keyFramAnimation.keyPath = @"position.y";
-        keyFramAnimation.values = @[@0, @(-20), @20, @(-20), @20, @0];
+        keyFramAnimation.values = @[@140, @160, @140, @160, @140, @120];
         keyFramAnimation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1, @(7/6.0)];
         keyFramAnimation.duration = 2;
-        keyFramAnimation.additive = YES;
-        [answerRight.layer addAnimation:keyFramAnimation forKey:@"nod"];
-        [NSThread sleepForTimeInterval:2];
-//        [answerRight removeFromSuperview];
+        keyFramAnimation.additive = NO;
+        [self.rightAnswer.layer addAnimation:keyFramAnimation forKey:@"nod"];
     });
-    [self setQuestionAndAnswers];
-
 }
 
 -(void)gotItWrong:(NSString *)buttonTitle {
-    UILabel *wrongAnswer = [[UILabel alloc]initWithFrame:CGRectMake(75, 100, 200, 75)];
-    wrongAnswer.backgroundColor = [UIColor redColor];
-    wrongAnswer.text = buttonTitle;
-    wrongAnswer.textColor = [UIColor blackColor];
-    wrongAnswer.numberOfLines = 0;
-    [self.view addSubview:wrongAnswer];
-    CAKeyframeAnimation *keyFramAnimation = [CAKeyframeAnimation animation];
-    keyFramAnimation.keyPath = @"position.y";
-    keyFramAnimation.values = @[@0, @(-20), @20, @(-20), @20, @0];
-    keyFramAnimation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1, @(7/6.0)];
-    keyFramAnimation.duration = 2;
-    keyFramAnimation.additive = YES;
-    [wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"nod"];
-    [NSThread sleepForTimeInterval:2];
-    [wrongAnswer removeFromSuperview];
-    [self setQuestionAndAnswers];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.wrongAnswer.text = [NSString stringWithFormat:@"The answer is NOT %@",buttonTitle];
+        CAKeyframeAnimation *keyFramAnimation = [CAKeyframeAnimation animation];
+        keyFramAnimation.keyPath = @"position.y";
+        keyFramAnimation.values = @[@140, @160, @140, @160, @140, @120];
+        keyFramAnimation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1, @(7/6.0)];
+        keyFramAnimation.duration = 2;
+        keyFramAnimation.additive = NO;
+        [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
+    });
     
 }
 
