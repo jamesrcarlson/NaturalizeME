@@ -10,6 +10,12 @@
 #import "Stack.h"
 #import "Study.h"
 
+@interface SetupController ()
+
+//@property (strong, nonatomic)NSArray *civicsInfo;
+
+@end
+
 @implementation SetupController
 
 + (SetupController *)sharedInstance {
@@ -30,11 +36,11 @@
     civicsInfo.representative = representative;
     civicsInfo.stateCapital = stateCapital;
     
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
-//    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
+    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
+    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
 
     [self saveToPersistentStorage];
 

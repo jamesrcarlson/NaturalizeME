@@ -11,7 +11,7 @@
 
 @interface SetupController : NSObject
 
-@property (strong, readonly)NSArray *civicsInfo;
+@property (strong, readonly, nonatomic)NSArray *civicsInfo;
 
 + (SetupController *)sharedInstance;
 
