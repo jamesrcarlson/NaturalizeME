@@ -31,13 +31,14 @@ static NSString * const AllScoresKey = @"allScores";
 
 
 
--(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score {
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score wrongAsnwers:(NSArray *)wrongAnswer {
     Scores *scores = [Scores new];
     scores.timestamp = [NSDate date];
     self.latestQuizScore = score;
     scores.quizScore = score;
+    scores.wrongAnswer = wrongAnswer;
     
-    [self storeScoresInFile];
+    [self addScoreToArray:scores];
     
     return scores;
 }
@@ -87,6 +88,10 @@ static NSString * const AllScoresKey = @"allScores";
         [scores addObject:[[Scores alloc]initWithDictionary:score]];
     }
     self.scores = scores;
+}
+
+-(NSArray *)practiceScores {
+    return @[@25,@32,@42,@53];
 }
 
 //- (NSString *)pathToFile {

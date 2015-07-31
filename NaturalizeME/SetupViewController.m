@@ -41,28 +41,26 @@
     self.representativeLabel.numberOfLines = 0;
     
 //    [self notifications];
-    [self loadData:self.civicsInfo];
+//    [self loadData:self.civicsInfo];
     
     
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    
-    if (self.civicsInfo) {
-        [self loadData:self.civicsInfo];
-    }
-    
-}
-
--(void)loadData:(SetupInfo *)civicsInfo {
-    
-    NSArray *loadedResults = [SetupController sharedInstance].civicsInfo;
-
-    self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", loadedResults[0]];
-    self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", loadedResults[1], loadedResults[2]];
-    self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",loadedResults[3]];
-    self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",loadedResults[4]];
-}
+//-(void)viewDidAppear:(BOOL)animated {
+//    
+//        [self loadData:self.civicsInfo];
+//    
+//}
+//
+//-(void)loadData:(SetupInfo *)civicsInfo {
+//    
+//    NSArray *loadedResults = [SetupController sharedInstance].civicsInfo;
+//
+//    self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", loadedResults[0]];
+//    self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", loadedResults[1], loadedResults[2]];
+//    self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",loadedResults[3]];
+//    self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",loadedResults[4]];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -82,19 +80,19 @@
 
 - (IBAction)acceptData:(id)sender {
     
-    if (!self.civicsInfo) {
-        self.civicsInfo.governnor = self.governor;
-        self.civicsInfo.senatorOne = self.senatorOne;
-        self.civicsInfo.senatorTwo = self.senatorTwo;
-        self.civicsInfo.representative = self.representative;
-        self.civicsInfo.stateCapital = self.stateCapital;
-        [[SetupController sharedInstance]save];
-        
-    } else {
-        
+//    if (!self.civicsInfo) {
+//        self.civicsInfo.governnor = self.governor;
+//        self.civicsInfo.senatorOne = self.senatorOne;
+//        self.civicsInfo.senatorTwo = self.senatorTwo;
+//        self.civicsInfo.representative = self.representative;
+//        self.civicsInfo.stateCapital = self.stateCapital;
+//        [[SetupController sharedInstance]save];
+//        
+//    } else {
+    
         self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
 
-    }
+//    }
     
 }
 
@@ -116,7 +114,7 @@
         
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         
-//        NSLog(@"%@", dict);
+        NSLog(@"%@", dict);
         
         
         dispatch_async(dispatch_get_main_queue(), ^{

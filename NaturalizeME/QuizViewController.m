@@ -15,6 +15,8 @@
 
 //static NSInteger currentScores = 0;
 
+static NSString * const showScoreSegue = @"showScores";
+
 @interface QuizViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
@@ -35,7 +37,7 @@
 
 @property (strong)UILabel *rightAnswer;
 @property (strong)UILabel *wrongAnswer;
-
+@property (strong)NSMutableArray *wrongAnswersChosen;
 
 
 @end
@@ -44,6 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.wrongAnswersChosen = [NSMutableArray new];
     
     self.answerOne.titleLabel.numberOfLines = 0;
     self.answerTwo.titleLabel.numberOfLines = 0;
@@ -99,10 +102,9 @@
     };
     
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
         [[ScoreController sharedInstance]save];
-        ScoreViewController *scoreViewController =[ScoreViewController new];
-        [self.navigationController pushViewController:scoreViewController animated:YES];
+        [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
         
         [self setQuestionAndAnswers];
@@ -132,10 +134,9 @@
     
     if (self.holderArray.count == 0) {
         [NSThread sleepForTimeInterval:2];
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
         [[ScoreController sharedInstance]save];
-        ScoreViewController *scoreViewController =[ScoreViewController new];
-        [self.navigationController pushViewController:scoreViewController animated:YES];
+        [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
         
         [self setQuestionAndAnswers];
@@ -162,10 +163,9 @@
     };
     
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
         [[ScoreController sharedInstance]save];
-        ScoreViewController *scoreViewController =[ScoreViewController new];
-        [self.navigationController pushViewController:scoreViewController animated:YES];
+        [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
         [self setQuestionAndAnswers];
         
@@ -191,10 +191,9 @@
     
 
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
         [[ScoreController sharedInstance]save];
-        ScoreViewController *scoreViewController =[ScoreViewController new];
-        [self.navigationController pushViewController:scoreViewController animated:YES];
+        [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
         
         [self setQuestionAndAnswers];
@@ -203,7 +202,7 @@
     
 }
 - (IBAction)quitAndSeeScore:(id)sender {
-    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores)];
+    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
     [[ScoreController sharedInstance]save];
 }
 
@@ -231,6 +230,7 @@
         keyFramAnimation.duration = 2;
         keyFramAnimation.additive = NO;
         [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
+        [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",buttonTitle]];
     });
     
 }
@@ -306,6 +306,10 @@
     
 
 
+}
+-(NSArray *)wrongAnswerArray {
+    NSArray *myNewWrongAnswerArray = [[NSArray alloc]initWithArray:self.wrongAnswersChosen];
+    return myNewWrongAnswerArray;
 }
 
 

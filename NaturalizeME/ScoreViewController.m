@@ -26,6 +26,11 @@
     [self updateScore];
     
 }
+- (IBAction)acceptScore:(id)sender {
+    
+    [[ScoreController sharedInstance]save];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

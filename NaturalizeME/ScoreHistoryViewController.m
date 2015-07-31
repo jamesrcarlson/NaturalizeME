@@ -22,9 +22,9 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-}
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self.tableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -37,10 +37,11 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scores"];
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scoreCell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",scores.quizScore];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@, on %@",scores.quizScore, scores.timestamp];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@",[ScoreController sharedInstance].practiceScores[indexPath.row]];
     return cell;
 }
 
