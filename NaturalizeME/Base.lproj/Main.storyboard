@@ -251,6 +251,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OGX-NA-ltA" id="VmZ-Sc-Yeo">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bng-TE-YbS" kind="show" identifier="wrongAnswerView" id="zIa-Na-UMO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -270,7 +273,7 @@
                             <constraint firstItem="P9T-6p-uvC" firstAttribute="bottom" secondItem="VBd-E3-RLG" secondAttribute="top" id="nS4-4s-3KZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scores" image="second" id="WWf-ee-fWK"/>
+                    <navigationItem key="navigationItem" id="ACc-Yu-Uol"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="P9T-6p-uvC" id="PfW-TO-hiK"/>
@@ -278,7 +281,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huZ-0f-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123" y="36"/>
+            <point key="canvasLocation" x="2935" y="36"/>
+        </scene>
+        <!--Wrong Answer View Controller-->
+        <scene sceneID="SZy-XK-6gS">
+            <objects>
+                <viewController id="bng-TE-YbS" customClass="WrongAnswerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xg3-u3-6gO"/>
+                        <viewControllerLayoutGuide type="bottom" id="eYx-B8-fUk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WW9-fH-VWe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UZH-tJ-Xab">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="wrongAnswer" id="Viv-vL-MZe">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Viv-vL-MZe" id="psy-yC-UYs">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bng-TE-YbS" id="ZSK-mu-emp"/>
+                                    <outlet property="delegate" destination="bng-TE-YbS" id="See-B1-eNN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UZH-tJ-Xab" firstAttribute="top" secondItem="WW9-fH-VWe" secondAttribute="top" id="3JW-qN-wfj"/>
+                            <constraint firstItem="UZH-tJ-Xab" firstAttribute="leading" secondItem="WW9-fH-VWe" secondAttribute="leading" id="Coy-YO-F7e"/>
+                            <constraint firstAttribute="bottom" secondItem="UZH-tJ-Xab" secondAttribute="bottom" id="QUC-jd-hJy"/>
+                            <constraint firstAttribute="trailing" secondItem="UZH-tJ-Xab" secondAttribute="trailing" id="lD0-8G-mj1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="UZH-tJ-Xab" id="c9K-fQ-iNM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vNf-Wv-cEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2123" y="824"/>
         </scene>
         <!--Manual Setup View Controller-->
         <scene sceneID="Tli-Zc-GbX">
@@ -674,7 +723,7 @@
                                 </state>
                                 <connections>
                                     <action selector="acceptScore:" destination="MbB-5b-T89" eventType="touchUpInside" id="BhN-qS-zf1"/>
-                                    <segue destination="ydF-5M-25S" kind="show" id="RLq-lR-2r5"/>
+                                    <segue destination="rJw-yq-0t8" kind="show" id="RLq-lR-2r5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -859,7 +908,7 @@
                     <connections>
                         <segue destination="8al-S3-HQb" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="hcK-7H-x6G" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="ydF-5M-25S" kind="relationship" relationship="viewControllers" id="8qk-d2-yS8"/>
+                        <segue destination="rJw-yq-0t8" kind="relationship" relationship="viewControllers" id="8qk-d2-yS8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -904,6 +953,25 @@
             </objects>
             <point key="canvasLocation" x="-744" y="36"/>
         </scene>
+        <!--Scores-->
+        <scene sceneID="shk-dT-2Xx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rJw-yq-0t8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scores" image="second" id="WWf-ee-fWK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C3J-fs-fnp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ydF-5M-25S" kind="relationship" relationship="rootViewController" id="7TF-qZ-id1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fjm-nZ-Jh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2123" y="36"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
@@ -911,8 +979,8 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nvl-Ne-2he"/>
-        <segue reference="Oua-HG-gcK"/>
         <segue reference="RLq-lR-2r5"/>
+        <segue reference="Oua-HG-gcK"/>
+        <segue reference="Nvl-Ne-2he"/>
     </inferredMetricsTieBreakers>
 </document>

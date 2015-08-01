@@ -55,16 +55,14 @@
 -(void)loadData:(SetupInfo *)civicsInfo {
     
     NSInteger highestNumber = [SetupController sharedInstance].civicsInfo.count -1;
-    SetupInfo *setupInfo = [SetupController sharedInstance].civicsInfo[highestNumber];
-    
-
-    if (setupInfo) {
+    if (highestNumber >=0) {
+        SetupInfo *setupInfo = [SetupController sharedInstance].civicsInfo[highestNumber];
         self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", setupInfo.governnor];
         self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", setupInfo.senatorOne, setupInfo.senatorTwo];
         self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",setupInfo.representative];
         self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",setupInfo.stateCapital];
     }
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
