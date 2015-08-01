@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const AnswersArrayKey = @"answersArray";
+
 @interface Study : NSObject
 
 @property (nonatomic, retain) NSString * question;
@@ -34,5 +36,9 @@
 +(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName;
 
 +(NSArray *)storedAnswers;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+- (NSDictionary *)dictionaryRepresentation;
 
 @end

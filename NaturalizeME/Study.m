@@ -16,6 +16,7 @@ static NSString *const AnswersNeededKey = @"answersNeeded";
 static NSString *const BadAnswerKey = @"badAnswer";
 static NSString *const ExplanationKey = @"explanationTitle";
 
+
 @implementation Study
 
 +(NSInteger)questionCount {
@@ -58,7 +59,25 @@ static NSString *const ExplanationKey = @"explanationTitle";
     self.answers[index][@"AnswerKey"][anIndex] = setName;
 }
 +(NSMutableArray *)answers {
-    return [[NSMutableArray alloc]initWithArray:[self storedAnswers]];
+    
+    return self.answers;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    if (self) {
+        self.answers = dictionary[AnswersArrayKey];
+    }
+    return self;
+}
+
+- (NSDictionary *)dictionaryRepresentation {
+    NSDictionary *dictionary = @{
+                                 AnswersArrayKey : self.answers,
+                                 };
+    
+    return dictionary;
 }
 
 +(NSArray *)storedAnswers {

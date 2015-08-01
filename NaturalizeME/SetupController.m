@@ -9,6 +9,7 @@
 #import "SetupController.h"
 #import "Stack.h"
 #import "Study.h"
+#import "StudyController.h"
 
 @interface SetupController ()
 
@@ -30,18 +31,13 @@
 - (SetupInfo *)storeCivicsInfo:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     
     SetupInfo *civicsInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
+    [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:governor senatorOneName:senatorOne senatorTwoName:senatorTwo repName:representative stateCapitalName:stateCapital];
     civicsInfo.governnor = governor;
     civicsInfo.senatorOne = senatorOne;
     civicsInfo.senatorTwo = senatorTwo;
     civicsInfo.representative = representative;
     civicsInfo.stateCapital = stateCapital;
     
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:governor];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:senatorOne];
-//    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:senatorTwo];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:representative];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:stateCapital];
-
     [self saveToPersistentStorage];
 
     return civicsInfo;

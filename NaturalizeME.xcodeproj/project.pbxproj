@@ -10,6 +10,7 @@
 		612542501B69A2B000BF75A7 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 6125424F1B69A2B000BF75A7 /* Scores.m */; };
 		61831A481B6AECA900D2B506 /* flag.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61831A471B6AECA900D2B506 /* flag.jpg */; };
 		61831A4B1B6C4B2E00D2B506 /* WrongAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61831A4A1B6C4B2E00D2B506 /* WrongAnswerViewController.m */; };
+		61831A4E1B6C922600D2B506 /* StudyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61831A4D1B6C922600D2B506 /* StudyController.m */; };
 		618387E91B5896B100DADA6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387E81B5896B100DADA6D /* main.m */; };
 		618387EC1B5896B100DADA6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387EB1B5896B100DADA6D /* AppDelegate.m */; };
 		618387EF1B5896B100DADA6D /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618387EE1B5896B100DADA6D /* WelcomeViewController.m */; };
@@ -48,6 +49,8 @@
 		61831A471B6AECA900D2B506 /* flag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flag.jpg; sourceTree = "<group>"; };
 		61831A491B6C4B2E00D2B506 /* WrongAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrongAnswerViewController.h; sourceTree = "<group>"; };
 		61831A4A1B6C4B2E00D2B506 /* WrongAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrongAnswerViewController.m; sourceTree = "<group>"; };
+		61831A4C1B6C922600D2B506 /* StudyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyController.h; sourceTree = "<group>"; };
+		61831A4D1B6C922600D2B506 /* StudyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyController.m; sourceTree = "<group>"; };
 		618387E31B5896B100DADA6D /* NaturalizeME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaturalizeME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		618387E71B5896B100DADA6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		618387E81B5896B100DADA6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				6183882B1B589D8000DADA6D /* ManualSetupViewController.m */,
 				61A3718E1B64AB8B0088BBED /* SetupController.h */,
 				61A3718F1B64AB8B0088BBED /* SetupController.m */,
+				61831A4C1B6C922600D2B506 /* StudyController.h */,
+				61831A4D1B6C922600D2B506 /* StudyController.m */,
 				61AE61FF1B5F3CB0000CC6BD /* ScoreController.h */,
 				61AE62001B5F3CB0000CC6BD /* ScoreController.m */,
 				618387F61B5896B100DADA6D /* Images.xcassets */,
@@ -306,6 +311,7 @@
 				618387EF1B5896B100DADA6D /* WelcomeViewController.m in Sources */,
 				61AE61FE1B5F3C35000CC6BD /* Stack.m in Sources */,
 				618388231B589A8F00DADA6D /* AnswerStudyViewController.m in Sources */,
+				61831A4E1B6C922600D2B506 /* StudyController.m in Sources */,
 				61A371931B64B03A0088BBED /* SetupInfo.m in Sources */,
 				618388291B589AB400DADA6D /* ScoreHistoryViewController.m in Sources */,
 				618388111B5897A100DADA6D /* SetupViewController.m in Sources */,
