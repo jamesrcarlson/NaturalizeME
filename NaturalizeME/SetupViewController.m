@@ -40,15 +40,11 @@
     self.stateCapitalLabel.numberOfLines = 0;
     self.representativeLabel.numberOfLines = 0;
     
-//    [self notifications];
-//    [self loadData:self.civicsInfo];
-    
-    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     
-        [self loadData:self.civicsInfo];
+    [self loadData:self.civicsInfo];
     
 }
 

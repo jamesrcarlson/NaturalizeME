@@ -35,6 +35,4 @@
 
 +(NSArray *)storedAnswers;
 
-
-
 @end
