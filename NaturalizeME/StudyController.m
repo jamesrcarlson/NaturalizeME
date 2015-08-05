@@ -30,11 +30,11 @@
 - (Study *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     Study *study = [Study new];
     study.answers = [[NSMutableArray alloc]initWithArray:[Study storedAnswers]];
-    study.answers[42][@"AnswerKey"][0] = governor;
-    study.answers[0][@"AnswerKey"][19] = governor;
-    study.answers[1][@"AnswerKey"][19] = governor;
-    study.answers[0][@"AnswerKey"][22] = governor;
-    study.answers[0][@"AnswerKey"][43] = governor;
+    study.answers[42][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",governor];
+    study.answers[19][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",senatorOne];
+    study.answers[19][@"AnswerKey"][1] = [NSString stringWithFormat:@"%@",senatorTwo];
+    study.answers[22][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",representative];
+    study.answers[43][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",stateCapital];
     
     [self addArray:study];
     return study;

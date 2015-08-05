@@ -13,13 +13,13 @@
 
 @property (strong, readonly, nonatomic) NSArray *scores;
 
-@property (strong, nonatomic) NSArray *practiceScores;
+//@property (strong, nonatomic) NSArray *practiceScores;
 
 @property (strong)NSNumber *latestQuizScore;
 
 + (ScoreController *)sharedInstance;
 
--(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score wrongAsnwers:(NSArray *)wrongAnswer;
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score wrongAsnwers:(NSArray *)wrongAnswer answerNumber:(NSArray *)answerNumber;
 
 -(void)save;
 

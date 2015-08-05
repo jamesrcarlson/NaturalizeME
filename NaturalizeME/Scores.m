@@ -12,6 +12,7 @@
 static NSString * const QuizScoreKey = @"quizScore";
 static NSString * const TimeStampKey = @"timeStamp";
 static NSString * const WrongAnswerKey = @"wrongAnswer";
+static NSString * const AnswerNumberKey = @"answerNumber";
 
 @implementation Scores
 
@@ -22,6 +23,7 @@ static NSString * const WrongAnswerKey = @"wrongAnswer";
         self.quizScore = dictionary[QuizScoreKey];
         self.timestamp = dictionary[TimeStampKey];
         self.wrongAnswer = dictionary[WrongAnswerKey];
+        self.answerNumber = dictionary[AnswerNumberKey];
         
     };
     
@@ -31,7 +33,8 @@ static NSString * const WrongAnswerKey = @"wrongAnswer";
 -(NSDictionary *)scoreDictionary {
     NSDictionary *dictionary = @{ QuizScoreKey : self.quizScore,
                                   TimeStampKey : self.timestamp,
-                                  WrongAnswerKey :self.wrongAnswer};
+                                  WrongAnswerKey :self.wrongAnswer,
+                                  AnswerNumberKey : self.answerNumber};
     return dictionary;
 }
 

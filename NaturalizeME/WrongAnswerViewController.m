@@ -36,7 +36,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wrongAnswer"];
-    cell.textLabel.text = self.scores.wrongAnswer[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Question number %@ \n %@",self.scores.answerNumber[indexPath.row],self.scores.wrongAnswer[indexPath.row]];
     cell.textLabel.numberOfLines = 0;
     return cell;
 }

@@ -59,8 +59,9 @@ static NSString *const ExplanationKey = @"explanationTitle";
     self.answers[index][@"AnswerKey"][anIndex] = setName;
 }
 +(NSMutableArray *)answers {
+    NSMutableArray *newAnswers = [[NSMutableArray alloc]initWithArray:[self storedAnswers]];
     
-    return self.answers;
+    return newAnswers;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary

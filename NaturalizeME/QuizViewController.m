@@ -41,6 +41,7 @@ static NSString * const showScoreSegue = @"showScores";
 @property (strong)UILabel *rightAnswer;
 @property (strong)UILabel *wrongAnswer;
 @property (strong)NSMutableArray *wrongAnswersChosen;
+@property (strong)NSMutableArray *answerNumberArray;
 
 
 @end
@@ -50,14 +51,7 @@ static NSString * const showScoreSegue = @"showScores";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.wrongAnswersChosen = [NSMutableArray new];
-    
-//    NSInteger highestNumber = [SetupController sharedInstance].civicsInfo.count -1;
-//    SetupInfo *setupInfo = [SetupController sharedInstance].civicsInfo[highestNumber];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:42 WithName:setupInfo.governnor];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:19 WithName:setupInfo.senatorOne];
-//    [Study setAnswerAtIndex:1 forQuestionAtIndex:19 WithName:setupInfo.senatorTwo];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:22 WithName:setupInfo.representative];
-//    [Study setAnswerAtIndex:0 forQuestionAtIndex:43 WithName:setupInfo.representative];
+    self.answerNumberArray = [NSMutableArray new];
     
     self.answerOne.titleLabel.numberOfLines = 0;
     self.answerTwo.titleLabel.numberOfLines = 0;
@@ -112,7 +106,7 @@ static NSString * const showScoreSegue = @"showScores";
     };
     
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
         [[ScoreController sharedInstance]save];
         [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
@@ -144,7 +138,7 @@ static NSString * const showScoreSegue = @"showScores";
     
     if (self.holderArray.count == 0) {
         [NSThread sleepForTimeInterval:2];
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
         [[ScoreController sharedInstance]save];
         [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
@@ -173,7 +167,7 @@ static NSString * const showScoreSegue = @"showScores";
     };
     
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
         [[ScoreController sharedInstance]save];
         [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
@@ -201,7 +195,7 @@ static NSString * const showScoreSegue = @"showScores";
     
 
     if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
         [[ScoreController sharedInstance]save];
         [self performSegueWithIdentifier:showScoreSegue sender:self];
     }else {
@@ -212,7 +206,7 @@ static NSString * const showScoreSegue = @"showScores";
     
 }
 - (IBAction)quitAndSeeScore:(id)sender {
-    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:[self wrongAnswerArray]];
+    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
     [[ScoreController sharedInstance]save];
 }
 
@@ -241,6 +235,7 @@ static NSString * const showScoreSegue = @"showScores";
         keyFramAnimation.additive = NO;
         [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
         [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle.text]];
+        [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[Study questionNumberAtIndex:self.questionNumber]]];
     });
     
 }

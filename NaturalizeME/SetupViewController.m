@@ -75,7 +75,10 @@
     
     [self getData];
     
+    [self.addressInput resignFirstResponder];
+    
 }
+
 
 - (IBAction)acceptData:(id)sender {
     
@@ -147,6 +150,10 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES]; //dismisses the keyboard when user touches outside of the textfield
 }
 
 //-(void)dealloc {

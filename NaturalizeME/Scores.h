@@ -13,6 +13,7 @@
 @property (assign) NSNumber * quizScore;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (strong) NSArray * wrongAnswer;
+@property (strong) NSArray * answerNumber;
 
 -(id) initWithDictionary:(NSDictionary *)dictionary;
 -(NSDictionary *)scoreDictionary;
