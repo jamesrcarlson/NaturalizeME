@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huZ-0f-VjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="36"/>
+            <point key="canvasLocation" x="2868" y="227"/>
         </scene>
         <!--Wrong Answer View Controller-->
         <scene sceneID="SZy-XK-6gS">
@@ -305,6 +305,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Viv-vL-MZe" id="psy-yC-UYs">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="msh-dL-J3a" kind="show" identifier="wrongAnswerStudy" id="24c-8j-0RJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -327,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNf-Wv-cEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123" y="824"/>
+            <point key="canvasLocation" x="1628" y="840"/>
         </scene>
         <!--Manual Setup View Controller-->
         <scene sceneID="Tli-Zc-GbX">
@@ -889,6 +892,7 @@
                                 </state>
                                 <connections>
                                     <action selector="acceptData:" destination="wcb-XM-UgH" eventType="touchUpInside" id="4p6-B6-Vr0"/>
+                                    <segue destination="9pv-A4-QxB" kind="show" identifier="acceptSetupData" id="7Zq-wL-28O"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1019,7 +1023,9 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u7Y-xg-7CH"/>
+        <segue reference="7Zq-wL-28O"/>
         <segue reference="RLq-lR-2r5"/>
+        <segue reference="24c-8j-0RJ"/>
+        <segue reference="Oua-HG-gcK"/>
     </inferredMetricsTieBreakers>
 </document>

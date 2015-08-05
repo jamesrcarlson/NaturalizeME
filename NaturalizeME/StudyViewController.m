@@ -54,7 +54,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questions"];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = [Study questionTitleAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Question # %@ \n%@",@(indexPath.row +1),[Study questionTitleAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -74,8 +74,6 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     AnswerStudyViewController *answerViewController = segue.destinationViewController;
-    
-//    Study *answer = [StudyController sharedInstance].questions[indexPath.row];
     
     answerViewController.questionIndex = indexPath.row;
     

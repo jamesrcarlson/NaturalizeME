@@ -31,7 +31,7 @@
 - (SetupInfo *)storeCivicsInfo:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     
     SetupInfo *civicsInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
-    [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:governor senatorOneName:senatorOne senatorTwoName:senatorTwo repName:representative stateCapitalName:stateCapital];
+//    [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:governor senatorOneName:senatorOne senatorTwoName:senatorTwo repName:representative stateCapitalName:stateCapital];
     civicsInfo.governnor = governor;
     civicsInfo.senatorOne = senatorOne;
     civicsInfo.senatorTwo = senatorTwo;

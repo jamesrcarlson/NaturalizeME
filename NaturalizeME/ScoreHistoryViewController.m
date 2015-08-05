@@ -41,7 +41,8 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scores"];
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@, on %@",scores.quizScore, scores.timestamp];
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.text = [NSString stringWithFormat:@"Score # %@ \nWith a score of %@",@(indexPath.row +1),scores.quizScore];
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@",[ScoreController sharedInstance].practiceScores[indexPath.row]];
     return cell;
 }

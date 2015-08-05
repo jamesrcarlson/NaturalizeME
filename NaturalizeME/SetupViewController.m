@@ -82,20 +82,35 @@
 
 - (IBAction)acceptData:(id)sender {
     
-//    if (!self.civicsInfo) {
-//        self.civicsInfo.governnor = self.governor;
-//        self.civicsInfo.senatorOne = self.senatorOne;
-//        self.civicsInfo.senatorTwo = self.senatorTwo;
-//        self.civicsInfo.representative = self.representative;
-//        self.civicsInfo.stateCapital = self.stateCapital;
-//        [[SetupController sharedInstance]save];
-//        
-//    } else {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self saveData];
+        [self performSegueWithIdentifier:@"acceptSetupData" sender:self];
+    }]];
     
-        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        self.addressInput.text = @"";
+        [self needBetterInput];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+//        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
 
-//    }
+
     
+}
+
+-(void)needBetterInput {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"The Address you type in should be exact and accurate?" message:@"If the data is still not loading, please us the 'Enter Manually' option" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:nil]];
+    
+}
+
+-(void)saveData {
+    
+    self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
 }
 
 -(void)getData{

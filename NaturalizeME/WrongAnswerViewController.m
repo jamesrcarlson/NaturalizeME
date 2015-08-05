@@ -7,6 +7,8 @@
 //
 
 #import "WrongAnswerViewController.h"
+#import "AnswerStudyViewController.h"
+#import "ScoreController.h"
 
 @interface WrongAnswerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -39,6 +41,17 @@
     cell.textLabel.text = [NSString stringWithFormat:@"Question number %@ \n %@",self.scores.answerNumber[indexPath.row],self.scores.wrongAnswer[indexPath.row]];
     cell.textLabel.numberOfLines = 0;
     return cell;
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSIndexPath *)indexPath {
+    if ([segue.identifier isEqualToString:@"wrongAnswerStudy"]) {
+        
+        AnswerStudyViewController *answerViewController = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        NSInteger quesitonNumber = [self.scores.answerNumber[indexPath.row]integerValue]-1;
+        
+        answerViewController.questionIndex = quesitonNumber;
+    }
 }
 
 @end
