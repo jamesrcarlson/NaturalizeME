@@ -19,68 +19,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
 
 @implementation Study
 
-+(NSInteger)questionCount {
-    return [[self answers]count];
-}
-
-+(NSDictionary *)questionAtIndex:(NSInteger)index {
-    return [self answers][index];
-}
-
-+(NSString *)questionNumberAtIndex:(NSInteger)index {
-    return [self answers][index][QuestionNumberKey];
-}
-
-+(NSString *)questionTitleAtIndex:(NSInteger)index {
-    return [self answers][index][QuestionTitleKey];
-}
-
-+(NSNumber *)answersNeededAtIndex:(NSInteger)index {
-    return [self answers][index][AnswersNeededKey];
-}
-
-+(NSInteger)answerCountAtIndex:(NSInteger)index {
-    return [[self answers][index][AnswerKey]count];
-}
-
-+(NSString *)answerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex {
-    return [self answers][ansIndex][AnswerKey][ingIndex];
-}
-
-+(NSString *)BadAnswerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex {
-    return [self answers][ansIndex][BadAnswerKey][ingIndex];
-}
-
-+(NSString *)explanationAtIndex:(NSInteger)index {
-    return [self answers][index][ExplanationKey];
-}
-
-+(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName  {
-    self.answers[index][@"AnswerKey"][anIndex] = setName;
-}
-+(NSMutableArray *)answers {
-    NSMutableArray *newAnswers = [[NSMutableArray alloc]initWithArray:[self storedAnswers]];
-    
-    return newAnswers;
-}
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [super init];
-    if (self) {
-        self.answers = dictionary[AnswersArrayKey];
-    }
-    return self;
-}
-
-- (NSDictionary *)dictionaryRepresentation {
-    NSDictionary *dictionary = @{
-                                 AnswersArrayKey : self.answers,
-                                 };
-    
-    return dictionary;
-}
-
 +(NSArray *)storedAnswers {
     
     return @[

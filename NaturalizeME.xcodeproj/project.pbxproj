@@ -26,6 +26,8 @@
 		618388291B589AB400DADA6D /* ScoreHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388281B589AB400DADA6D /* ScoreHistoryViewController.m */; };
 		6183882C1B589D8000DADA6D /* ManualSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6183882B1B589D8000DADA6D /* ManualSetupViewController.m */; };
 		618388381B589FB800DADA6D /* Study.m in Sources */ = {isa = PBXBuildFile; fileRef = 618388371B589FB800DADA6D /* Study.m */; };
+		618485341B72611E009C5F88 /* Answers.m in Sources */ = {isa = PBXBuildFile; fileRef = 618485331B72611E009C5F88 /* Answers.m */; };
+		6184853A1B7283C0009C5F88 /* AnswersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618485391B7283C0009C5F88 /* AnswersController.m */; };
 		61A371901B64AB8B0088BBED /* SetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A3718F1B64AB8B0088BBED /* SetupController.m */; };
 		61A371931B64B03A0088BBED /* SetupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A371921B64B03A0088BBED /* SetupInfo.m */; };
 		61AE61F81B5F381D000CC6BD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61AE61F61B5F381D000CC6BD /* Model.xcdatamodeld */; };
@@ -80,6 +82,10 @@
 		6183882B1B589D8000DADA6D /* ManualSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualSetupViewController.m; sourceTree = "<group>"; };
 		618388361B589FB800DADA6D /* Study.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Study.h; sourceTree = "<group>"; };
 		618388371B589FB800DADA6D /* Study.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Study.m; sourceTree = "<group>"; };
+		618485321B72611E009C5F88 /* Answers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answers.h; sourceTree = "<group>"; };
+		618485331B72611E009C5F88 /* Answers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answers.m; sourceTree = "<group>"; };
+		618485381B7283C0009C5F88 /* AnswersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersController.h; sourceTree = "<group>"; };
+		618485391B7283C0009C5F88 /* AnswersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersController.m; sourceTree = "<group>"; };
 		61A3718E1B64AB8B0088BBED /* SetupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupController.h; sourceTree = "<group>"; };
 		61A3718F1B64AB8B0088BBED /* SetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupController.m; sourceTree = "<group>"; };
 		61A371911B64B03A0088BBED /* SetupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupInfo.h; sourceTree = "<group>"; };
@@ -151,16 +157,20 @@
 				618388101B5897A100DADA6D /* SetupViewController.m */,
 				6183882A1B589D8000DADA6D /* ManualSetupViewController.h */,
 				6183882B1B589D8000DADA6D /* ManualSetupViewController.m */,
-				61A3718E1B64AB8B0088BBED /* SetupController.h */,
-				61A3718F1B64AB8B0088BBED /* SetupController.m */,
+				618485381B7283C0009C5F88 /* AnswersController.h */,
+				618485391B7283C0009C5F88 /* AnswersController.m */,
 				61831A4C1B6C922600D2B506 /* StudyController.h */,
 				61831A4D1B6C922600D2B506 /* StudyController.m */,
+				61A3718E1B64AB8B0088BBED /* SetupController.h */,
+				61A3718F1B64AB8B0088BBED /* SetupController.m */,
 				61AE61FF1B5F3CB0000CC6BD /* ScoreController.h */,
 				61AE62001B5F3CB0000CC6BD /* ScoreController.m */,
 				618387F61B5896B100DADA6D /* Images.xcassets */,
 				618387F81B5896B100DADA6D /* LaunchScreen.xib */,
 				61AE61F61B5F381D000CC6BD /* Model.xcdatamodeld */,
 				61831A471B6AECA900D2B506 /* flag.jpg */,
+				618485321B72611E009C5F88 /* Answers.h */,
+				618485331B72611E009C5F88 /* Answers.m */,
 				618388361B589FB800DADA6D /* Study.h */,
 				618388371B589FB800DADA6D /* Study.m */,
 				61A371911B64B03A0088BBED /* SetupInfo.h */,
@@ -305,6 +315,7 @@
 				612542501B69A2B000BF75A7 /* Scores.m in Sources */,
 				61AE62011B5F3CB0000CC6BD /* ScoreController.m in Sources */,
 				618387F21B5896B100DADA6D /* StudyViewController.m in Sources */,
+				6184853A1B7283C0009C5F88 /* AnswersController.m in Sources */,
 				61A371901B64AB8B0088BBED /* SetupController.m in Sources */,
 				618387EC1B5896B100DADA6D /* AppDelegate.m in Sources */,
 				6183881D1B589A6C00DADA6D /* ScoreViewController.m in Sources */,
@@ -320,6 +331,7 @@
 				618388261B589AA200DADA6D /* QuizViewController.m in Sources */,
 				6183882C1B589D8000DADA6D /* ManualSetupViewController.m in Sources */,
 				61AE61F81B5F381D000CC6BD /* Model.xcdatamodeld in Sources */,
+				618485341B72611E009C5F88 /* Answers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

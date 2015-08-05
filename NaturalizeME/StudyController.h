@@ -8,15 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "Study.h"
+#import "Answers.h"
+
+
 
 @interface StudyController : NSObject
 
 + (StudyController *)sharedInstance;
 
-- (Study *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
+- (Answers *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
 
-- (void)addArray:(Study *)study;
+- (void)addArray:(Answers *)study;
 
 - (void)save;
+
+@property (nonatomic, retain) NSString * question;
+
+@property (strong, nonatomic, readonly)NSArray *answersHolderArray;
+
+
 
 @end

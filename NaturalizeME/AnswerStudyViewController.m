@@ -7,7 +7,7 @@
 //
 
 #import "AnswerStudyViewController.h"
-#import "Study.h"
+#import "AnswersController.h"
 
 //static CGFloat margin = 15;
 
@@ -27,8 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.question.text = [Study questionTitleAtIndex:self.questionIndex];
-    self.explanation.text = [Study explanationAtIndex:self.questionIndex];
+    self.question.text = [AnswersController questionTitleAtIndex:self.questionIndex];
+    self.explanation.text = [AnswersController explanationAtIndex:self.questionIndex];
     
     self.question.numberOfLines = 0;
     self.explanation.scrollEnabled = YES;
@@ -42,7 +42,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"answers"];
-    cell.textLabel.text = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
+    cell.textLabel.text = [AnswersController answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.numberOfLines = 0;
 
@@ -50,12 +50,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [Study answerCountAtIndex:self.questionIndex];
+    return [AnswersController answerCountAtIndex:self.questionIndex];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *cellText = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
+    NSString *cellText = [AnswersController answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
     
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText

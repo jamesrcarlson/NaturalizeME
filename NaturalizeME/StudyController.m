@@ -7,11 +7,12 @@
 //
 
 #import "StudyController.h"
-#import "Study.h"
+
+
 
 @interface StudyController ()
 
-@property (strong, nonatomic)NSArray *localAnswersArray;
+@property (strong, nonatomic)NSArray *answersHolderArray;
 
 @end
 
@@ -23,41 +24,45 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [StudyController new];
         [sharedInstance loadFromPersistentStorage];
+        
     });
     return sharedInstance;
 }
 
-- (Study *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
-    Study *study = [Study new];
-    study.answers = [[NSMutableArray alloc]initWithArray:[Study storedAnswers]];
-    study.answers[42][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",governor];
-    study.answers[19][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",senatorOne];
-    study.answers[19][@"AnswerKey"][1] = [NSString stringWithFormat:@"%@",senatorTwo];
-    study.answers[22][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",representative];
-    study.answers[43][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",stateCapital];
+
+- (Answers *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
+    Answers *answers = [Answers new];
+    answers.storedAnswers = [[NSMutableArray alloc]initWithArray:[Study storedAnswers]];
     
-    [self addArray:study];
-    return study;
+    
+//    self.answersHolderArray = [[NSMutableArray alloc]initWithArray:[Study storedAnswers]];
+//    self.answersHolderArray[42][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",governor];
+//    self.answersHolderArray[19][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",senatorOne];
+//    self.answersHolderArray[19][@"AnswerKey"][1] = [NSString stringWithFormat:@"%@",senatorTwo];
+//    self.answersHolderArray[22][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",representative];
+//    self.answersHolderArray[43][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",stateCapital];
+    
+    [self addArray:answers];
+    return answers;
 }
 
-- (void)addArray:(Study *)study {
-    if (!study) {
+- (void)addArray:(Answers *)answers {
+    if (!answers) {
         return;
     }
     
-    NSMutableArray *mutableEntries = self.localAnswersArray.mutableCopy;
-    [mutableEntries addObject:study];
+    NSMutableArray *mutableEntries = self.answersHolderArray.mutableCopy;
+    [mutableEntries addObject:answers];
     
-    self.localAnswersArray = mutableEntries;
+    self.answersHolderArray = mutableEntries;
     [self saveToPersistentStorage];
 }
 
-#pragma mark - Read
 
 - (void)saveToPersistentStorage {
     NSMutableArray *entryDictionaries = [NSMutableArray new];
-    for (Study *study in self.localAnswersArray) {
-        [entryDictionaries addObject:[study dictionaryRepresentation]];
+    for (Answers *answers in self.answersHolderArray) {
+        [entryDictionaries addObject:[answers dictionaryRepresentation]];
     }
     
     [entryDictionaries writeToFile:self.pathToFile atomically:YES];
@@ -69,10 +74,11 @@
     
     NSMutableArray *answersArray = [NSMutableArray new];
     for (NSDictionary *answer in answersDictionaries) {
-        [answersArray addObject:[[Study alloc] initWithDictionary:answer]];
+        [answersArray addObject:[[Answers alloc] initWithDictionary:answer]];
     }
     
-    self.localAnswersArray = answersArray;
+    self.answersHolderArray = answersArray;
+//    self.answers = [[NSMutableArray alloc]initWithArray:answersArray];
     
 }
 
@@ -91,7 +97,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     //2) Create the full file path by appending the desired file name
-    NSString *pathToFile = [documentsDirectory stringByAppendingPathComponent:@"entries.plist"];
+    NSString *pathToFile = [documentsDirectory stringByAppendingPathComponent:@"answers.plist"];
     
     return pathToFile;
 }

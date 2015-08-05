@@ -8,7 +8,7 @@
 
 #import "StudyViewController.h"
 #import "AnswerStudyViewController.h"
-#import "Study.h"
+#import "AnswersController.h"
 
 @interface StudyViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -45,7 +45,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [Study questionCount];
+    return [AnswersController questionCount];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,7 +54,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questions"];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = [Study questionTitleAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Question #%@ \n%@",@(indexPath.row +1),[AnswersController questionTitleAtIndex:indexPath.row]];
     
     return cell;
 }

@@ -82,19 +82,9 @@
 
 - (IBAction)acceptData:(id)sender {
     
-//    if (!self.civicsInfo) {
-//        self.civicsInfo.governnor = self.governor;
-//        self.civicsInfo.senatorOne = self.senatorOne;
-//        self.civicsInfo.senatorTwo = self.senatorTwo;
-//        self.civicsInfo.representative = self.representative;
-//        self.civicsInfo.stateCapital = self.stateCapital;
-//        [[SetupController sharedInstance]save];
-//        
-//    } else {
-    
+   
         self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
 
-//    }
     
 }
 
