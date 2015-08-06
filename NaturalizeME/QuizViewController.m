@@ -21,13 +21,9 @@ static NSString * const showScoreSegue = @"showScores";
 @interface QuizViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
-
 @property (strong, nonatomic) IBOutlet UIButton *answerOne;
-
 @property (strong, nonatomic) IBOutlet UIButton *answerTwo;
-
 @property (strong, nonatomic) IBOutlet UIButton *answerThree;
-
 @property (strong, nonatomic) IBOutlet UIButton *answerFour;
 
 @property (nonatomic, strong)NSMutableArray *holderArray;
@@ -37,6 +33,7 @@ static NSString * const showScoreSegue = @"showScores";
 @property (nonatomic, assign)NSInteger questionNumber;
 
 @property (assign)NSInteger currentScores;
+@property (assign)NSInteger totalAnswersGiven;
 
 @property (strong)UILabel *rightAnswer;
 @property (strong)UILabel *wrongAnswer;
@@ -62,6 +59,7 @@ static NSString * const showScoreSegue = @"showScores";
     
     [self setQuestionAndAnswers];
     self.currentScores = 0;
+    self.totalAnswersGiven = 0;
     
     self.rightAnswer = [[UILabel alloc]initWithFrame:CGRectMake(20, -100, self.view.frame.size.width - 40, 75)];
     self.rightAnswer.backgroundColor = [UIColor greenColor];
@@ -221,6 +219,7 @@ static NSString * const showScoreSegue = @"showScores";
         keyFramAnimation.additive = NO;
         [self.rightAnswer.layer addAnimation:keyFramAnimation forKey:@"nod"];
     });
+    self.totalAnswersGiven++;
 }
 
 -(void)gotItWrong:(NSString *)buttonTitle {
@@ -237,6 +236,7 @@ static NSString * const showScoreSegue = @"showScores";
         [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle.text]];
         [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[Study questionNumberAtIndex:self.questionNumber]]];
     });
+    self.totalAnswersGiven++;
     
 }
 

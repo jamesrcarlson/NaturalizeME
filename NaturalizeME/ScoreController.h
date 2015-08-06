@@ -16,6 +16,7 @@
 //@property (strong, nonatomic) NSArray *practiceScores;
 
 @property (strong)NSNumber *latestQuizScore;
+//@property (strong)NSNumber *totalQuestionsAttempted;
 
 + (ScoreController *)sharedInstance;
 

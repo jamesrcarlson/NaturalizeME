@@ -36,6 +36,7 @@ static NSString * const AllScoresKey = @"allScores";
     scores.timestamp = [NSDate date];
     self.latestQuizScore = score;
     scores.quizScore = score;
+//    self.totalQuestionsAttempted = ;
     scores.wrongAnswer = wrongAnswer;
     scores.answerNumber = answerNumber;
     
