@@ -66,6 +66,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     [self loadData:self.civicsInfo];
 }
 -(void)loadData:(SetupInfo *)civicsInfo {

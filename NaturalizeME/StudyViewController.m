@@ -29,6 +29,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self.view reloadInputViews];
 }
 
