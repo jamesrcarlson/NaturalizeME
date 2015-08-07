@@ -7,8 +7,11 @@
 //
 
 #import "WelcomeViewController.h"
+#import "QuizViewController.h"
+#import "StudyViewController.h"
+#import "ScoreHistoryViewController.h"
 
-@interface WelcomeViewController ()
+@interface WelcomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -22,6 +25,68 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.view.frame.size.height / 2.5;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    tableView.sectionHeaderHeight = self.view.frame.size.height / 2.5;
+    UIImage *myImage = [UIImage imageNamed:@"flag.jpg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
+    imageView.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height / 2.5);
+    
+    return imageView;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 4;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (self.view.frame.size.height / 9);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainMenu" forIndexPath:indexPath];
+    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:40];//consider using dynamic sizing for font
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Fast Quiz";
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = @"Full Quiz";
+    }
+    if (indexPath.row == 2) {
+        cell.textLabel.text = @"Study";
+    }
+    if (indexPath.row == 3) {
+        cell.textLabel.text = @"My Scores";
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        QuizViewController *quizviewController = (QuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
+        [self.navigationController pushViewController:quizviewController animated:YES];
+
+    }
+    if (indexPath.row == 1) {
+        QuizViewController *quizviewController = (QuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
+        [self.navigationController pushViewController:quizviewController animated:YES];
+    }
+    if (indexPath.row == 2) {
+        StudyViewController *studyViewController = (StudyViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"StudyViewController"];
+        [self.navigationController pushViewController:studyViewController animated:YES];
+    }
+    if (indexPath.row == 3) {
+        ScoreHistoryViewController *scoreHistoryViewController = (ScoreHistoryViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreHistoryViewController"];
+        [self.navigationController pushViewController:scoreHistoryViewController animated:YES];
+    }
 }
 
 @end

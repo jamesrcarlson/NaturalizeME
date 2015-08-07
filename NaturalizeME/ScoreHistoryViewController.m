@@ -53,6 +53,9 @@
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
     wronganswerViewController.scores = scores;
 }
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 
 

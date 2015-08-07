@@ -18,13 +18,8 @@
 
 static NSString * const showScoreSegue = @"showScores";
 
-@interface QuizViewController ()
+@interface QuizViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UILabel *questionTitle;
-@property (strong, nonatomic) IBOutlet UIButton *answerOne;
-@property (strong, nonatomic) IBOutlet UIButton *answerTwo;
-@property (strong, nonatomic) IBOutlet UIButton *answerThree;
-@property (strong, nonatomic) IBOutlet UIButton *answerFour;
 
 @property (nonatomic, strong)NSMutableArray *holderArray;
 
@@ -40,6 +35,12 @@ static NSString * const showScoreSegue = @"showScores";
 @property (strong)NSMutableArray *wrongAnswersChosen;
 @property (strong)NSMutableArray *answerNumberArray;
 
+@property (strong, nonatomic) NSString *questionTitle;
+@property (strong, nonatomic) NSString *answerOne;
+@property (strong, nonatomic) NSString *answerTwo;
+@property (strong, nonatomic) NSString *answerThree;
+@property (strong, nonatomic) NSString *answerFour;
+
 
 @end
 
@@ -49,11 +50,6 @@ static NSString * const showScoreSegue = @"showScores";
     [super viewDidLoad];
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
-    
-    self.answerOne.titleLabel.numberOfLines = 0;
-    self.answerTwo.titleLabel.numberOfLines = 0;
-    self.answerThree.titleLabel.numberOfLines = 0;
-    self.answerFour.titleLabel.numberOfLines = 0;
     
     self.holderArray = [[NSMutableArray alloc]initWithArray:[self questionIndexNumbers]];
     
@@ -78,127 +74,167 @@ static NSString * const showScoreSegue = @"showScores";
    
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.view.frame.size.height / 2.5;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.questionTitle;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 4;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (self.view.frame.size.height / 9);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
+    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:30];//consider using dynamic sizing for font
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (indexPath.row == 0) {
+        cell.textLabel.text = self.answerOne;
+    }
+    if (indexPath.row == 1) {
+        cell.textLabel.text = self.answerTwo;
+    }
+    if (indexPath.row == 2) {
+        cell.textLabel.text = self.answerThree;
+    }
+    if (indexPath.row == 3) {
+        cell.textLabel.text = self.answerFour;
+    }
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        int answerStatus = 0;
+        
+        if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+            
+            
+            for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerOne == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+                    
+                    [self gotTheRightAnswer:self.answerOne];
+                    answerStatus = 1;
+                }
+            };
+        }
+        if (answerStatus == 0) {
+            [self gotItWrong:self.answerOne];
+        };
+        
+        if (self.holderArray.count == 0) {
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
+            [[ScoreController sharedInstance]save];
+            [self performSegueWithIdentifier:showScoreSegue sender:self];
+        }else {
+            
+            [self setQuestionAndAnswers];
+            [tableView reloadData];
+        }
+    }
+    
+    if (indexPath.row == 1) {
+        int answerStatus = 0;
+        
+        if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+            for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerTwo == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+                    
+                    [self gotTheRightAnswer:self.answerTwo];
+                    answerStatus = 1;
+                }
+            };
+        }
+        
+        if (answerStatus == 0) {
+            [self gotItWrong:self.answerTwo];
+        };
+        
+        
+        if (self.holderArray.count == 0) {
+            [NSThread sleepForTimeInterval:2];
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            [[ScoreController sharedInstance]save];
+            [self performSegueWithIdentifier:showScoreSegue sender:self];
+        }else {
+            
+            [self setQuestionAndAnswers];
+            [tableView reloadData];
+
+        }
+    }
+    if (indexPath.row == 2) {
+        int answerStatus = 0;
+        if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+            for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerThree == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+                    
+                    [self gotTheRightAnswer:self.answerThree];
+                    answerStatus = 1;
+                }
+            };
+        }
+        if (answerStatus == 0) {
+            [self gotItWrong:self.answerThree];
+        };
+        
+        if (self.holderArray.count == 0) {
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            [[ScoreController sharedInstance]save];
+            [self performSegueWithIdentifier:showScoreSegue sender:self];
+        }else {
+            [self setQuestionAndAnswers];
+            [tableView reloadData];
+
+        }
+
+    }
+    if (indexPath.row == 3) {
+        int answerStatus = 0;
+        if ([Study answerCountAtIndex:self.questionNumber] != 0) {
+            for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerFour == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+                    
+                    [self gotTheRightAnswer:self.answerFour];
+                    answerStatus = 1;
+                }
+            };
+        }
+        if (answerStatus == 0) {
+            [self gotItWrong:self.answerFour];
+        };
+        
+        
+        if (self.holderArray.count == 0) {
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            [[ScoreController sharedInstance]save];
+            [self performSegueWithIdentifier:showScoreSegue sender:self];
+        }else {
+            
+            [self setQuestionAndAnswers];
+            [tableView reloadData];
+
+        }
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)selectAnswerOne:(id)sender {
-    
-    int answerStatus = 0;
-    
-    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        
-        
-        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
-            if (self.answerOne.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
-                
-                [self gotTheRightAnswer:self.answerOne.titleLabel.text];
-                answerStatus = 1;
-            }
-        };
-    }
-    if (answerStatus == 0) {
-        [self gotItWrong:self.answerOne.titleLabel.text];
-    };
-    
-    if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
-        [[ScoreController sharedInstance]save];
-        [self performSegueWithIdentifier:showScoreSegue sender:self];
-    }else {
-        
-        [self setQuestionAndAnswers];
-
-    }
-    
-}
-
-- (IBAction)selectAnswerTwo:(id)sender {
-    int answerStatus = 0;
-    
-    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
-            if (self.answerTwo.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
-                
-                [self gotTheRightAnswer:self.answerTwo.titleLabel.text];
-                answerStatus = 1;
-            }
-        };
-    }
-
-    if (answerStatus == 0) {
-        [self gotItWrong:self.answerTwo.titleLabel.text];
-    };
-
-    
-    if (self.holderArray.count == 0) {
-        [NSThread sleepForTimeInterval:2];
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
-        [[ScoreController sharedInstance]save];
-        [self performSegueWithIdentifier:showScoreSegue sender:self];
-    }else {
-        
-        [self setQuestionAndAnswers];
-
-    }
-    
-}
 
 
-- (IBAction)selectAnswerThree:(id)sender {
-    int answerStatus = 0;
-    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
-            if (self.answerThree.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
-                
-                [self gotTheRightAnswer:self.answerThree.titleLabel.text];
-                answerStatus = 1;
-            }
-        };
-    }
-    if (answerStatus == 0) {
-        [self gotItWrong:self.answerThree.titleLabel.text];
-    };
-    
-    if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
-        [[ScoreController sharedInstance]save];
-        [self performSegueWithIdentifier:showScoreSegue sender:self];
-    }else {
-        [self setQuestionAndAnswers];
-        
-    }
-    
-}
 
-- (IBAction)selectAnswerFour:(id)sender {
-    int answerStatus = 0;
-    if ([Study answerCountAtIndex:self.questionNumber] != 0) {
-        for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
-            if (self.answerFour.titleLabel.text == [Study answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
-                
-                [self gotTheRightAnswer:self.answerFour.titleLabel.text];
-                answerStatus = 1;
-            }
-        };
-    }
-    if (answerStatus == 0) {
-        [self gotItWrong:self.answerFour.titleLabel.text];
-    };
-    
 
-    if (self.holderArray.count == 0) {
-        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
-        [[ScoreController sharedInstance]save];
-        [self performSegueWithIdentifier:showScoreSegue sender:self];
-    }else {
-        
-        [self setQuestionAndAnswers];
-        
-    }
-    
-}
 - (IBAction)quitAndSeeScore:(id)sender {
     self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
     [[ScoreController sharedInstance]save];
@@ -230,7 +266,7 @@ static NSString * const showScoreSegue = @"showScores";
         keyFramAnimation.duration = 2;
         keyFramAnimation.additive = NO;
         [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
-        [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle.text]];
+        [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle]];
         [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[Study questionNumberAtIndex:self.questionNumber]]];
     });
     self.totalAnswersGiven++;
@@ -239,7 +275,7 @@ static NSString * const showScoreSegue = @"showScores";
 
 -(void)setQuestionAndAnswers {
     
-    self.questionTitle.text = [self getRandomQuestions];
+    self.questionTitle = [self getRandomQuestions];
     
     [self getAnswers];
     [self.view reloadInputViews];
@@ -290,19 +326,19 @@ static NSString * const showScoreSegue = @"showScores";
     
         
     int buttonOneTitle = arc4random_uniform((int)completeAnswerList.count);
-    [self.answerOne setTitle:completeAnswerList[buttonOneTitle] forState:UIControlStateNormal];
+    self.answerOne = completeAnswerList[buttonOneTitle];
     [completeAnswerList removeObjectAtIndex:buttonOneTitle];
     
     int buttonTwoTitle = arc4random_uniform((int)completeAnswerList.count);
-    [self.answerTwo setTitle:completeAnswerList[buttonTwoTitle] forState:UIControlStateNormal];
+    self.answerTwo = completeAnswerList[buttonTwoTitle];
     [completeAnswerList removeObjectAtIndex:buttonTwoTitle];
     
     int buttonThreeTitle = arc4random_uniform((int)completeAnswerList.count);
-    [self.answerThree setTitle:completeAnswerList[buttonThreeTitle] forState:UIControlStateNormal];
+    self.answerThree = completeAnswerList[buttonThreeTitle];
     [completeAnswerList removeObjectAtIndex:buttonThreeTitle];
     
     int buttonFourTitle = arc4random_uniform((int)completeAnswerList.count);
-    [self.answerFour setTitle:completeAnswerList[buttonFourTitle] forState:UIControlStateNormal];
+    self.answerFour = completeAnswerList[buttonFourTitle];
     [completeAnswerList removeObjectAtIndex:buttonFourTitle];
 
         
