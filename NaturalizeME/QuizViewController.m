@@ -68,10 +68,7 @@ static NSString * const showScoreSegue = @"showScores";
     self.wrongAnswer.textColor = [UIColor blackColor];
     self.wrongAnswer.numberOfLines = 0;
     [self.view addSubview:self.wrongAnswer];
-
-    
-    
-   
+ 
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -79,7 +76,19 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
     return self.questionTitle;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
+    header.textLabel.font = [UIFont boldSystemFontOfSize:20];
+    header.textLabel.numberOfLines = 0;
+    header.textLabel.backgroundColor = [UIColor lightGrayColor];
+//    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -94,8 +103,9 @@ static NSString * const showScoreSegue = @"showScores";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:30];//consider using dynamic sizing for font
+    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.numberOfLines = 0;
     if (indexPath.row == 0) {
         cell.textLabel.text = self.answerOne;
     }
@@ -134,7 +144,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (self.holderArray.count == 0) {
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
-            [self performSegueWithIdentifier:showScoreSegue sender:self];
+            ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            [self.navigationController pushViewController:scoreViewController animated:YES];
         }else {
             
             [self setQuestionAndAnswers];
@@ -164,7 +175,8 @@ static NSString * const showScoreSegue = @"showScores";
             [NSThread sleepForTimeInterval:2];
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
-            [self performSegueWithIdentifier:showScoreSegue sender:self];
+            ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            [self.navigationController pushViewController:scoreViewController animated:YES];
         }else {
             
             [self setQuestionAndAnswers];
@@ -190,7 +202,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (self.holderArray.count == 0) {
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
-            [self performSegueWithIdentifier:showScoreSegue sender:self];
+            ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            [self.navigationController pushViewController:scoreViewController animated:YES];
         }else {
             [self setQuestionAndAnswers];
             [tableView reloadData];
@@ -217,7 +230,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (self.holderArray.count == 0) {
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
-            [self performSegueWithIdentifier:showScoreSegue sender:self];
+            ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            [self.navigationController pushViewController:scoreViewController animated:YES];
         }else {
             
             [self setQuestionAndAnswers];

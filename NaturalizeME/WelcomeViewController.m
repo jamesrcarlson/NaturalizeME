@@ -31,7 +31,7 @@
     return self.view.frame.size.height / 2.5;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    tableView.sectionHeaderHeight = self.view.frame.size.height / 2.5;
+//    tableView.sectionHeaderHeight = self.view.frame.size.height / 2.5;
     UIImage *myImage = [UIImage imageNamed:@"flag.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:myImage];
     imageView.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height / 2.5);
