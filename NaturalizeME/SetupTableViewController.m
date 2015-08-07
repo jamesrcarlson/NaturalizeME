@@ -12,7 +12,7 @@
 
 @interface SetupTableViewController ()
 
-@property (strong, nonatomic) IBOutlet UITextField *addressInput;
+@property (strong, nonatomic) UITextField *addressInput;
 
 @property (strong, nonatomic) NSString *governorLabel;
 
@@ -34,6 +34,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadData:self.civicsInfo];
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -58,46 +61,19 @@
         self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", setupInfo.senatorOne, setupInfo.senatorTwo];
         self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",setupInfo.representative];
         self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",setupInfo.stateCapital];
+    }else {
+        self.governorLabel = @"Your Governor's name is";
+        self.senatorLabel = @"Your Senator's names are";
+        self.representativeLabel = @"Your Representative's name is";
+        self.stateCapitalLabel = @"Your state Capital is";
+
     }
-    
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-
-
-- (IBAction)findRepresentative:(id)sender {
-    
-    [self getData];
-    
-    [self.addressInput resignFirstResponder];
-    
-}
-
-
-- (IBAction)acceptData:(id)sender {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self saveData];
-        [self performSegueWithIdentifier:@"acceptSetupData" sender:self];
-    }]];
-    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        self.addressInput.text = @"";
-        [self needBetterInput];
-    }]];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-    //        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
-    
-    
-    
 }
 
 -(void)needBetterInput {
@@ -144,7 +120,7 @@
             self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
             self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
             self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
-            
+            [self.tableView reloadData];
         });
         
         
@@ -170,15 +146,35 @@
 }
 
 
-
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 4;
+    return 7;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Header title";
+    UITableViewHeaderFooterView *header = [UITableViewHeaderFooterView new];
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (section == 0) {
+        header.textLabel.text = @"Please enter your address";
+    }
+    if (section == 1) {
+        header.textLabel.text = @"Click below to find your representative data";
+    }
+    if (section == 2) {
+        header.textLabel.text = @"Your Governor's name is";
+    }
+    if (section == 3) {
+        header.textLabel.text = @"Your Senator's names are";
+    }
+    if (section == 4) {
+        header.textLabel.text = @"Your Representative's name is";
+    }
+    if (section == 5) {
+        header.textLabel.text = @"Your state capital is";
+    }
+    if (section == 6) {
+        header.textLabel.text = @"Please verify your data prior to submitting";
+    }
+    return header.textLabel.text;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -189,13 +185,67 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"civicCells" forIndexPath:indexPath];
-    
-    cell.textLabel.text = @"some Info";
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+
+    if (indexPath.section  == 0) {
+        self.addressInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, cell.frame.size.width, cell.frame.size.height)];
+        self.addressInput.adjustsFontSizeToFitWidth = YES;
+        self.addressInput.textColor = [UIColor blackColor];
+        self.addressInput.placeholder = @"Enter your address";
+//        self.addressInput.keyboardType = UIKeyboardTypeDefault;
+//        self.addressInput.returnKeyType = UIReturnKeyDone;
+//        self.addressInput.secureTextEntry = YES;
+        [self.addressInput setEnabled:YES];
+        [cell.contentView addSubview:self.addressInput];
+    }
+    if (indexPath.section  == 1) {
+        cell.textLabel.text = @"FIND MY DATA";
+        cell.textLabel.backgroundColor = [UIColor greenColor];
+    }
+    if (indexPath.section  == 2) {
+        cell.textLabel.text = self.governorLabel;
+    }
+    if (indexPath.section  == 3) {
+        cell.textLabel.text = self.senatorLabel;
+    }
+    if (indexPath.section  == 4) {
+        cell.textLabel.text = self.representativeLabel;
+    }
+    if (indexPath.section  == 5) {
+        cell.textLabel.text = self.stateCapitalLabel;
+    }
+    if (indexPath.section  == 6) {
+        cell.textLabel.text = @"ACCEPT";
+        cell.backgroundColor = [UIColor greenColor];
+    }
     
     return cell;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section  == 1) {
+        [self getData];
+        [self.addressInput resignFirstResponder];
+        [tableView reloadData];
+    };
+    if (indexPath.section  == 5) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self saveData];
+            [self performSegueWithIdentifier:@"acceptSetupData" sender:self];
+        }]];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+            self.addressInput.text = @"";
+            [self needBetterInput];
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+        //        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+    };
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
