@@ -31,12 +31,13 @@ static NSString * const AllScoresKey = @"allScores";
 
 
 
--(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score wrongAsnwers:(NSArray *)wrongAnswer answerNumber:(NSArray *)answerNumber {
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score answersAttemped:(NSNumber*)answersCompleted wrongAsnwers:(NSArray *)wrongAnswer answerNumber:(NSArray *)answerNumber {
     Scores *scores = [Scores new];
     scores.timestamp = [NSDate date];
     self.latestQuizScore = score;
+    self.answersCompleted = answersCompleted;
+    scores.answersCompleted = answersCompleted;
     scores.quizScore = score;
-//    self.totalQuestionsAttempted = ;
     scores.wrongAnswer = wrongAnswer;
     scores.answerNumber = answerNumber;
     

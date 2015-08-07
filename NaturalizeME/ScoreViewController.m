@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *percentageLabel;
 
 @property (strong)NSNumber *scoreHolder;
+@property (strong)NSNumber *totalAnswerHolder;
 
 @end
 
@@ -39,9 +40,11 @@
 
 -(void)updateScore {
     self.scoreHolder = [ScoreController sharedInstance].latestQuizScore;
+    self.totalAnswerHolder = [ScoreController sharedInstance].answersCompleted;
+    float score = ((float)self.scoreHolder.integerValue/(float)self.totalAnswerHolder.integerValue) *100;
     
-    self.numberOfQuestionsRightLabel.text = [NSString stringWithFormat:@"%@ out of 100", self.scoreHolder];
-    self.percentageLabel.text = [NSString stringWithFormat:@"%@ ", self.scoreHolder];
+    self.numberOfQuestionsRightLabel.text = [NSString stringWithFormat:@"%@ out of %@", self.scoreHolder, self.totalAnswerHolder];
+    self.percentageLabel.text = [NSString stringWithFormat:@"%ld %%", (long)score];
 }
 
 @end

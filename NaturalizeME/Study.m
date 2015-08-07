@@ -319,19 +319,19 @@ static NSString *const ExplanationKey = @"explanationTitle";
                              @"7"],
                ExplanationKey: @"The Framers of the Constitution wanted senators to be independent from public opinion. They thought a fairly long, six-year term would give them this protection. They also wanted longer Senate terms to balance the shorter two-year terms of the members of the House, who would more closely follow public opinion. The Constitution puts no limit on the number of terms a senator may serve. Elections for U.S. senators take place on even-numbered years. Every two years, one-third of the senators are up for election."
                },
-             @{QuestionNumberKey: @"20", //need the Senator info from storage
-               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
-               AnswersNeededKey: @1,
-               AnswerKey : @[@"Answer from storage",
-                             @"Answer two from storage"],
-                             BadAnswerKey: @[@"Joe Biden",
-                             @"Hilary Clinton",
-                             @"John Kerry",
-                             @"Bill Clinton",
-                             @"George Bush"],
-               ExplanationKey: @"Each State has 2 Senators."
-               },
-             @{QuestionNumberKey: @"21",
+//             @{QuestionNumberKey: @"20", //need the Senator info from storage
+//               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
+//               AnswersNeededKey: @1,
+//               AnswerKey : @[@"Answer from storage",
+//                             @"Answer two from storage"],
+//                             BadAnswerKey: @[@"Joe Biden",
+//                             @"Hilary Clinton",
+//                             @"John Kerry",
+//                             @"Bill Clinton",
+//                             @"George Bush"],
+//               ExplanationKey: @"Each State has 2 Senators."
+//               },
+             @{QuestionNumberKey: @"20",
                QuestionTitleKey: @"The House of Representatives has how many voting members?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"435"],
@@ -342,7 +342,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                              @"152"],
                ExplanationKey: @"The House of Representatives is the larger chamber of Congress. Since 1912, the House of Representatives has had 435 voting members. However, the distribution of members among the states has changed over the years. Each state must have at least one representative in the House. Beyond that, the number of representatives from each state depends on the population of the state. The Constitution says that the government will conduct a census of the population every 10 years to count the number of people in each state. The results of the census are used to recalculate the number of representatives each state should have. For example, if one state gains many residents that state could get one or more new representatives. If another state loses residents, that state could lose one or more. But the total number of voting U.S. representatives does not change."
                },
-             @{QuestionNumberKey: @"22",
+             @{QuestionNumberKey: @"21",
                QuestionTitleKey: @"We elect a U.S. Representative for how many years?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"2"],
@@ -353,18 +353,18 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"9"],
                ExplanationKey: @"People who live in a representative’s district are called “constituents.” Representatives tend to reflect the views of their constituents. If representatives do not do this, they may be voted out of office. The Framers of the Constitution believed that short two-year terms and frequent elections would keep representatives close to their constituents, public opinion, and more aware of local and community concerns. The Constitution puts no limit on the number of terms a representative may serve. All representatives are up for election every two years."
                },
-             @{QuestionNumberKey: @"23",
-               QuestionTitleKey: @"Name your U.S. Representative",
-               AnswersNeededKey: @1,
-               AnswerKey : @[@"answer from storage"],
-               BadAnswerKey: @[@"John Kerry",
-                               @"Hillary Clinton",
-                               @"Bill Clinton",
-                               @"Joseph Biden",
-                               @"George Bush"],
-               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
-               },
-             @{QuestionNumberKey: @"24",
+//             @{QuestionNumberKey: @"23",
+//               QuestionTitleKey: @"Name your U.S. Representative",
+//               AnswersNeededKey: @1,
+//               AnswerKey : @[@"answer from storage"],
+//               BadAnswerKey: @[@"John Kerry",
+//                               @"Hillary Clinton",
+//                               @"Bill Clinton",
+//                               @"Joseph Biden",
+//                               @"George Bush"],
+//               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
+//               },
+             @{QuestionNumberKey: @"22",
                QuestionTitleKey: @"Who does a U.S. Senator represent?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"All People of the State"],
@@ -375,7 +375,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"only those who live close to them"],
                ExplanationKey: @"Senators are elected to serve the people of their state for six years. Each of the two senators represents the entire state. Before the 17th Amendment to the Constitution was ratified in 1913, the state legislatures elected the U.S. senators to represent their state. Now, all the voters in a state elect their two U.S. senators directly."
                },
-             @{QuestionNumberKey: @"25",
+             @{QuestionNumberKey: @"23",
                QuestionTitleKey: @"Why do some states have more Representatives than other states?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Because of the state's population",
@@ -388,7 +388,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"because some states have more land"],
                ExplanationKey: @"The Founding Fathers wanted people in all states to be represented fairly. In the House of Representatives, a state’s population determines the number of representatives it has. In this way, states with many people have a stronger voice in the House. In the Senate, every state has the same number of senators. This means that states with few people still have a strong voice in the national government."
                },
-             @{QuestionNumberKey: @"26",
+             @{QuestionNumberKey: @"24",
                QuestionTitleKey: @"We elect a President for how many years?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"4"],
@@ -399,7 +399,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"6"],
                ExplanationKey: @"Early American leaders thought that the head of the British government, the king, had too much power. Because of this, they limited the powers of the head of the new U.S. government. They decided that the people would elect the president every four years."
                },
-             @{QuestionNumberKey: @"27",
+             @{QuestionNumberKey: @"25",
                QuestionTitleKey: @"In what month do we vote for President?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"November"],
@@ -410,7 +410,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"May"],
                ExplanationKey: @"The Constitution did not set a national election day. In the past, elections for federal office took place on different days in different states. In 1845, Congress passed legislation to designate a single day for all Americans to vote. It made Election Day the Tuesday after the first Monday in November. Congress chose November because the United States was mostly rural. By November, farmers had completed their harvests and were available to vote. Another reason for this date was the weather. People were able to travel because it was not yet winter. They chose Tuesday for Election Day so that voters had a full day after Sunday to travel to the polls."
                },
-             @{QuestionNumberKey: @"28",
+             @{QuestionNumberKey: @"26",
                QuestionTitleKey: @"What is the name of the President of the United States now?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Barack Hussein Obama II",
@@ -423,7 +423,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"John Boehner"],
                ExplanationKey: @"Barack Obama is the 44th president of the United States. After winning the presidential election of 2008, he became the first African American president of the United States. He won a second term in 2012. As president, he is the head of the executive branch. As commander in chief, he is also in charge of the military. "
                },
-             @{QuestionNumberKey: @"29",
+             @{QuestionNumberKey: @"27",
                QuestionTitleKey: @"What is the name of the Vice President of the United States now?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Joseph R. Biden, Jr.",
@@ -436,7 +436,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"John Boehner"],
                ExplanationKey: @"Joseph (Joe) R. Biden, Jr. is the 47th vice president of the United States. Biden was born November 20, 1942 in Pennsylvania. Later, his family moved to Delaware. He graduated from the University of Delaware in 1965. In 1968, he graduated from law school at Syracuse University in New York. From 1972-2009, Biden served as a U.S. senator for the state of Delaware. As vice president, Biden is president of the U.S. Senate and a top advisor to the president. Vice President Biden is married to Jill Biden."
                },
-             @{QuestionNumberKey: @"30",
+             @{QuestionNumberKey: @"28",
                QuestionTitleKey: @"If the President can no longer serve, who becomes President?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"the Vice President"],
@@ -447,7 +447,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The House Majority Leader"],
                ExplanationKey: @"If the president dies, resigns, or cannot work while still in office, the vice president becomes president. For this reason, the qualifications for vice president and president are the same."
                },
-             @{QuestionNumberKey: @"31",
+             @{QuestionNumberKey: @"29",
                QuestionTitleKey: @"If both the President and the Vice President can no longer serve, who becomes President?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Speaker of the House"],
@@ -458,7 +458,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The House Majority Leader"],
                ExplanationKey: @"If both the president and vice president cannot serve, the next person in line is the speaker of the House of Representatives. This has not always been the procedure. Soon after the country was founded, a law was passed that made the Senate president pro tempore the next in line after the president and vice president. The president pro tempore presides over the Senate when the vice president is not there. Later in U.S. history, the secretary of state was third in line."
                },
-             @{QuestionNumberKey: @"32",
+             @{QuestionNumberKey: @"30",
                QuestionTitleKey: @"Who is the Commander in Chief of the military?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The President"],
@@ -469,7 +469,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The House Majority Leader"],
                ExplanationKey: @"The Founding Fathers strongly believed in republican ideals. A republic is a government where a country’s political power comes from the citizens, not the rulers, and is put into use by representatives elected by the citizens. That is why they made the president the commander in chief. They wanted a civilian selected by the people. They did not want a professional military leader. The president commands the armed forces, but Congress has the power to pay for the armed forces and declare war."
                },
-             @{QuestionNumberKey: @"33",
+             @{QuestionNumberKey: @"31",
                QuestionTitleKey: @"Who signs bills to become laws?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The President"],
@@ -480,7 +480,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The House Majority Leader"],
                ExplanationKey: @"Every law begins as a proposal made by a member of Congress, either a senator (member of the Senate) or representative (member of the House of Representatives). When the Senate or House begins to debate the proposal, it is called a “bill.” After debate in both houses of Congress, if a majority of both the Senate and House vote to pass the bill, it goes to the president. If the president wants the bill to become law, he signs it. If the president does not want the bill to become law, he vetoes it. The president cannot introduce a bill. If he has an idea for a bill, he must ask a member of Congress to introduce it."
                },
-             @{QuestionNumberKey: @"34",
+             @{QuestionNumberKey: @"32",
                QuestionTitleKey: @"Who vetoes bills?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The President"],
@@ -491,7 +491,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The Senate Majority Leader"],
                ExplanationKey: @"The president has veto power. This means that the president can reject a bill passed by Congress. If the president vetoes a bill, he prevents it from becoming a law. The president can send the bill back to Congress unsigned. Often he will list reasons why he rejects it. The president has 10 days to evaluate the bill. If the president does not sign the bill after 10 days and Congress is in session, the bill automatically becomes a law. If the president does nothing with the bill and Congress adjourns within the 10-day period, the bill does not become law—this is called a “pocket veto.” If two-thirds of the House and two-thirds of the Senate vote to pass the bill again, the bill becomes a law, even though the president did not sign it. This process is called “overriding the president’s veto.” It is not easy to do."
                },
-             @{QuestionNumberKey: @"35",
+             @{QuestionNumberKey: @"33",
                QuestionTitleKey: @"What does the President’s Cabinet do?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Advises the President"],
@@ -502,7 +502,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Passes laws"],
                ExplanationKey: @"The Constitution says that the leaders of the executive departments should advise the president. These department leaders, most of them called “secretaries,” make up the cabinet. The president nominates the cabinet members to be his advisors. For a nominee to be confirmed, a majority of the Senate must approve the nominee. Throughout history, presidents have been able to change who makes up the cabinet or add departments to the cabinet. For example, when the Department of Homeland Security was created, President George W. Bush added the leader of this department to his cabinet."
                },
-             @{QuestionNumberKey: @"36",
+             @{QuestionNumberKey: @"34",
                QuestionTitleKey: @"What are two Cabinet-level positions?",
                AnswersNeededKey: @2,
                AnswerKey : @[@"Secretary of Agriculture",
@@ -529,7 +529,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Secretary of Economic Growth"],
                ExplanationKey: @"The people on the president’s cabinet are the vice president and the heads of the 15 executive departments. The president may appoint other government officials to the cabinet. When George Washington was president, there were only four cabinet members: the secretary of state, secretary of the treasury, secretary of war, and attorney general. The government established the other executive departments later."
                },
-             @{QuestionNumberKey: @"37",
+             @{QuestionNumberKey: @"35",
                QuestionTitleKey: @"What does the judicial branch do?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Reviews laws",
@@ -543,7 +543,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Provides pay to local judges"],
                ExplanationKey: @"The judicial branch is one of the three branches of government. The Constitution established the judicial branch of government with the creation of the Supreme Court. Congress created the other federal courts. All these courts together make up the judicial branch. The courts review and explain the laws, and they resolve disagreements about the meaning of the law. The U.S. Supreme Court makes sure that laws are consistent with the Constitution. If a law is not consistent with the Constitution, the Court can declare it unconstitutional. In this case, the Court rejects the law. The Supreme Court makes the final decision about all cases that have to do with federal laws and treaties. It also rules on other cases, such as disagreements between states."
                },
-             @{QuestionNumberKey: @"38",
+             @{QuestionNumberKey: @"36",
                QuestionTitleKey: @"What is the highest court in the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Supreme Court"],
@@ -554,7 +554,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The food court"],
                ExplanationKey: @"The U.S. Supreme Court has complete authority over all federal courts. Its rulings have a significant effect. A Supreme Court ruling can affect the outcome of many cases in the lower courts. The Supreme Court’s interpretations of federal laws and of the Constitution are final. The Supreme Court is limited in its power over the states. It cannot make decisions about state law or state constitutions. The Court can decide that a state law or action conflicts with federal law or with the U.S. Constitution. If this happens, the state law becomes invalid."
                },
-             @{QuestionNumberKey: @"39",
+             @{QuestionNumberKey: @"37",
                QuestionTitleKey: @"How many justices are on the Supreme Court?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"9"],
@@ -565,7 +565,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"100"],
                ExplanationKey: @"The Constitution does not establish the number of justices on the Supreme Court. In the past, there have been as many as 10 and as few as six justices. Now, there are nine justices on the Supreme Court: eight associate justices and one chief justice. The Constitution gives the president the power to nominate justices to the Supreme Court. The nominee must then be confirmed by the Senate. Justices serve on the court for life or until they retire."
                },
-             @{QuestionNumberKey: @"40",
+             @{QuestionNumberKey: @"38",
                QuestionTitleKey: @"Who is the Chief Justice of the United States now?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"John Roberts",
@@ -577,7 +577,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Geroge W. Matheson"],
                ExplanationKey: @"John G. Roberts, Jr. is the 17th chief justice of the United States. After the death of former chief justice William Rehnquist in September 2005, President George W. Bush nominated Roberts for this position."
                },
-             @{QuestionNumberKey: @"41",
+             @{QuestionNumberKey: @"39",
                QuestionTitleKey: @"Under our Constitution, some powers belong to the federal government. What is one power of the federal government?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Print Money",
@@ -591,7 +591,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Select the next President"],
                ExplanationKey: @"The powers of government are divided between the federal government and the state governments. The federal government is known as a limited government. Its powers are restricted to those described in the U.S. Constitution."
                },
-             @{QuestionNumberKey: @"42",
+             @{QuestionNumberKey: @"40",
                QuestionTitleKey: @"Under our Constitution, some powers belong to the states. What is one power of the states?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Provide schooling and education",
@@ -607,29 +607,29 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Select the next Chief Justice"],
                ExplanationKey: @"In the United States, the federal and state governments both hold power. Before the Constitution, the 13 colonies governed themselves individually much like state governments. It was not until the Articles of Confederation and then the Constitution that a national or federal government was established."
                },
-             @{QuestionNumberKey: @"43",
-               QuestionTitleKey: @"Who is the Governor of your state now?",
-               AnswersNeededKey: @1,
-               AnswerKey : @[@"Answer from storage"],
-               BadAnswerKey: @[@"John Kerry",
-                               @"Hillary Clinton",
-                               @"Paul Vanduren",
-                               @"William J. Todd",
-                               @"Thomas Jefferson"],
-               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
-               },
-             @{QuestionNumberKey: @"44",
-               QuestionTitleKey: @"What is the capital of your state?",
-               AnswersNeededKey: @1,
-               AnswerKey : @[@"answer from storage"],
-               BadAnswerKey: @[@"texas",
-                               @"washington",
-                               @"Always the city with the most people",
-                               @"the moon",
-                               @"hollywood"],
-               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
-               },
-             @{QuestionNumberKey: @"45",
+//             @{QuestionNumberKey: @"43",
+//               QuestionTitleKey: @"Who is the Governor of your state now?",
+//               AnswersNeededKey: @1,
+//               AnswerKey : @[@"Answer from storage"],
+//               BadAnswerKey: @[@"John Kerry",
+//                               @"Hillary Clinton",
+//                               @"Paul Vanduren",
+//                               @"William J. Todd",
+//                               @"Thomas Jefferson"],
+//               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
+//               },
+//             @{QuestionNumberKey: @"44",
+//               QuestionTitleKey: @"What is the capital of your state?",
+//               AnswersNeededKey: @1,
+//               AnswerKey : @[@"answer from storage"],
+//               BadAnswerKey: @[@"texas",
+//                               @"washington",
+//                               @"Always the city with the most people",
+//                               @"the moon",
+//                               @"hollywood"],
+//               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
+//               },
+             @{QuestionNumberKey: @"41",
                QuestionTitleKey: @"What are the two major political parties in the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Democratic and Republican"],
@@ -640,7 +640,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Conservative and Independent"],
                ExplanationKey: @"The Constitution did not establish political parties. Today, the two major political parties are the Democratic Party and the Republican Party. The symbol of the Republican Party is the elephant. The Republican Party is also known as the “Grand Old Party” or the “GOP.” The symbol of the Democratic Party is the donkey."
                },
-             @{QuestionNumberKey: @"46",
+             @{QuestionNumberKey: @"42",
                QuestionTitleKey: @"What is the political party of the President now?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Democratic"],
@@ -651,7 +651,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Constitution"],
                ExplanationKey: @"President Barack Obama is a member of the Democratic Party. "
                },
-             @{QuestionNumberKey: @"47",
+             @{QuestionNumberKey: @"43",
                QuestionTitleKey: @"What is the name of the Speaker of the House of Representatives now?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"John Boehner",
@@ -663,7 +663,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Hillary CLinton"],
                ExplanationKey: @"The current speaker of the House of Representatives is John Boehner."
                },
-             @{QuestionNumberKey: @"48",
+             @{QuestionNumberKey: @"44",
                QuestionTitleKey: @"There are four amendments to the Constitution about who can vote. Describe one of them.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Citizens who are 18 years old and older",
@@ -678,7 +678,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Any citizen can change the vote of another citizen"],
                ExplanationKey: @"Voting is one of the most important civic responsibilities of citizens in the United States. In a democratic society, the people choose the leaders who will represent them. There are four amendments to the Constitution about voting. The 15th Amendment permits American men of all races to vote. It was written after the Civil War and the end of slavery. The 19th Amendment gave women the right to vote. It resulted from the women’s suffrage movement (the women’s rights movement). After the 15th Amendment was passed, some leaders of the southern states were upset that African Americans could vote. These leaders designed fees called poll taxes to stop them from voting. The 24th Amendment made these poll taxes illegal. The 26th Amendment lowered the voting age from 21 to 18."
                },
-             @{QuestionNumberKey: @"49",
+             @{QuestionNumberKey: @"45",
                QuestionTitleKey: @"What is one responsibility that is only for United States citizens?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Vote in a federal election",
@@ -690,7 +690,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Get a drivers license"],
                ExplanationKey: @"Two responsibilities of U.S. citizens are to serve on a jury and vote in federal elections. The Constitution gives citizens the right to a trial by a jury. The jury is made up of U.S. citizens. Participation of citizens on a jury helps ensure a fair trial. Another important responsibility of citizens is voting. The law does not require citizens to vote, but voting is a very important part of any democracy. By voting, citizens are participating in the democratic process. Citizens vote for leaders to represent them and their ideas, and the leaders support the citizens’ interests."
                },
-             @{QuestionNumberKey: @"50",
+             @{QuestionNumberKey: @"46",
                QuestionTitleKey: @"Name one right only for United States citizens.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Vote in a federal election",
@@ -702,7 +702,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Purchase a home"],
                ExplanationKey: @"U.S. citizens have the right to vote in federal elections. Permanent residents can vote in local or state elections that do not require voters to be U.S. citizens. Only U.S. citizens can vote in federal elections. U.S. citizens can also run for federal office. Qualifications to run for the Senate or House of Representatives include being a U.S. citizen for a certain number of years. A candidate for Senate must be a U.S. citizen for at least 9 years. A candidate for the House must be a U.S. citizen for at least 7 years. To run for president of the United States, a candidate must be a native-born (not naturalized) citizen. In addition to the benefits of citizenship, U.S. citizens have certain responsibilities—to respect the law, stay informed on issues, participate in the democratic process, and pay their taxes."
                },
-             @{QuestionNumberKey: @"51",
+             @{QuestionNumberKey: @"47",
                QuestionTitleKey: @"What are two rights of everyone living in the United States?",
                AnswersNeededKey: @2,
                AnswerKey : @[@"Freedom of expression",
@@ -718,7 +718,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Choose which laws to obey"],
                ExplanationKey: @"The Constitution and the Bill of Rights give many of these rights to all people living in the United States. These rights include the freedom of expression, of religion, of speech, and the right to bear arms. All people living in the United States also have many of the same duties as citizens, such as paying taxes and obeying the laws."
                },
-             @{QuestionNumberKey: @"52",
+             @{QuestionNumberKey: @"48",
                QuestionTitleKey: @"What do we show loyalty to when we say the Pledge of Allegiance?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The United States",
@@ -730,7 +730,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Our conscience"],
                ExplanationKey: @"The Pledge of Allegiance to the flag states, “I pledge allegiance to the Flag of the United States of America, and to the Republic for which it stands, one Nation under God, indivisible, with liberty and justice for all.” When we say the Pledge of Allegiance, we usually stand facing the flag with the right hand over the heart. "
                },
-             @{QuestionNumberKey: @"53",
+             @{QuestionNumberKey: @"49",
                QuestionTitleKey: @"What is one promise you make when you become a United States citizen?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Give up loyalty to other countries",
@@ -746,7 +746,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Buy a house"],
                ExplanationKey: @"When the United States became an independent country, the Constitution gave Congress the power to establish a uniform rule of naturalization. Congress made rules about how immigrants could become citizens. Many of these requirements are still valid today, such as the requirements to live in the United States for a specific period of time, to be of good moral character, and to understand and support the principles of the Constitution."
                },
-             @{QuestionNumberKey: @"54",
+             @{QuestionNumberKey: @"50",
                QuestionTitleKey: @"How old do citizens have to be to vote for President?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"18 and older"],
@@ -757,7 +757,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"25 and older"],
                ExplanationKey: @"For most of U.S. history, Americans had to be at least 21 years old to vote. At the time of the Vietnam War, during the 1960s and 1970s, many people thought that people who were old enough to fight in a war should also be old enough to vote. In 1971, the 26th Amendment changed the minimum voting age from 21 to 18 for all federal, state, and local elections. The National Voter Registration Act of 1993 made it easier for people to register to vote. Now they can register to vote by mail, at public assistance offices, or when they apply for or renew their driver’s license."
                },
-             @{QuestionNumberKey: @"55",
+             @{QuestionNumberKey: @"51",
                QuestionTitleKey: @"What are two ways that Americans can participate in their democracy?",
                AnswersNeededKey: @2,
                AnswerKey : @[@"Vote",
@@ -777,7 +777,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Avoid voting in an election"],
                ExplanationKey: @"Citizens play an active part in their communities. When Americans engage in the political process, democracy stays alive and strong. There are many ways for people to be involved. They can volunteer to help new immigrants learn English and civics, join the Parent Teacher Association (PTA) of their child’s school, run for a position on the local school board, or volunteer to help at a polling station. People can also vote, help with a political campaign, join a civic or community organization, or call their senator or representative about an issue that is important to them."
                },
-             @{QuestionNumberKey: @"56",
+             @{QuestionNumberKey: @"52",
                QuestionTitleKey: @"When is the last day you can send in federal income tax forms?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"April 15"],
@@ -788,7 +788,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"May 16"],
                ExplanationKey: @"The last day to send in your federal income tax to the Internal Revenue Service is April 15 of each year. The Constitution gave the federal government the power to collect taxes. The federal government needs money to pay the nation’s debts and to defend and provide for the needs of the country."
                },
-             @{QuestionNumberKey: @"57",
+             @{QuestionNumberKey: @"53",
                QuestionTitleKey: @"When must all men register for the Selective Service?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"At age 18",
@@ -800,7 +800,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Between age 18 and 21"],
                ExplanationKey: @"Today, all men between 18 and 26 years old must register with the Selective Service System. When a man registers, he tells the government that he is available to serve in the U.S. Armed Forces. He can register at a United States post office or on the Internet."
                },
-             @{QuestionNumberKey: @"58",
+             @{QuestionNumberKey: @"54",
                QuestionTitleKey: @"What is one reason colonists came to America?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Freedom",
@@ -816,7 +816,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"To get a drivers license"],
                ExplanationKey: @"In the 1600s and 1700s, colonists from England and other European countries sailed across the Atlantic Ocean to the American colonies. Some left Europe to escape religious restrictions or persecution, to practice their religion freely. Many came for political freedom, and some came for economic opportunity. These freedoms and opportunities often did not exist in the colonists’ home countries. For these settlers, the American colonies were a chance for freedom and a new life. Today, many people come to the United States for these same reasons."
                },
-             @{QuestionNumberKey: @"59",
+             @{QuestionNumberKey: @"55",
                QuestionTitleKey: @"Who lived in America before the Europeans arrived?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"American Indians",
@@ -828,7 +828,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Australians"],
                ExplanationKey: @"Great American Indian tribes such as the Navajo, Sioux, Cherokee, and Iroquois lived in America at the time the Pilgrims arrived."
                },
-             @{QuestionNumberKey: @"60",
+             @{QuestionNumberKey: @"56",
                QuestionTitleKey: @"What group of people was taken to America and sold as slaves?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Africans",
@@ -840,7 +840,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"People from Russia"],
                ExplanationKey: @"Slavery existed in many countries long before America was founded. By 1700, many Africans were being brought to the American colonies as slaves. Men, women, and children were brought against their will. They were often separated from their families when they were sold as slaves. Slaves worked without payment and without basic rights. Most worked in agriculture, but slaves did many other kinds of work in the colonies, too."
                },
-             @{QuestionNumberKey: @"61",
+             @{QuestionNumberKey: @"57",
                QuestionTitleKey: @"Why did the colonists fight the British?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"High taxes",
@@ -854,7 +854,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"High cost of land"],
                ExplanationKey: @"The American colonists’ anger had been growing for years before the Revolutionary War began in 1775. The decision to separate from the British was not an easy choice for many colonists. However, Great Britain’s “repeated injuries” against the Americans, as noted in the Declaration of Independence, convinced many to join the rebellion. The British taxed the colonists without their consent, and the colonists had nobody to represent their needs and ideas to the British government. They were also angry because ordinary colonists were forced to let British soldiers sleep and eat in their homes. The colonists believed the British did not respect their basic rights. The British governed the colonists without their consent, denying them self-government."
                },
-             @{QuestionNumberKey: @"62",
+             @{QuestionNumberKey: @"58",
                QuestionTitleKey: @"Who wrote the Declaration of Independence?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Thomas Jefferson",
@@ -866,7 +866,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Washington"],
                ExplanationKey: @"Thomas Jefferson wrote the Declaration of Independence in 1776. He was a very important political leader and thinker. Some of the most important ideas about the American government are found in the Declaration of Independence, such as the idea that all people are created equal. Another important idea is that people are born with certain rights including life, liberty, and the pursuit of happiness."
                },
-             @{QuestionNumberKey: @"63",
+             @{QuestionNumberKey: @"59",
                QuestionTitleKey: @"When was the Declaration of Independence adopted?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"July 4, 1776"],
@@ -877,7 +877,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"September 3, 1783"],
                ExplanationKey: @"In 1774, representatives from 12 of the 13 colonies met in Philadelphia, Pennsylvania, for the First Continental Congress. Of the 13 colonies, only Georgia was absent. These representatives were angry about British laws that treated them unfairly. They began to organize an army. The Second Continental Congress met in 1775 after fighting began between the colonists and the British Army. This Congress asked Thomas Jefferson and others to write the Declaration of Independence. When Thomas Jefferson finished his draft of the Declaration of Independence, he took it to John Adams, Benjamin Franklin, and the others on the committee to review it. After changes were made by the committee, the Declaration was read to the members of the entire Congress. The purpose of the Declaration was to announce the separation of the colonies from England."
                },
-             @{QuestionNumberKey: @"64",
+             @{QuestionNumberKey: @"60",
                QuestionTitleKey: @"There were 13 original states. Name three.",
                AnswersNeededKey: @3,
                AnswerKey : @[@"New Hampshire",
@@ -900,7 +900,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Ohio"],
                ExplanationKey: @"The 13 original states were all former British colonies. Representatives from these colonies came together and declared independence from Great Britain in 1776. After the Revolutionary War, the colonies became free and independent states. When the 13 colonies became states, each state set up its own government. They wrote state constitutions. Eventually, the people in these states created a new form of national government that would unite all the states into a single nation under the U.S. Constitution."
                },
-             @{QuestionNumberKey: @"65",
+             @{QuestionNumberKey: @"61",
                QuestionTitleKey: @"What happened at the Constitutional Convention?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Constitution was written",
@@ -912,7 +912,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The British formally surrendered"],
                ExplanationKey: @"The Constitutional Convention was held in Philadelphia, Pennsylvania, from May to September 1787. Fifty-five delegates from 12 of the original 13 states (except for Rhode Island) met to write amendments to the Articles of Confederation. The delegates met because many American leaders did not like the Articles. The national government under the Articles of Confederation was not strong enough. Instead of changing the Articles of Confederation, the delegates decided to create a new governing document with a stronger national government—the Constitution. Each state sent delegates, who worked for four months in secret to allow for free and open discussion as they wrote the new document. The delegates who attended the Constitutional Convention are called “the Framers.” On September 17, 1787, 39 of the delegates signed the new Constitution."
                },
-             @{QuestionNumberKey: @"66",
+             @{QuestionNumberKey: @"62",
                QuestionTitleKey: @"When was the Constitution written?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"1787"],
@@ -923,7 +923,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"1492"],
                ExplanationKey: @"The Constitution, written in 1787, created a new system of U.S. government—the same system we have today. James Madison was the main writer of the Constitution. He became the fourth president of the United States. The U.S. Constitution is short, but it defines the principles of government and the rights of citizens in the United States. The document has a preamble and seven articles. Since its adoption, the Constitution has been amended (changed) 27 times. Three-fourths of the states (9 of the original 13) were required to ratify (approve) the Constitution. Delaware was the first state to ratify the Constitution on December 7, 1787. In 1788, New Hampshire was the ninth state to ratify the Constitution. On March 4, 1789, the Constitution took effect and Congress met for the first time. George Washington was inaugurated as president the same year. By 1790, all 13 states had ratified the Constitution."
                },
-             @{QuestionNumberKey: @"67",
+             @{QuestionNumberKey: @"63",
                QuestionTitleKey: @"The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"James Madison",
@@ -937,7 +937,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"John Hancock"],
                ExplanationKey: @"The Federalist Papers were 85 essays that were printed in New York newspapers while New York State was deciding whether or not to support the U.S. Constitution. The essays were written in 1787 and 1788 by Alexander Hamilton, John Jay, and James Madison under the pen name “Publius.” The essays explained why the state should ratify the Constitution. Other newspapers outside New York also published the essays as other states were deciding to ratify the Constitution. In 1788, the papers were published together in a book called The Federalist. Today, people still read the Federalist Papers to help them understand the Constitution."
                },
-             @{QuestionNumberKey: @"68",
+             @{QuestionNumberKey: @"64",
                QuestionTitleKey: @"What is one thing Benjamin Franklin is famous for?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Being a U.S. diplomat",
@@ -952,7 +952,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Inventing the internet"],
                ExplanationKey: @"Benjamin Franklin was one of the most influential Founding Fathers of the United States. He was the oldest delegate to the Constitutional Convention and one of the signers of the U.S. Constitution. He was a printer, author, politician, diplomat, and inventor. By his mid-20s, he was an accomplished printer, and he began writing books and papers. Franklin’s most famous publication was Poor Richard’s Almanac. He also organized America’s first library. Its members loaned books to one another. He was very active in colonial politics. He also visited England and France many times as a U.S. diplomat. In 1775, the Second Continental Congress appointed Franklin the first postmaster general."
                },
-             @{QuestionNumberKey: @"69",
+             @{QuestionNumberKey: @"65",
                QuestionTitleKey: @"Who is the “Father of Our Country”?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"George Washington"],
@@ -963,7 +963,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"John F. Kennedy"],
                ExplanationKey: @"George Washington is called the Father of Our Country. He was the first American president. Before that, he was a brave general who led the Continental Army to victory over Great Britain during the American Revolutionary War. After his victory over the British Army, Washington retired to his farm in Virginia named Mount Vernon. He left retirement to help create the new country’s system of government. He presided over the Constitutional Convention in Philadelphia in 1787."
                },
-             @{QuestionNumberKey: @"70",
+             @{QuestionNumberKey: @"66",
                QuestionTitleKey: @"Who was the first President?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"George Washington"],
@@ -974,7 +974,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Abraham Lincon"],
                ExplanationKey: @"George Washington was the first president of the United States. He began his first term in 1789. He served for a second term beginning in 1793. Washington played an important role in forming the new nation and encouraged Americans to unite. He also helped define the American presidency. He voluntarily resigned from the presidency after two terms."
                },
-             @{QuestionNumberKey: @"71",
+             @{QuestionNumberKey: @"67",
                QuestionTitleKey: @"What territory did the United States buy from France in 1803?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Louisiana Territory",
@@ -986,7 +986,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Alaska"],
                ExplanationKey: @"The Louisiana Territory was a large area west of the Mississippi River. It was 828,000 square miles. In 1803, the United States bought the Louisiana Territory from France for $15 million. The Louisiana Purchase Treaty was signed in Paris on April 30, 1803. It was the largest acquisition of land in American history. Farmers could now ship their farm products down the Mississippi River without permission from other countries. This was important because the city of New Orleans was a major shipping port. The Louisiana Purchase doubled the size of the United States and expanded it westward. Meriwether Lewis and William Clark led an expedition to map the Louisiana Territory."
                },
-             @{QuestionNumberKey: @"72",
+             @{QuestionNumberKey: @"68",
                QuestionTitleKey: @"Name one war fought by the United States in the 1800s.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"War of 1812",
@@ -1000,7 +1000,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The "],
                ExplanationKey: @" The United States fought four major wars in the 1800s—the War of 1812, the Mexican-American War, the Civil War, and the Spanish-American War. The War of 1812 lasted from 1812 through 1815. President James Madison asked Congress to declare war on Great Britain. The British were stopping and seizing American ships. They were also arming American Indians to fight against the Americans. As a result of this war, the nation’s trade was disrupted and the U.S. Capitol was burned. The Americans won the war. This was the first time after the Revolutionary War that America had to fight a foreign country to protect its independence. The Mexican-American War was a conflict between Mexico and America. The war began in Texas in 1846. President James Polk ordered General Zachary Taylor and his forces to occupy land claimed by both the United States and Mexico. President Polk believed westward expansion was important for the United States to grow. When Mexico attacked, the United States went to war with Mexico. When the war ended in February 1848, the United States and Mexico signed the Treaty of Guadalupe Hidalgo. This treaty gave Texas to the United States and extended the boundaries of the United States west to the Pacific Ocean. In the Civil War, the people of the United States fought against each other. Americans in the northern states fought to support the federal government (“the Union”) against Americans from the southern states. The southern states were trying to separate themselves to form a new nation, the Confederate States of America (“the Confederacy”). The war lasted from 1861 to 1865, when the Confederate army surrendered to the Union army. Many lives were lost in the American Civil War. In 1898, the United States fought Spain in the Spanish- American War. The United States wanted to help Cuba become independent from Spain because the United States had economic interests in Cuba. The war began when a U.S. battleship was sunk near Cuba. Many Americans believed it was the Spanish who attacked the ship. For this reason, America went to war with Spain. By the end of 1898, the war was over with a victory for the United States. Cuba had its independence, and Guam, Puerto Rico, and the Philippines became territories of the United States."
                },
-             @{QuestionNumberKey: @"73",
+             @{QuestionNumberKey: @"69",
                QuestionTitleKey: @"Name the U.S. war between the North and the South.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Civil War",
@@ -1012,7 +1012,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Spanish-American War"],
                ExplanationKey: @"The American Civil War is also known as the War between the States. It was a war between the people in the northern states and those in the southern states. The Civil War was fought in many places across the United States, but most battles were fought in the southern states. The first battle was at Fort Sumter, South Carolina. The first major battle between the northern (Union) army and the southern (Confederate) army took place at Bull Run, in Manassas, Virginia, in July 1861. The Union expected the war to end quickly. After its defeat at the Battle of Bull Run, the Union realized that the war would be long and difficult. In 1865, the Civil War ended with the capture of the Confederate capital in Richmond, Virginia. Confederate General Robert E. Lee surrendered to Lt. General Ulysses S. Grant of the Union army at Appomattox Courthouse in central Virginia. Over the four-year period, more than 3 million Americans fought in the Civil War and more than 600,000 people died."
                },
-             @{QuestionNumberKey: @"74",
+             @{QuestionNumberKey: @"70",
                QuestionTitleKey: @"Name one problem that led to the Civil War.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Slavery",
@@ -1025,7 +1025,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The availability of free schooling"],
                ExplanationKey: @"The Civil War began when 11 southern states voted to secede (separate) from the United States to form their own country, the Confederate States of America. These southern states believed that the federal government of the United States threatened their right to make their own decisions. They wanted states’ rights with each state making their own decisions about their government. If the national government contradicted the state, they did not want to follow the national government. The North and South had very different economic systems. The South’s agriculture- based economy depended heavily on slave labor. The southern states feared that the United States government would end slavery. The southern states believed that this would hurt their economic and political independence. The economy of the northern states was more industrial and did not depend on slavery. The northern states fought to keep all the United States together in “the Union.” They tried to stop the southern states from separating into a new Confederate nation. There were also many people in the North who wanted to end slavery. These differences led to the American Civil War, which lasted from 1861 until 1865."
                },
-             @{QuestionNumberKey: @"75",
+             @{QuestionNumberKey: @"71",
                QuestionTitleKey: @"What was one important thing that Abraham Lincoln did?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"freed the slaves (Emancipation Proclamation)",
@@ -1038,7 +1038,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Was the second President of the United States"],
                ExplanationKey: @"Abraham Lincoln was president of the United States from 1861 to 1865, and led the nation during the Civil War. Lincoln thought the separation of the southern (Confederate) states was unconstitutional, and he wanted to preserve the Union. In 1863, during the Civil War, he issued the Emancipation Proclamation. It declared that the slaves who lived in the rebelling Confederate states were forever free. Lincoln is also famous for his “Gettysburg Address.” He gave that speech at Gettysburg, Pennsylvania, in November 1863. Earlier that year, at the Battle of Gettysburg, the northern (Union) army had won a major battle to stop the Confederate army from invading the North. To honor the many who died in this battle, the governor of Pennsylvania established the Soldiers’ National Cemetery at Gettysburg. Lincoln spoke at the dedication ceremony and praised those who fought and died in battle. He asked those still living to rededicate themselves to saving the Union so that “government of the people, by the people, for the people shall not perish from the earth.” On April 14, 1865, soon after taking office for his second term, Abraham Lincoln was killed by a southern supporter, John Wilkes Booth, at Ford’s Theatre in Washington, D.C."
                },
-             @{QuestionNumberKey: @"76",
+             @{QuestionNumberKey: @"72",
                QuestionTitleKey: @"What did the Emancipation Proclamation do?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Freed the slaves",
@@ -1052,7 +1052,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Provided free schooling for citizens"],
                ExplanationKey: @"In 1863, in the middle of the Civil War, President Abraham Lincoln issued the Emancipation Proclamation. The Emancipation Proclamation declared that slaves living in the southern or Confederate states were free. Many slaves joined the Union army. In 1865, the Civil War ended and the southern slaves kept their right to be free. The Emancipation Proclamation led to the 13th Amendment to the Constitution, which ended slavery in all of the United States."
                },
-             @{QuestionNumberKey: @"77",
+             @{QuestionNumberKey: @"73",
                QuestionTitleKey: @"What did Susan B. Anthony do?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Fought for women’s rights",
@@ -1064,7 +1064,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Created the US dollar"],
                ExplanationKey: @"Susan B. Anthony was born in Massachusetts on February 15, 1820. She is known for campaigning for the right of women to vote. She spoke out publicly against slavery and for equal treatment of women in the workplace. In 1920, the 19th Amendment to the Constitution gave women the right to vote. Susan B. Anthony died 14 years before the adoption of the 19th Amendment, but it was still widely known as the Susan B. Anthony Amendment. In 1979, she became the first woman whose image appeared on a circulating U.S. coin. The coin is called the Susan B. Anthony dollar and is worth one dollar."
                },
-             @{QuestionNumberKey: @"78",
+             @{QuestionNumberKey: @"74",
                QuestionTitleKey: @"Name one war fought by the United States in the 1900s.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"World War I",
@@ -1079,7 +1079,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The Revolutionary War"],
                ExplanationKey: @"The United States fought five wars in the 1900s: World War I, World War II, the Korean War, the Vietnam War, and the (Persian) Gulf War. World War I began in 1914. It was a long and bloody struggle. The United States entered the war in 1917 after German submarines attacked British and U.S. ships, and the Germans contacted Mexico about starting a war against the United States. The war ended in 1918 when the Allied Powers (led by Britain, France, Italy, and the United States) defeated the Central Powers (led by Germany, Austria-Hungary, and the Ottoman Empire). The Treaty of Versailles officially ended the war in 1919. World War I was called /“the war to end all wars./” World War II began in 1939 when Germany invaded Poland. France and Great Britain then declared war on Germany. Germany had alliances with Italy and Japan, and together they formed the Axis powers. The United States entered World War II in 1941, after the Japanese attacked Pearl Harbor, Hawaii. The United States joined France, Great Britain, and the Soviet Union as the Allied powers and led the 1944 invasion of France known as D-Day. The liberation of Europe from German power was completed by May 1945. World War II did not end until Japan surrendered in September 1945. The Korean War began in 1950 when the North Korean Army moved across the 38th parallel into South Korea. The 38th parallel was a boundary established after World War II. This boundary separated the northern area of Korea, which was under communist influence, from the southern area  of Korea, which was allied with the United States. At the time, the United States was providing support to establish a democratic South Korean government. The United States provided military support to stop the advance of the North Korean Army. In the Korean conflict, democratic governments directly confronted communist governments. The fighting ended in 1953, with the establishment of the countries of North Korea and South Korea. From 1959 to 1975, United States Armed Forces and the South Vietnamese Army fought against the North Vietnamese in the Vietnam War. The United States supported the democratic government in the south of the country to help it resist pressure from the communist north. The war ended in 1975 with the fall of Saigon, the capital of South Vietnam. In 1976, Vietnam was under total communist control. Almost 60,000 American men and women in the military died or were missing as a result of the Vietnam War. On August 2, 1990, the Persian Gulf War began when Iraq invaded Kuwait. This invasion put the Iraqi Army closer to Saudi Arabia and its oil reserves, which supplied much of the world with oil. The United States and many other countries wanted to drive the Iraqi Army out of Kuwait and prevent it from invading other nearby countries. In January 1991, the United States led an international coalition of forces authorized by the United Nations into battle against the Iraqi Army. Within a month, the coalition had driven the Iraqis from Kuwait. The coalition declared a cease-fire on February 28, 1991."
                },
-             @{QuestionNumberKey: @"79",
+             @{QuestionNumberKey: @"75",
                QuestionTitleKey: @"Who was President during World War I?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Woodrow Wilson"],
@@ -1090,7 +1090,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Franklin Roosevelt"],
                ExplanationKey: @"Woodrow Wilson was the 28th president of the United States. President Wilson served two terms from 1913 to 1921. During his first term, he was able to keep the United States out of World War I. By 1917, Wilson knew this was no longer possible, and he asked Congress to declare war on Germany. On January 8, 1918, he made a speech to Congress outlining “Fourteen Points” that justified the war and called for a plan to maintain peace after the war. President Wilson said, “We entered this war because violations of right had occurred which touched us to the quick and made the life of our own people impossible unless they were corrected and the world secure once for all against their recurrence.” The war ended that year and Wilson traveled to Paris to work out the details of the surrender by Germany."
                },
-             @{QuestionNumberKey: @"80",
+             @{QuestionNumberKey: @"76",
                QuestionTitleKey: @"Who was President during the Great Depression and World War II?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Franklin Roosevelt"],
@@ -1101,7 +1101,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Woodrow Wilson"],
                ExplanationKey: @"Franklin Delano Roosevelt (FDR) was president of the United States from 1933 until 1945. He was elected during the Great Depression, which was a period of economic crisis after the stock market crash of 1929. His program for handling the crisis was called “the New Deal.” It included programs to create jobs and provided benefits and financial security for workers across the country. Under his leadership, the Social Security Administration (SSA) was established in 1935. Roosevelt led the nation into World War II after Japan’s attack on Pearl Harbor in December 1941. He gave the country a sense of hope and strength during a time of great struggle. Roosevelt was elected to office four times. He died in 1945, early in his fourth term as president. His wife, Eleanor Roosevelt, was a human rights leader throughout her lifetime."
                },
-             @{QuestionNumberKey: @"81",
+             @{QuestionNumberKey: @"77",
                QuestionTitleKey: @"Who did the United States fight in World War II?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Japan, Germany, and Italy"],
@@ -1112,7 +1112,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"India, Russia, and China"],
                ExplanationKey: @"The Japanese bombed U.S. naval bases in a surprise attack on Pearl Harbor, Hawaii, on December 7, 1941. The next day, President Franklin D. Roosevelt, as commander in chief of the military, obtained an official declaration of war from Congress. Japan’s partners in the Axis, Italy and Germany, then declared war on the United States. The Allies fought against the German Nazis, the Italian Fascists, and Japan’s military empire. This was truly a world war, with battles fought in Europe, Africa, Asia, and the Pacific Ocean."
                },
-             @{QuestionNumberKey: @"82",
+             @{QuestionNumberKey: @"78",
                QuestionTitleKey: @"Before he was President, Eisenhower was a general. What war was he in?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"World War II"],
@@ -1123,7 +1123,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The Revolutionary War"],
                ExplanationKey: @"Before becoming the 34th president of the United States in 1953, Dwight D. Eisenhower served as a major general in World War II. As commander of U.S. forces and supreme commander of the Allies in Europe, he led the successful D-Day invasion of Normandy, France, on June 6, 1944. "
                },
-             @{QuestionNumberKey: @"83",
+             @{QuestionNumberKey: @"79",
                QuestionTitleKey: @"During the Cold War, what was the main concern of the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Communism"],
@@ -1134,7 +1134,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Drug trafficking"],
                ExplanationKey: @"The main concern of the United States during the Cold War was the spread of communism. The Soviet Union (Union of Soviet Socialist Republics, or USSR) was a powerful nation that operated under the principles of communism. The United States and its allies believed that a democratic government and a capitalist economy were the best ways to preserve individual rights and freedoms. The United States and its allies feared the expansion of communism to countries outside the Soviet Union. The Cold War began shortly after the end of World War II and lasted for more than 40 years. It ended with the fall of the Berlin Wall in 1989, the reunification of East and West Germany in 1990, and the breakup of the USSR in 1991."
                },
-             @{QuestionNumberKey: @"84",
+             @{QuestionNumberKey: @"80",
                QuestionTitleKey: @"What movement tried to end racial discrimination?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The civil rights movement"],
@@ -1145,7 +1145,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The Roe v. Wade case"],
                ExplanationKey: @"The modern civil rights movement in the United States began in 1954 when the Supreme Court ruled that racial segregation in public schools was unconstitutional. The goal of the civil rights movement was to end racial discrimination against African Americans and to gain full and equal rights for Americans of all races. Using nonviolent strategies such as bus boycotts, sit-ins, and marches, people came together to demand social change. As a result, Congress passed the Civil Rights Act of 1964 and the Voting Rights Act of 1965. The Civil Rights Act made segregation in public facilities and racial discrimination in employment and education illegal. The law protects African Americans, women, and others from discrimination. The Voting Rights Act banned literacy tests and other special requirements that had been used to stop African Americans from registering to vote."
                },
-             @{QuestionNumberKey: @"85",
+             @{QuestionNumberKey: @"81",
                QuestionTitleKey: @"What did Martin Luther King, Jr. do?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Fought for civil rights",
@@ -1157,7 +1157,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Brokered a peace treaty in Asia"],
                ExplanationKey: @"Martin Luther King, Jr. was a Baptist minister and civil rights leader. He worked hard to make America a more fair, tolerant, and equal nation. He was the main leader of the civil rights movement of the 1950s and 1960s. Because of this movement, civil rights laws were passed to protect voting rights and end racial segregation. King believed in the ideals of the Declaration of Independence—that every citizen deserves America’s promise of equality and justice. In 1963, King delivered his famous “I Have a Dream” speech, which imagines an America in which people of all races exist together equally. He was only 35 years old when he received the Nobel Peace Prize in 1964 for his civil rights work. King was killed on April 4, 1968."
                },
-             @{QuestionNumberKey: @"86",
+             @{QuestionNumberKey: @"82",
                QuestionTitleKey: @"What major event happened on September 11, 2001, in the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Terrorists attacked the United States"],
@@ -1168,7 +1168,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"A massive earthquake hit New York"],
                ExplanationKey: @"On September 11, 2001, four airplanes flying out of U.S. airports were taken over by terrorists from the Al-Qaeda network of Islamic extremists. Two of the planes crashed into the World Trade Center’s Twin Towers in New York City, destroying both buildings. One of the planes crashed into the Pentagon in Arlington, Virginia. The fourth plane, originally aimed at Washington, D.C., crashed in a field in Pennsylvania. Almost 3,000 people died in these attacks, most of them civilians. This was the worst attack on American soil in the history of the nation."
                },
-             @{QuestionNumberKey: @"87",
+             @{QuestionNumberKey: @"83",
                QuestionTitleKey: @"Name one American Indian tribe in the United States.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Cherokee",
@@ -1200,7 +1200,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Crane"],
                ExplanationKey: @"American Indians lived in North America for thousands of years before the European settlers arrived. Today there are more than 500 federally recognized tribes in the United States. Each tribe has its own social and political system. American Indian cultures are different from one tribe to another, with different languages, beliefs, stories, music, and foods. Earlier in their history, some tribes settled in villages and farmed the land for food. Other tribes moved frequently as they hunted and gathered food and resources. The federal government signed treaties with American Indian tribes to move the tribes to reservations. These reservations are recognized as domestic, dependent nations."
                },
-             @{QuestionNumberKey: @"88",
+             @{QuestionNumberKey: @"84",
                QuestionTitleKey: @"Name one of the two longest rivers in the United States.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Missouri",
@@ -1212,7 +1212,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Yellowstone"],
                ExplanationKey: @"The Mississippi River is one of America’s longest rivers. It runs through 10 U.S. states. The Mississippi River was used by American Indians for trade, food, and water before Europeans came to America. It is nicknamed the “Father of Waters.” Today, the Mississippi River is a major shipping route and a source of drinking water for millions of people. The Missouri River is also one of the longest rivers in the United States. The Missouri River is actually longer than the Mississippi River. It starts in Montana and flows into the Mississippi River. In 1673, the French explorers Jolliet and Marquette were the first Europeans to find the Missouri River. It is nicknamed “Big Muddy” because of its high silt content."
                },
-             @{QuestionNumberKey: @"89",
+             @{QuestionNumberKey: @"85",
                QuestionTitleKey: @"What ocean is on the West Coast of the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Pacific"],
@@ -1223,7 +1223,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Gulf of Mexico"],
                ExplanationKey: @"The Pacific Ocean is on the West Coast of the United States. It is the largest ocean on Earth and covers one-third of the Earth’s surface. The Pacific Ocean is important to the U.S. economy because of its many natural resources such as fish."
                },
-             @{QuestionNumberKey: @"90",
+             @{QuestionNumberKey: @"86",
                QuestionTitleKey: @"What ocean is on the East Coast of the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Atlantic"],
@@ -1234,7 +1234,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Pacific"],
                ExplanationKey: @"The Atlantic Ocean is on the East Coast of the United States. The ocean was named after the giant Atlas from Greek mythology. It is the second largest ocean in the world. The Atlantic Ocean is a major sea route for ships. It is one of the most frequently traveled oceans in the world. The Atlantic Ocean is also a source of many natural resources."
                },
-             @{QuestionNumberKey: @"91",
+             @{QuestionNumberKey: @"87",
                QuestionTitleKey: @"Name one U.S. territory",
                AnswersNeededKey: @1,
                AnswerKey : @[@"uerto Rico",
@@ -1249,7 +1249,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Fiji"],
                ExplanationKey: @"There are five major U.S. territories: American Samoa, Guam, the Northern Mariana Islands, Puerto Rico, and the U.S. Virgin Islands. A U.S. territory is a partially self-governing piece of land under the authority of the U.S. government. U.S. territories are not states, but they do have representation in Congress. Each territory is allowed to send a delegate to the House of Representatives. The people who live in American Samoa are considered U.S. nationals; the people in the other four territories are U.S. citizens. Citizens of the territories can vote in primary elections for president, but they cannot vote in the general elections for president."
                },
-             @{QuestionNumberKey: @"92",
+             @{QuestionNumberKey: @"88",
                QuestionTitleKey: @"Name one state that borders Canada.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Maine",
@@ -1272,7 +1272,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Wisonsin"],
                ExplanationKey: @"The northern border of the United States stretches more than 5,000 miles from Maine in the East to Alaska in the West. There are 13 states on the border with Canada. The Treaty of Paris of 1783 established the official boundary between Canada and the United States after the Revolutionary War. Since that time, there have been land disputes, but they have been resolved through treaties. The International Boundary Commission, which is headed by two commissioners, one American and one Canadian, is responsible for maintaining the boundary."
                },
-             @{QuestionNumberKey: @"93",
+             @{QuestionNumberKey: @"89",
                QuestionTitleKey: @"Name one state that borders Mexico.",
                AnswersNeededKey: @1,
                AnswerKey : @[@"California",
@@ -1286,7 +1286,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"North Dakota"],
                ExplanationKey: @"The border between the United States and Mexico is about 1,900 miles long and spans four U.S. states— Arizona, California, New Mexico, and Texas. The United States established the border with Mexico after the Mexican-American War and the Gadsden Purchase in 1853. The Gadsden Purchase helped the United States get the land it needed to expand the southern railroad. The United States bought this land for $10 million. The land bought through the Gadsden Purchase is now part of the states of Arizona and New Mexico. The U.S. border with Mexico is one of the busiest international borders in the world."
                },
-             @{QuestionNumberKey: @"94",
+             @{QuestionNumberKey: @"90",
                QuestionTitleKey: @"What is the capital of the United States?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Washington, D.C."],
@@ -1297,7 +1297,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Baltimore"],
                ExplanationKey: @"When the Constitution established our nation in 1789, the capital of the United States was in New York City. Congress soon began discussing the location of a permanent capital city. In Congress, representatives of northern states argued with representatives of southern states. Each side wanted the capital to be in its own region. As part of the Compromise of 1790, the capital would be located in the South. In return, the North did not have to pay the debt it owed from the Revolutionary War."
                },
-             @{QuestionNumberKey: @"95",
+             @{QuestionNumberKey: @"91",
                QuestionTitleKey: @"Where is the Statue of Liberty?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"New York Harbor",
@@ -1309,7 +1309,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Maine"],
                ExplanationKey: @"The Statue of Liberty is on Liberty Island, a 12-acre island in the New York harbor. France gave the statue to the United States as a gift of friendship. French artist Frederic-Auguste Bartholdi made the statue. It shows a woman escaping the chains of tyranny and holding a torch symbolizing liberty. The Statue of Liberty was dedicated on October 28, 1886, 110 years after the signing of the Declaration of Independence. President Grover Cleveland accepted the gift for the American people. The Statue of Liberty is a well-known symbol of the United States and of freedom and democracy. The Statue of Liberty became a symbol of immigration because it was located next to Ellis Island, which was the first entry point for many immigrants during the great waves of immigration. The Statue of Liberty was the first thing new immigrants saw as they approached New York harbor."
                },
-             @{QuestionNumberKey: @"96",
+             @{QuestionNumberKey: @"92",
                QuestionTitleKey: @"Why does the flag have 13 stripes?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Because there were 13 original colonies",
@@ -1321,7 +1321,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Because of the first 13 Presidents added one stripe each"],
                ExplanationKey: @"There are 13 stripes on the flag because there were 13 original colonies. We call the American flag “the Stars and Stripes.” For 18 years after the United States became an independent country, the flag had only 13 stripes. In 1794, Kentucky and Vermont joined the United States, and two stripes were added to the flag. In 1818, Congress decided that the number of stripes on the flag should always be 13. This would honor the original states that were colonies of Great Britain before America’s independence."
                },
-             @{QuestionNumberKey: @"97",
+             @{QuestionNumberKey: @"93",
                QuestionTitleKey: @"Why does the flag have 50 stars?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"Because there is one star for each state",
@@ -1333,7 +1333,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Because ther are 50 Constitutional Amendments"],
                ExplanationKey: @"Each star on the flag represents a state. This is why the number of stars has changed over the years from 13 to 50. The number of stars reached 50 in 1959, when Hawaii joined the United States as the 50th state."
                },
-             @{QuestionNumberKey: @"98",
+             @{QuestionNumberKey: @"94",
                QuestionTitleKey: @"What is the name of the national anthem?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"The Star-Spangled Banner"],
@@ -1344,7 +1344,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"The Banner of America"],
                ExplanationKey: @"During the War of 1812, British soldiers invaded the United States. On the night of September 13, 1814, British warships bombed Fort McHenry. This fort protected the city of Baltimore, Maryland. An American named Francis Scott Key watched the bombing and thought that the fort would fall. As the sun rose the next morning, Key looked toward the fort. He saw that the flag above the fort was still flying. This let him know that the British had not defeated the Americans."
                },
-             @{QuestionNumberKey: @"99",
+             @{QuestionNumberKey: @"95",
                QuestionTitleKey: @"When do we celebrate Independence Day?",
                AnswersNeededKey: @1,
                AnswerKey : @[@"July 4"],
@@ -1355,7 +1355,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"April 16"],
                ExplanationKey: @"In the United States, we celebrate Independence Day on July 4 to mark the anniversary of the adoption of the Declaration of Independence. After signing the Declaration of Independence, John Adams wrote to his wife, /“I am apt to believe that it will be celebrated, by succeeding Generations, as the great anniversary Festival./” The Declaration of Independence, written by Thomas Jefferson, explained why the colonies had decided to separate from Great Britain. Americans celebrate the Fourth of July as the birthday of America, with parades, fireworks, patriotic songs, and readings of the Declaration of Independence."
                },
-             @{QuestionNumberKey: @"100",
+             @{QuestionNumberKey: @"96",
                    QuestionTitleKey: @"Name two national U.S. holidays.",
                    AnswersNeededKey: @2,
                AnswerKey : @[@"New Year’s Day",

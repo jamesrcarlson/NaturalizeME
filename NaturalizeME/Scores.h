@@ -11,6 +11,7 @@
 @interface Scores : NSObject
 
 @property (assign) NSNumber * quizScore;
+@property (assign)NSNumber * answersCompleted;
 @property (nonatomic, retain) NSDate * timestamp;
 @property (strong) NSArray * wrongAnswer;
 @property (strong) NSArray * answerNumber;

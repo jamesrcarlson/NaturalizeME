@@ -16,11 +16,11 @@
 //@property (strong, nonatomic) NSArray *practiceScores;
 
 @property (strong)NSNumber *latestQuizScore;
-//@property (strong)NSNumber *totalQuestionsAttempted;
+@property (strong)NSNumber *answersCompleted;
 
 + (ScoreController *)sharedInstance;
 
--(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score wrongAsnwers:(NSArray *)wrongAnswer answerNumber:(NSArray *)answerNumber;
+-(Scores *)createScoreWithDate:(NSDate *)date score:(NSNumber *)score answersAttemped:(NSNumber*)answersCompleted wrongAsnwers:(NSArray *)wrongAnswer answerNumber:(NSArray *)answerNumber;
 
 -(void)save;
 

@@ -10,6 +10,7 @@
 
 
 static NSString * const QuizScoreKey = @"quizScore";
+static NSString * const AnswersCompletedKey = @"answersCompelted";
 static NSString * const TimeStampKey = @"timeStamp";
 static NSString * const WrongAnswerKey = @"wrongAnswer";
 static NSString * const AnswerNumberKey = @"answerNumber";
@@ -21,6 +22,7 @@ static NSString * const AnswerNumberKey = @"answerNumber";
     self = [super init];
     if (self) {
         self.quizScore = dictionary[QuizScoreKey];
+        self.answersCompleted = dictionary[AnswersCompletedKey];
         self.timestamp = dictionary[TimeStampKey];
         self.wrongAnswer = dictionary[WrongAnswerKey];
         self.answerNumber = dictionary[AnswerNumberKey];
@@ -32,6 +34,7 @@ static NSString * const AnswerNumberKey = @"answerNumber";
 
 -(NSDictionary *)scoreDictionary {
     NSDictionary *dictionary = @{ QuizScoreKey : self.quizScore,
+                                  AnswersCompletedKey : self.answersCompleted,
                                   TimeStampKey : self.timestamp,
                                   WrongAnswerKey :self.wrongAnswer,
                                   AnswerNumberKey : self.answerNumber};
