@@ -1,26 +1,26 @@
 //
-//  SetupViewController.m
+//  TableViewController.m
 //  NaturalizeME
 //
-//  Created by James Carlson on 7/16/15.
+//  Created by James Carlson on 8/6/15.
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
-#import "SetupViewController.h"
+#import "SetupTableViewController.h"
 #import "SetupInfo.h"
 #import "SetupController.h"
 
-@interface SetupViewController () <UITextFieldDelegate>
+@interface SetupTableViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *addressInput;
 
-@property (strong, nonatomic) IBOutlet UILabel *governorLabel;
+@property (strong, nonatomic) NSString *governorLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *senatorLabel;
+@property (strong, nonatomic) NSString *senatorLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *representativeLabel;
+@property (strong, nonatomic) NSString *representativeLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *stateCapitalLabel;
+@property (strong, nonatomic) NSString *stateCapitalLabel;
 
 @property (strong) NSString *senatorOne;
 @property (strong) NSString *senatorTwo;
@@ -28,17 +28,18 @@
 @property (strong) NSString *governor;
 @property (strong) NSString *stateCapital;
 
-
 @end
 
-@implementation SetupViewController
+@implementation SetupTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.governorLabel.numberOfLines = 0;
-    self.senatorLabel.numberOfLines = 0;
-    self.stateCapitalLabel.numberOfLines = 0;
-    self.representativeLabel.numberOfLines = 0;
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     
 }
 
@@ -53,12 +54,12 @@
     NSInteger highestNumber = [SetupController sharedInstance].civicsInfo.count -1;
     if (highestNumber >=0) {
         SetupInfo *setupInfo = [SetupController sharedInstance].civicsInfo[highestNumber];
-        self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", setupInfo.governnor];
-        self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", setupInfo.senatorOne, setupInfo.senatorTwo];
-        self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",setupInfo.representative];
-        self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",setupInfo.stateCapital];
+        self.governorLabel = [NSString stringWithFormat:@"Your Governor's name is %@", setupInfo.governnor];
+        self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", setupInfo.senatorOne, setupInfo.senatorTwo];
+        self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",setupInfo.representative];
+        self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",setupInfo.stateCapital];
     }
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,9 +67,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(void)notifications {
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveData) name:@"infoCollected" object:nil];
-//}
+
 
 
 - (IBAction)findRepresentative:(id)sender {
@@ -95,9 +94,9 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
     
-//        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
-
-
+    //        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+    
+    
     
 }
 
@@ -141,15 +140,14 @@
             self.governor = dict[@"officials"][5][@"name"];
             self.stateCapital = dict[@"officials"][5][@"address"][0][@"city"];
             
-            self.governorLabel.text = [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
-            self.stateCapitalLabel.text = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
-            self.senatorLabel.text = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
-            self.representativeLabel.text = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
-//            [[NSNotificationCenter defaultCenter]postNotificationName:@"infoCollected" object:nil];
+            self.governorLabel= [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
+            self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
+            self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
+            self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
             
         });
         
-
+        
     }];
     
     [task resume];
@@ -171,9 +169,75 @@
     [self.view endEditing:YES]; //dismisses the keyboard when user touches outside of the textfield
 }
 
-//-(void)dealloc {
-//    [[NSNotificationCenter defaultCenter]removeObserver:self];
-//}
 
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 4;
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Header title";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"civicCells" forIndexPath:indexPath];
+    
+    cell.textLabel.text = @"some Info";
+    
+    return cell;
+}
+
+
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
+
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
+}
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

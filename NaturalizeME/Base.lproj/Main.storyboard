@@ -5,6 +5,32 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Setup Table View Controller-->
+        <scene sceneID="gUh-qV-kbj">
+            <objects>
+                <tableViewController id="Ckn-Hi-ilI" customClass="SetupTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OKJ-GK-pMH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="civicCells" id="FAY-Oe-fOn">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FAY-Oe-fOn" id="sOV-3Q-Rju">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ckn-Hi-ilI" id="l86-Cx-JOM"/>
+                            <outlet property="delegate" destination="Ckn-Hi-ilI" id="ZKE-J7-yyn"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m39-Xv-Wxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6" y="-664"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -43,7 +69,13 @@
                             <constraint firstItem="Cyp-fN-YXy" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="hfL-8F-6dU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Main Menu" id="lOu-hx-4Dz"/>
+                    <navigationItem key="navigationItem" title="Main Menu" id="lOu-hx-4Dz">
+                        <barButtonItem key="rightBarButtonItem" title="Find your represetative" id="imW-S3-CCE">
+                            <connections>
+                                <segue destination="Ckn-Hi-ilI" kind="show" id="5UB-aW-x1G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -336,7 +368,7 @@
         <!--Study-->
         <scene sceneID="Aj4-Pp-KBo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hcK-7H-x6G" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StudyNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="hcK-7H-x6G" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Study" image="second" id="9zb-2m-Vbr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d2U-tL-AT7">
@@ -356,7 +388,7 @@
         <scene sceneID="Mas-j3-jtC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8al-S3-HQb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" image="first" id="loh-68-8hF"/>
+                    <tabBarItem key="tabBarItem" title="Main" id="loh-68-8hF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q12-Ye-hDU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -374,7 +406,7 @@
         <!--Score History-->
         <scene sceneID="shk-dT-2Xx">
             <objects>
-                <navigationController title="Score History" automaticallyAdjustsScrollViewInsets="NO" id="rJw-yq-0t8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ScoreHistoryNavigationController" title="Score History" automaticallyAdjustsScrollViewInsets="NO" id="rJw-yq-0t8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scores" image="second" id="WWf-ee-fWK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C3J-fs-fnp">
@@ -392,7 +424,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
