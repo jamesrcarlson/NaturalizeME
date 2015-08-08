@@ -8,6 +8,7 @@
 
 #import "AnswerStudyViewController.h"
 #import "Study.h"
+#import "TextLabelTableViewCell.h"
 
 //static CGFloat margin = 15;
 
@@ -23,16 +24,6 @@
 
 }
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return self.view.frame.size.height / 2.5;
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return [Study questionTitleAtIndex:self.questionIndex];
-}
-
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
@@ -42,9 +33,7 @@
     //    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     header.textLabel.textAlignment = NSTextAlignmentCenter;
 }
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return [Study explanationAtIndex:self.questionIndex];
-}
+
 
 //-(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
 //    UITableViewHeaderFooterView *footer = (UITableViewHeaderFooterView *)view;
@@ -55,47 +44,92 @@
 //    footer.textLabel.textAlignment = NSTextAlignmentCenter;
 //}
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-        NSString *cellText = [Study explanationAtIndex:self.questionIndex];
-        UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [UITableViewHeaderFooterView new];
+    header.textLabel.textAlignment = NSTextAlignmentCenter;
+    if (section == 0) {
+        header.textLabel.text = [NSString stringWithFormat:@"Question #%@",[Study questionNumberAtIndex:self.questionIndex]];
+    }
+    if (section == 1) {
+        header.textLabel.text = @"The possible Answers";
+    }
+    if (section == 2) {
+        header.textLabel.text = @"Brief Explanation";
+    }
+    return header.textLabel.text;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"answerCell"];
+    cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.answerStudyLabel.numberOfLines = 0;
+    if (indexPath.section == 0) {
+        cell.answerStudyLabel.text = [Study questionTitleAtIndex:self.questionIndex];
+        cell.answerStudyLabel.font = [UIFont boldSystemFontOfSize:30];
+        cell.backgroundColor = [UIColor blueColor];
+        cell.answerStudyLabel.textColor = [UIColor whiteColor];
+    }
+    if (indexPath.section == 1) {
+        cell.answerStudyLabel.text = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
+    }
+    if (indexPath.section == 2) {
+        cell.answerStudyLabel.textAlignment = NSTextAlignmentLeft;
+        cell.answerStudyLabel.text = [Study explanationAtIndex:self.questionIndex];
+        cell.answerStudyLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0];
+    }
+    
+    return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            return 200;
+        }else {
+            return 200;
+        }
+        
+    }
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            
+        NSString *cellText = [Study explanationAtIndex:self.questionIndex];
+        UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:22.0];
+        
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
                                                                              attributes:@{NSFontAttributeName: cellFont}];
-    
+        
         CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
                                                    options:NSStringDrawingUsesLineFragmentOrigin
                                                    context:nil];
         return rect.size.height + 20;
+        } else {
+            return 200;
+        }
 
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"answerCell"];
-    cell.textLabel.text = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
-    cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.textLabel.numberOfLines = 0;
-
-    return cell;
+    }
+    else {
+        return 50;
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [Study answerCountAtIndex:self.questionIndex];
+    if (section == 0) {
+        return 1;
+    }
+    if (section == 1) {
+        return [Study answerCountAtIndex:self.questionIndex];
+    }
+    if (section == 2) {
+        return 1;
+    }else {
+        return 0;
+    }
+    
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSString *cellText = [Study answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
-//    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
-//    
-//    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
-//                                                                         attributes:@{NSFontAttributeName: cellFont}];
-//    
-//    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
-//                                               options:NSStringDrawingUsesLineFragmentOrigin
-//                                               context:nil];
-//    return rect.size.height + 20;
-//}
 
 
 - (void)didReceiveMemoryWarning {

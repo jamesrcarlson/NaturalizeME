@@ -9,6 +9,7 @@
 #import "WrongAnswerViewController.h"
 #import "AnswerStudyViewController.h"
 #import "ScoreController.h"
+#import "TextLabelTableViewCell.h"
 
 @interface WrongAnswerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -37,10 +38,24 @@
     return self.scores.wrongAnswer.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellText = self.scores.wrongAnswer[indexPath.row];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:25.0];
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
+                                                                         attributes:@{NSFontAttributeName: cellFont}];
+    
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    return rect.size.height + 30;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wrongAnswer"];
-    cell.textLabel.text = [NSString stringWithFormat:@"Question number %@ \n %@",self.scores.answerNumber[indexPath.row],self.scores.wrongAnswer[indexPath.row]];
-    cell.textLabel.numberOfLines = 0;
+    TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wrongAnswer"];
+    cell.wrongAnswerLabel.text = [NSString stringWithFormat:@"Question number %@ \n%@",self.scores.answerNumber[indexPath.row],self.scores.wrongAnswer[indexPath.row]];
+    cell.wrongAnswerLabel.numberOfLines = 0;
+    cell.wrongAnswerLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0];
     return cell;
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSIndexPath *)indexPath {

@@ -72,36 +72,6 @@ static NSString * const showScoreSegue = @"showScores";
  
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return self.view.frame.size.height / 2.5;
-//}
-//
-//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    
-//    return self.questionTitle;
-//}
-//
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-////    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5)];
-//    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 3)];
-////    headerLabel.text = self.questionTitle;
-//    
-////    [headerView addSubview: headerLabel];
-//    return headerLabel;
-//}
-//
-//-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-//    
-//    header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
-//    header.textLabel.font = [UIFont boldSystemFontOfSize:20];
-//    header.textLabel.numberOfLines = 0;
-//    header.textLabel.backgroundColor = [UIColor lightGrayColor];
-////    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-////    header.textLabel.textAlignment = NSTextAlignmentCenter;
-//    
-//}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return 6;
@@ -109,7 +79,7 @@ static NSString * const showScoreSegue = @"showScores";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return 200;
+        return 250;
     }else {
         return 50;
     }
@@ -124,7 +94,6 @@ static NSString * const showScoreSegue = @"showScores";
         cell.myLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
         cell.myLabel.textColor = [UIColor whiteColor];
-        cell.myLabel.frame = CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height / 3);
 
     }
     if (indexPath.row == 1) {
@@ -148,7 +117,7 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         int answerStatus = 0;
         
         if ([Study answerCountAtIndex:self.questionNumber] != 0) {
@@ -177,8 +146,7 @@ static NSString * const showScoreSegue = @"showScores";
             [tableView reloadData];
         }
     }
-    
-    if (indexPath.row == 1) {
+    if (indexPath.row == 2) {
         int answerStatus = 0;
         
         if ([Study answerCountAtIndex:self.questionNumber] != 0) {
@@ -209,7 +177,7 @@ static NSString * const showScoreSegue = @"showScores";
 
         }
     }
-    if (indexPath.row == 2) {
+    if (indexPath.row == 3) {
         int answerStatus = 0;
         if ([Study answerCountAtIndex:self.questionNumber] != 0) {
             for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
@@ -236,7 +204,7 @@ static NSString * const showScoreSegue = @"showScores";
         }
 
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         int answerStatus = 0;
         if ([Study answerCountAtIndex:self.questionNumber] != 0) {
             for (int i = 0; i < [Study answerCountAtIndex:self.questionNumber]; i++) {
@@ -264,7 +232,7 @@ static NSString * const showScoreSegue = @"showScores";
 
         }
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
         [[ScoreController sharedInstance]save];
         
