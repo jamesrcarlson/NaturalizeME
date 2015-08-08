@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		612542501B69A2B000BF75A7 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 6125424F1B69A2B000BF75A7 /* Scores.m */; };
+		6153F8551B76665B00F51543 /* TextLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6153F8541B76665B00F51543 /* TextLabelTableViewCell.m */; };
 		61831A481B6AECA900D2B506 /* flag.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 61831A471B6AECA900D2B506 /* flag.jpg */; };
 		61831A4B1B6C4B2E00D2B506 /* WrongAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61831A4A1B6C4B2E00D2B506 /* WrongAnswerViewController.m */; };
 		61831A4E1B6C922600D2B506 /* StudyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61831A4D1B6C922600D2B506 /* StudyController.m */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		6125424E1B69A2B000BF75A7 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
 		6125424F1B69A2B000BF75A7 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
+		6153F8531B76665B00F51543 /* TextLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextLabelTableViewCell.h; path = ../TextLabelTableViewCell.h; sourceTree = "<group>"; };
+		6153F8541B76665B00F51543 /* TextLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextLabelTableViewCell.m; path = ../TextLabelTableViewCell.m; sourceTree = "<group>"; };
 		61831A471B6AECA900D2B506 /* flag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flag.jpg; sourceTree = "<group>"; };
 		61831A491B6C4B2E00D2B506 /* WrongAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrongAnswerViewController.h; sourceTree = "<group>"; };
 		61831A4A1B6C4B2E00D2B506 /* WrongAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrongAnswerViewController.m; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 				6125424F1B69A2B000BF75A7 /* Scores.m */,
 				61AE61FC1B5F3C35000CC6BD /* Stack.h */,
 				61AE61FD1B5F3C35000CC6BD /* Stack.m */,
+				6153F8531B76665B00F51543 /* TextLabelTableViewCell.h */,
+				6153F8541B76665B00F51543 /* TextLabelTableViewCell.m */,
 				618387E61B5896B100DADA6D /* Supporting Files */,
 			);
 			path = NaturalizeME;
@@ -313,6 +318,7 @@
 				618387EF1B5896B100DADA6D /* WelcomeViewController.m in Sources */,
 				61AE61FE1B5F3C35000CC6BD /* Stack.m in Sources */,
 				618388231B589A8F00DADA6D /* AnswerStudyViewController.m in Sources */,
+				6153F8551B76665B00F51543 /* TextLabelTableViewCell.m in Sources */,
 				61831A4E1B6C922600D2B506 /* StudyController.m in Sources */,
 				61A371931B64B03A0088BBED /* SetupInfo.m in Sources */,
 				618388291B589AB400DADA6D /* ScoreHistoryViewController.m in Sources */,

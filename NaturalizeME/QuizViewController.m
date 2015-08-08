@@ -7,6 +7,7 @@
 //
 
 #import "QuizViewController.h"
+#import "TextLabelTableViewCell.h"
 #import "Study.h"
 #import "ScoreViewController.h"
 #import "ScoreController.h"
@@ -71,56 +72,76 @@ static NSString * const showScoreSegue = @"showScores";
  
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return self.view.frame.size.height / 2.5;
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
-    return self.questionTitle;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
-    header.textLabel.font = [UIFont boldSystemFontOfSize:20];
-    header.textLabel.numberOfLines = 0;
-    header.textLabel.backgroundColor = [UIColor lightGrayColor];
-//    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    header.textLabel.textAlignment = NSTextAlignmentCenter;
-    
-}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return self.view.frame.size.height / 2.5;
+//}
+//
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    
+//    return self.questionTitle;
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+////    UIView * headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5)];
+//    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 3)];
+////    headerLabel.text = self.questionTitle;
+//    
+////    [headerView addSubview: headerLabel];
+//    return headerLabel;
+//}
+//
+//-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+//    
+//    header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
+//    header.textLabel.font = [UIFont boldSystemFontOfSize:20];
+//    header.textLabel.numberOfLines = 0;
+//    header.textLabel.backgroundColor = [UIColor lightGrayColor];
+////    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+////    header.textLabel.textAlignment = NSTextAlignmentCenter;
+//    
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return 6;
 }
 
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (self.view.frame.size.height / 9);
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.numberOfLines = 0;
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        cell.textLabel.text = self.answerOne;
+        return 200;
+    }else {
+        return 50;
+    }
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
+    cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
+    cell.myLabel.textAlignment = NSTextAlignmentCenter;
+    cell.myLabel.numberOfLines = 0;
+    if (indexPath.row == 0) {
+        cell.myLabel.text = self.questionTitle;
+        cell.myLabel.font = [UIFont boldSystemFontOfSize:30];
+        cell.backgroundColor = [UIColor blueColor];
+        cell.myLabel.textColor = [UIColor whiteColor];
+        cell.myLabel.frame = CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height / 3);
+
     }
     if (indexPath.row == 1) {
-        cell.textLabel.text = self.answerTwo;
+        cell.myLabel.text = self.answerOne;
     }
     if (indexPath.row == 2) {
-        cell.textLabel.text = self.answerThree;
+        cell.myLabel.text = self.answerTwo;
     }
     if (indexPath.row == 3) {
-        cell.textLabel.text = self.answerFour;
+        cell.myLabel.text = self.answerThree;
     }
     if (indexPath.row == 4) {
-        cell.textLabel.text = @"Quit and see scores";
-        cell.backgroundColor = [UIColor lightGrayColor];
+        cell.myLabel.text = self.answerFour;
+    }
+    if (indexPath.row == 5) {
+        cell.myLabel.text = @"Quit and see scores";
+        cell.myLabel.backgroundColor = [UIColor lightGrayColor];
     }
     
     return cell;
@@ -177,7 +198,7 @@ static NSString * const showScoreSegue = @"showScores";
         
         if (self.holderArray.count == 0) {
             [NSThread sleepForTimeInterval:2];
-            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
             ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
             [self.navigationController pushViewController:scoreViewController animated:YES];
@@ -204,7 +225,7 @@ static NSString * const showScoreSegue = @"showScores";
         };
         
         if (self.holderArray.count == 0) {
-            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
             ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
             [self.navigationController pushViewController:scoreViewController animated:YES];
@@ -232,7 +253,7 @@ static NSString * const showScoreSegue = @"showScores";
         
         
         if (self.holderArray.count == 0) {
-            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];
             ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
             [self.navigationController pushViewController:scoreViewController animated:YES];
