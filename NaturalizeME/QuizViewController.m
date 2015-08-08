@@ -93,7 +93,7 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,6 +117,10 @@ static NSString * const showScoreSegue = @"showScores";
     }
     if (indexPath.row == 3) {
         cell.textLabel.text = self.answerFour;
+    }
+    if (indexPath.row == 4) {
+        cell.textLabel.text = @"Quit and see scores";
+        cell.backgroundColor = [UIColor lightGrayColor];
     }
     
     return cell;
@@ -239,20 +243,19 @@ static NSString * const showScoreSegue = @"showScores";
 
         }
     }
+    if (indexPath.row == 4) {
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
+        [[ScoreController sharedInstance]save];
+        
+        ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+        [self.navigationController pushViewController:scoreViewController animated:YES];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-
-- (IBAction)quitAndSeeScore:(id)sender {
-    self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswerArray answerNumber:self.answerNumberArray];
-    [[ScoreController sharedInstance]save];
-}
 
 -(void)gotTheRightAnswer:(NSString *)buttonTitle {
     dispatch_async(dispatch_get_main_queue(), ^{
