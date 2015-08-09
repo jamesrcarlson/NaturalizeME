@@ -33,7 +33,6 @@
     self.scoreHolder = [ScoreController sharedInstance].latestQuizScore;
     self.totalAnswerHolder = [ScoreController sharedInstance].answersCompleted;
     float score = ((float)self.scoreHolder.integerValue/(float)self.totalAnswerHolder.integerValue) *100;
-    
     self.numberOfQuestionsRight = [NSString stringWithFormat:@"%@ out of %@", self.scoreHolder, self.totalAnswerHolder];
     self.percentage = [NSString stringWithFormat:@"%ld %%", (long)score];
 }
@@ -70,7 +69,11 @@
         cell.scoreViewLabel.text = @"Your percentage is";
     }
     if (indexPath.row == 3) {
+        if (self.scoreHolder.integerValue == 0) {
+            cell.scoreViewLabel.text = @"0%";
+        }else {
         cell.scoreViewLabel.text = self.percentage;
+        }
     }
     if (indexPath.row == 4) {
         cell.scoreViewLabel.text = @"Okay";

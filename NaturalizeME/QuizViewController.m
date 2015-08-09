@@ -134,7 +134,6 @@ static NSString * const showScoreSegue = @"showScores";
         if (answerStatus == 0) {
             [self gotItWrong:self.answerOne];
         };
-        
         if (self.holderArray.count == 0) {
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             [[ScoreController sharedInstance]save];

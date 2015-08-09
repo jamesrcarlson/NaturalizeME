@@ -6,13 +6,14 @@
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
-#import "SetupTableViewController.h"
+#import "SetupViewController.h"
 #import "SetupInfo.h"
 #import "SetupController.h"
+#import "TextLabelTableViewCell.h"
 
-@interface SetupTableViewController ()
+@interface SetupViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) UITextField *addressInput;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString *governorLabel;
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSString *representativeLabel;
 
 @property (strong, nonatomic) NSString *stateCapitalLabel;
+@property (strong) NSString * textFieldText;
 
 @property (strong) NSString *senatorOne;
 @property (strong) NSString *senatorTwo;
@@ -30,13 +32,13 @@
 
 @end
 
-@implementation SetupTableViewController
+@implementation SetupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadData:self.civicsInfo];
     
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -95,7 +97,7 @@
     
     
     
-    NSString *stringPrep = [self.addressInput.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *stringPrep = [@"1218 W 1420 N Orem Utah" stringByReplacingOccurrencesOfString:@" " withString:@"+"]; // this NEEDS TO BE FIXED AT SOME POINT
     NSString *keyString = @"&key=AIzaSyCqdu1Nr-LcpjE3JZvm6gnGRXeirVkwuXU";
     
     NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@%@", stringPrep, keyString];
@@ -110,11 +112,29 @@
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.senatorOne = dict[@"officials"][0][@"name"];
-            self.senatorTwo = dict[@"officials"][1][@"name"];
-            self.representative = dict[@"officials"][4][@"name"];
-            self.governor = dict[@"officials"][5][@"name"];
-            self.stateCapital = dict[@"officials"][5][@"address"][0][@"city"];
+            
+            NSInteger senatorOneIndex = 0; //should be 0
+            NSInteger senatorTwoIndex = 0; // should be 1
+            NSInteger governorIndex = 0; // should be 5
+            NSInteger representativeIndex = 0; //should be 4
+            
+            for (NSInteger i = 0; i < 17; i++) {
+                if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
+                    senatorOneIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
+                    senatorTwoIndex =(long)dict[@"offices"][i][@"officialIndices"][1];
+                };
+                if ([dict[@"offices"][i][@"roles"]  isEqual: @"legislatorLowerBody"]) {
+                    representativeIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
+                }
+                if ([dict[@"offices"][i][@"name"]  isEqual: @"Governor"]) {
+                    governorIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
+                }
+            };
+            self.senatorOne = dict[@"officials"][senatorOneIndex][@"name"];
+            self.senatorTwo = dict[@"officials"][senatorTwoIndex][@"name"];
+            self.representative = dict[@"officials"][representativeIndex][@"name"];
+            self.governor = dict[@"officials"][governorIndex][@"name"];
+            self.stateCapital = dict[@"officials"][governorIndex][@"address"][0][@"city"];
             
             self.governorLabel= [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
             self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
@@ -133,18 +153,6 @@
     });
     
 }
-
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    [textField resignFirstResponder];
-    return YES;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES]; //dismisses the keyboard when user touches outside of the textfield
-}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -184,52 +192,54 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"civicCells" forIndexPath:indexPath];
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    TextLabelTableViewCell *civicCells = [tableView dequeueReusableCellWithIdentifier:@"civicCells"];
+    TextLabelTableViewCell *textFieldCell = [tableView dequeueReusableCellWithIdentifier:@"textFieldCell"];
+    civicCells.civicCell.numberOfLines = 0;
+    civicCells.backgroundColor = [UIColor whiteColor];
+    civicCells.civicCell.textAlignment = NSTextAlignmentCenter;
 
     if (indexPath.section  == 0) {
-        self.addressInput = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, cell.frame.size.width, cell.frame.size.height)];
-        self.addressInput.adjustsFontSizeToFitWidth = YES;
-        self.addressInput.textColor = [UIColor blackColor];
-        self.addressInput.placeholder = @"Enter your address";
-//        self.addressInput.keyboardType = UIKeyboardTypeDefault;
-//        self.addressInput.returnKeyType = UIReturnKeyDone;
-//        self.addressInput.secureTextEntry = YES;
-        [self.addressInput setEnabled:YES];
-        [cell.contentView addSubview:self.addressInput];
+        
+
+        return textFieldCell;
     }
     if (indexPath.section  == 1) {
-        cell.textLabel.text = @"FIND MY DATA";
-        cell.textLabel.backgroundColor = [UIColor greenColor];
+        civicCells.civicCell.text = @"FIND MY DATA";
+        civicCells.civicCell.backgroundColor = [UIColor greenColor];
+        return civicCells;
     }
     if (indexPath.section  == 2) {
-        cell.textLabel.text = self.governorLabel;
+        civicCells.civicCell.text = self.governorLabel;
+        return civicCells;
     }
     if (indexPath.section  == 3) {
-        cell.textLabel.text = self.senatorLabel;
+        civicCells.civicCell.text = self.senatorLabel;
+        return civicCells;
     }
     if (indexPath.section  == 4) {
-        cell.textLabel.text = self.representativeLabel;
+        civicCells.civicCell.text = self.representativeLabel;
+        return civicCells;
     }
     if (indexPath.section  == 5) {
-        cell.textLabel.text = self.stateCapitalLabel;
+        civicCells.civicCell.text = self.stateCapitalLabel;
+        return civicCells;
     }
     if (indexPath.section  == 6) {
-        cell.textLabel.text = @"ACCEPT";
-        cell.backgroundColor = [UIColor greenColor];
-    }
+        civicCells.civicCell.text = @"ACCEPT";
+        civicCells.backgroundColor = [UIColor greenColor];
+        return civicCells;
+    }else {
     
-    return cell;
+        return civicCells; }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section  == 1) {
         [self getData];
-        [self.addressInput resignFirstResponder];
+//        [self.textField resignFirstResponder];
         [tableView reloadData];
     };
-    if (indexPath.section  == 5) {
+    if (indexPath.section  == 6) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveData];
@@ -237,7 +247,7 @@
         }]];
         
         [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            self.addressInput.text = @"";
+//            self.textField.text = @"";
             [self needBetterInput];
         }]];
         
@@ -245,6 +255,32 @@
         
         //        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
     };
+}
+
+//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+//    [TextLabelTableViewCell]
+//    
+//    return YES;
+//}
+//-(void)textFieldDidBeginEditing:(UITextField *)textField {
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:(TextLabelTableViewCell*)[[textField superview] superview]]; // this should return you your current indexPath
+//    
+//    if (indexPath.section == 0) {
+//        if (indexPath.row == 0) self.textField = textField.text;
+//    } else {
+//        self.textField = textField.text;
+//    }
+//
+//}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:(TextLabelTableViewCell *)[[textField superview]superview]];
+//    self.textField = [self.tableView[indexPath.row];
+    return YES;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 /*
 // Override to support conditional editing of the table view.

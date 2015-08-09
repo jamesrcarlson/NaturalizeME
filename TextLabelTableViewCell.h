@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface TextLabelTableViewCell : UITableViewCell
+
 @property (strong, nonatomic) IBOutlet UILabel *myLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreViewLabel;
 @property (strong, nonatomic) IBOutlet UILabel *answerStudyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *wrongAnswerLabel;
+@property (strong, nonatomic) IBOutlet UITextField *addressInput;
+@property (strong, nonatomic) IBOutlet UILabel *civicCell;
+
+
+
 
 @end

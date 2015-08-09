@@ -31,7 +31,7 @@
 		61AE61F81B5F381D000CC6BD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61AE61F61B5F381D000CC6BD /* Model.xcdatamodeld */; };
 		61AE61FE1B5F3C35000CC6BD /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE61FD1B5F3C35000CC6BD /* Stack.m */; };
 		61AE62011B5F3CB0000CC6BD /* ScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61AE62001B5F3CB0000CC6BD /* ScoreController.m */; };
-		61D0C50F1B74803B00E22060 /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0C50E1B74803B00E22060 /* SetupTableViewController.m */; };
+		61D0C50F1B74803B00E22060 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D0C50E1B74803B00E22060 /* SetupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +90,8 @@
 		61AE61FD1B5F3C35000CC6BD /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Stack.m; path = ../../NaturalizeME/NaturalizeME/Stack.m; sourceTree = "<group>"; };
 		61AE61FF1B5F3CB0000CC6BD /* ScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreController.h; path = ../../NaturalizeME/NaturalizeME/ScoreController.h; sourceTree = "<group>"; };
 		61AE62001B5F3CB0000CC6BD /* ScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreController.m; path = ../../NaturalizeME/NaturalizeME/ScoreController.m; sourceTree = "<group>"; };
-		61D0C50D1B74803B00E22060 /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
-		61D0C50E1B74803B00E22060 /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
+		61D0C50D1B74803B00E22060 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		61D0C50E1B74803B00E22060 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 		618387E51B5896B100DADA6D /* NaturalizeME */ = {
 			isa = PBXGroup;
 			children = (
-				61D0C50D1B74803B00E22060 /* SetupTableViewController.h */,
-				61D0C50E1B74803B00E22060 /* SetupTableViewController.m */,
+				61D0C50D1B74803B00E22060 /* SetupViewController.h */,
+				61D0C50E1B74803B00E22060 /* SetupViewController.m */,
 				618387EA1B5896B100DADA6D /* AppDelegate.h */,
 				618387EB1B5896B100DADA6D /* AppDelegate.m */,
 				618387ED1B5896B100DADA6D /* WelcomeViewController.h */,
@@ -310,7 +310,7 @@
 				618388381B589FB800DADA6D /* Study.m in Sources */,
 				612542501B69A2B000BF75A7 /* Scores.m in Sources */,
 				61AE62011B5F3CB0000CC6BD /* ScoreController.m in Sources */,
-				61D0C50F1B74803B00E22060 /* SetupTableViewController.m in Sources */,
+				61D0C50F1B74803B00E22060 /* SetupViewController.m in Sources */,
 				618387F21B5896B100DADA6D /* StudyViewController.m in Sources */,
 				61A371901B64AB8B0088BBED /* SetupController.m in Sources */,
 				618387EC1B5896B100DADA6D /* AppDelegate.m in Sources */,

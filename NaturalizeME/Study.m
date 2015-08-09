@@ -1314,7 +1314,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
                AnswersNeededKey: @1,
                AnswerKey : @[@"Because there were 13 original colonies",
                              @"Because the stripes represent the original colonies"],
-               BadAnswerKey: @[@"Because of Appolo 13",
+               BadAnswerKey: @[@"Because of Apollo 13",
                                @"Because of the length of the Revolutionary War",
                                @"Because of the number of wars fought",
                                @"Because 13 is a lucky number",

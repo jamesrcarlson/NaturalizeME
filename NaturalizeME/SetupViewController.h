@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SetupInfo.h"
 
-@interface SetupTableViewController : UITableViewController
+@interface SetupViewController : UIViewController
 
 @property (strong) SetupInfo *civicsInfo;
 
