@@ -49,6 +49,7 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
     

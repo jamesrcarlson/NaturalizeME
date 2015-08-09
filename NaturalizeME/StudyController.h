@@ -35,11 +35,10 @@
 
 +(NSString *)explanationAtIndex:(NSInteger)index;
 
-- (void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName;
-
 - (void)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
 
 - (void)addArray:(AnswerList *)answerList;
+//-(void)loadFromPersistentStorage;
 
 - (void)save;
 

@@ -39,7 +39,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
 
 
 +(NSInteger)questionCount {
-    return [[self answers]count];
+    return self.answers.count;
 }
 
 +(NSDictionary *)questionAtIndex:(NSInteger)index {
@@ -74,13 +74,8 @@ static NSString *const ExplanationKey = @"explanationTitle";
     return [self answers][index][ExplanationKey];
 }
 
-- (void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName  {
-    self.answers[index][@"AnswerKey"][anIndex] = setName;
-}
 +(NSMutableArray *)answers {
-    AnswerList *answerList = [AnswerList new];
-    NSInteger answersCount = answerList.answers.count -1;
-    NSMutableArray *newAnswers = answerList.answers[answersCount];
+    NSMutableArray *newAnswers = [[self sharedInstance].localAnswersArray mutableCopy];
     
     return newAnswers;
 }
@@ -90,58 +85,58 @@ static NSString *const ExplanationKey = @"explanationTitle";
     AnswerList *answerList = [AnswerList new];
     NSArray * initialAnswersArray = [[NSMutableArray alloc]initWithArray:[Study storedAnswers]];
    
-    NSArray *prepData = [[NSArray alloc]initWithObjects:
-                                @{QuestionNumberKey: @"97", //need the Senator info from storage
-                                  QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
-                                  AnswersNeededKey: @1,
-                                  AnswerKey : @[senatorOne, senatorTwo],
-                                  BadAnswerKey: @[@"Joe Biden",
-                                                  @"Hilary Clinton",
-                                                  @"John Kerry",
-                                                  @"Bill Clinton",
-                                                  @"George Bush"],
-                                  ExplanationKey: @"Each State has 2 Senators."
-                                  },
-                                @{QuestionNumberKey: @"98",
-                                  QuestionTitleKey: @"Name your U.S. Representative",
-                                  AnswersNeededKey: @1,
-                                  AnswerKey : @[representative],
-                                  BadAnswerKey: @[@"John Kerry",
-                                                  @"Hillary Clinton",
-                                                  @"Bill Clinton",
-                                                  @"Joseph Biden",
-                                                  @"George Bush"],
-                                  ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
-                                  },
-                                @{QuestionNumberKey: @"99",
-                                  QuestionTitleKey: @"Who is the Governor of your state now?",
-                                  AnswersNeededKey: @1,
-                                  AnswerKey : @[governor],
-                                  BadAnswerKey: @[@"John Kerry",
-                                                  @"Hillary Clinton",
-                                                  @"Paul Vanduren",
-                                                  @"William J. Todd",
-                                                  @"Thomas Jefferson"],
-                                  ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
-                                  },
-                                @{QuestionNumberKey: @"100",
-                                  QuestionTitleKey: @"What is the capital of your state?",
-                                  AnswersNeededKey: @1,
-                                  AnswerKey : @[stateCapital],
-                                  BadAnswerKey: @[@"texas",
-                                                  @"washington",
-                                                  @"Always the city with the most people",
-                                                  @"the moon",
-                                                  @"hollywood"],
-                                  ExplanationKey: @"The state capital is where the leaders of your state conduct business."
-                                  }, nil];
+    NSArray *prepData = [[NSArray alloc]initWithObjects: @{QuestionNumberKey: @"97",
+                                                           QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
+                                                           AnswersNeededKey: @1,
+                                                           AnswerKey : @[senatorOne, senatorTwo],
+                                                           BadAnswerKey: @[@"Joe Biden",
+                                                                           @"Hilary Clinton",
+                                                                           @"John Kerry",
+                                                                           @"Bill Clinton",
+                                                                           @"George Bush"],
+                                                           ExplanationKey: @"Each State has 2 Senators."
+                                                           },
+                         @{QuestionNumberKey: @"98",
+                           QuestionTitleKey: @"Name your U.S. Representative",
+                           AnswersNeededKey: @1,
+                           AnswerKey : @[representative],
+                           BadAnswerKey: @[@"John Kerry",
+                                           @"Hillary Clinton",
+                                           @"Bill Clinton",
+                                           @"Joseph Biden",
+                                           @"George Bush"],
+                           ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
+                           },
+                         @{QuestionNumberKey: @"99",
+                           QuestionTitleKey: @"Who is the Governor of your state now?",
+                           AnswersNeededKey: @1,
+                           AnswerKey : @[governor],
+                           BadAnswerKey: @[@"John Kerry",
+                                           @"Hillary Clinton",
+                                           @"Paul Vanduren",
+                                           @"William J. Todd",
+                                           @"Thomas Jefferson"],
+                           ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
+                           },
+                         @{QuestionNumberKey: @"100",
+                           QuestionTitleKey: @"What is the capital of your state?",
+                           AnswersNeededKey: @1,
+                           AnswerKey : @[stateCapital],
+                           BadAnswerKey: @[@"texas",
+                                           @"washington",
+                                           @"Always the city with the most people",
+                                           @"the moon",
+                                           @"hollywood"],
+                           ExplanationKey: @"The state capital is where the leaders of your state conduct business."
+                           }, nil];
     self.answers = [initialAnswersArray mutableCopy];
-    [self.answers replaceObjectsInRange:NSMakeRange(96,99) withObjectsFromArray:prepData];
-//    self.answers[98][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",governor];
-//    self.answers[96][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",senatorOne];
-//    self.answers[96][@"AnswerKey"][1] = [NSString stringWithFormat:@"%@",senatorTwo];
-//    self.answers[97][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",representative];
-//    self.answers[99][@"AnswerKey"][0] = [NSString stringWithFormat:@"%@",stateCapital];
+    [self.answers addObjectsFromArray:prepData];
+    //    [self.answers replaceObjectsInRange:NSMakeRange(96,99) withObjectsFromArray:prepData];
+    //    self.answers[98][@"AnswerKey"][0] = governor;
+    //    self.answers[96][@"AnswerKey"][0] = senatorOne;
+    //    self.answers[96][@"AnswerKey"][1] = senatorTwo;
+    //    self.answers[97][@"AnswerKey"][0] = representative;
+    //    self.answers[99][@"AnswerKey"][0] = stateCapital;
     answerList.answers = self.answers;
     [self addArray:answerList];
     
@@ -169,8 +164,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
     [self saveToPersistentStorage];
 }
 
-#pragma mark - Read
-
 - (void)saveToPersistentStorage {
     NSMutableArray *entryDictionaries = [NSMutableArray new];
     for (AnswerList *answerList in self.localAnswersArray) {
@@ -180,20 +173,18 @@ static NSString *const ExplanationKey = @"explanationTitle";
     [entryDictionaries writeToFile:self.pathToFile atomically:YES];
 }
 
-- (void)loadFromPersistentStorage {
+-(void)loadFromPersistentStorage {
     
-    NSArray *answersDictionaries = [NSArray arrayWithContentsOfFile:self.pathToFile];
+    NSArray *answersArray = [NSArray arrayWithContentsOfFile:self.pathToFile];
     
-    NSMutableArray *answersArray = [NSMutableArray new];
-    for (NSDictionary *answer in answersDictionaries) {
-        [answersArray addObject:[[AnswerList alloc] initWithDictionary:answer]];
+    NSMutableArray *answersDictionary = [NSMutableArray new];
+    for (NSDictionary *answer in answersArray) {
+        [answersDictionary addObject:[[AnswerList alloc] initWithDictionary:answer]];
     }
-    
-    self.localAnswersArray = answersArray;
+    NSInteger latestArray = answersArray.count - 1;
+    self.localAnswersArray = answersArray[latestArray][@"answersArray"];
     
 }
-
-#pragma mark - Update
 
 - (void)save {
     [self saveToPersistentStorage];

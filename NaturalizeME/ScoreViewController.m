@@ -77,6 +77,7 @@
     }
     if (indexPath.row == 4) {
         cell.scoreViewLabel.text = @"Okay";
+        cell.scoreViewLabel.backgroundColor = [UIColor greenColor];
     }
     
     return cell;
