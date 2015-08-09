@@ -9,26 +9,34 @@
 #import "SetupViewController.h"
 #import "SetupInfo.h"
 #import "SetupController.h"
-#import "TextLabelTableViewCell.h"
+#import "StudyController.h"
+#import "WelcomeViewController.h"
 
-@interface SetupViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
-
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@interface SetupViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString *governorLabel;
-
 @property (strong, nonatomic) NSString *senatorLabel;
-
 @property (strong, nonatomic) NSString *representativeLabel;
-
 @property (strong, nonatomic) NSString *stateCapitalLabel;
 @property (strong) NSString * textFieldText;
-
 @property (strong) NSString *senatorOne;
 @property (strong) NSString *senatorTwo;
 @property (strong) NSString *representative;
 @property (strong) NSString *governor;
 @property (strong) NSString *stateCapital;
+@property (strong, nonatomic) IBOutlet UILabel *labelOne;
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet UILabel *labelTwo;
+@property (strong, nonatomic) IBOutlet UILabel *labelThree;
+@property (strong, nonatomic) IBOutlet UILabel *labelFour;
+@property (strong, nonatomic) IBOutlet UILabel *labelFive;
+@property (strong, nonatomic) IBOutlet UILabel *labelSix;
+@property (strong, nonatomic) IBOutlet UILabel *labelSeven;
+@property (strong, nonatomic) IBOutlet UILabel *labelEight;
+@property (strong, nonatomic) IBOutlet UILabel *labelNine;
+
+
+
 
 @end
 
@@ -38,7 +46,8 @@
     [super viewDidLoad];
     [self loadData:self.civicsInfo];
     
-
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -47,30 +56,61 @@
 
     
 }
+-(void)setLabelText {
+    self.labelOne.text = @"Please enter your full address";
+    self.labelOne.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelOne.backgroundColor = [UIColor lightGrayColor];
+    self.labelTwo.text = @"Get your Representative's information";
+    self.labelTwo.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelTwo.backgroundColor = [UIColor greenColor];
+    self.labelThree.text = self.governorLabel;
+    self.labelThree.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelFour.text = self.senatorLabel;
+    self.labelFour.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelFive.text = self.representativeLabel;
+    self.labelFive.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelSix.text = self.stateCapitalLabel;
+    self.labelSix.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelSeven.text = @"Please verify the information provided is correct before accepting it";
+    self.labelSeven.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelSeven.backgroundColor = [UIColor lightGrayColor];
+    self.labelEight.text = @"ACCEPT INFO";
+    self.labelEight.font = [UIFont fontWithName:@"Helvetica" size:22.0];
+    self.labelEight.backgroundColor = [UIColor greenColor];
+}
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self loadData:self.civicsInfo];
     
 }
 
 -(void)loadData:(SetupInfo *)civicsInfo {
     
-    NSInteger highestNumber = [SetupController sharedInstance].civicsInfo.count -1;
+    NSInteger highestNumber = [SetupController sharedInstance].civicsInfo.count - 1;
+    
     if (highestNumber >=0) {
         SetupInfo *setupInfo = [SetupController sharedInstance].civicsInfo[highestNumber];
         self.governorLabel = [NSString stringWithFormat:@"Your Governor's name is %@", setupInfo.governnor];
         self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@, and %@", setupInfo.senatorOne, setupInfo.senatorTwo];
         self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",setupInfo.representative];
         self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",setupInfo.stateCapital];
+        [self setLabelText];
+        
     }else {
+        
         self.governorLabel = @"Your Governor's name is";
         self.senatorLabel = @"Your Senator's names are";
         self.representativeLabel = @"Your Representative's name is";
         self.stateCapitalLabel = @"Your state Capital is";
-
-    }
-    [self.tableView reloadData];
+        [self setLabelText];
+        }
+        UIAlertController *firstAlertController = [UIAlertController alertControllerWithTitle:@"Make sure you are entering your Complete address" message:@"Enter your full address" preferredStyle:UIAlertControllerStyleActionSheet];
+        [firstAlertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            [self.tableView reloadData];
+        }]];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,8 +136,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
     
-    
-    NSString *stringPrep = [@"1218 W 1420 N Orem Utah" stringByReplacingOccurrencesOfString:@" " withString:@"+"]; // this NEEDS TO BE FIXED AT SOME POINT
+    NSString *stringPrep = [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSString *keyString = @"&key=AIzaSyCqdu1Nr-LcpjE3JZvm6gnGRXeirVkwuXU";
     
     NSString *urlString = [NSString stringWithFormat:@"https://www.googleapis.com/civicinfo/v2/representatives?address=%@%@", stringPrep, keyString];
@@ -107,27 +146,25 @@
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        
-        NSLog(@"%@", dict);
-        
-        
+//        NSLog(@"%@", dict);
+               
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            NSInteger senatorOneIndex = 0; //should be 0
-            NSInteger senatorTwoIndex = 0; // should be 1
-            NSInteger governorIndex = 0; // should be 5
-            NSInteger representativeIndex = 0; //should be 4
+            NSInteger senatorOneIndex = 0; //should become 0
+            NSInteger senatorTwoIndex = 0; // should become 1
+            NSInteger governorIndex = 0; // should become 5
+            NSInteger representativeIndex = 0; //should become 4
             
-            for (NSInteger i = 0; i < 17; i++) {
+            for (int i = 0; i < 17; i++) {
                 if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
-                    senatorOneIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
-                    senatorTwoIndex =(long)dict[@"offices"][i][@"officialIndices"][1];
+                    senatorOneIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
+                    senatorTwoIndex = [dict[@"offices"][i][@"officialIndices"][1]integerValue];
                 };
-                if ([dict[@"offices"][i][@"roles"]  isEqual: @"legislatorLowerBody"]) {
-                    representativeIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
+                if ([dict[@"offices"][i][@"roles"][0] isEqual: @"legislatorLowerBody"]) {
+                    representativeIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
                 }
                 if ([dict[@"offices"][i][@"name"]  isEqual: @"Governor"]) {
-                    governorIndex =(long)dict[@"offices"][i][@"officialIndices"][0];
+                    governorIndex =[dict[@"offices"][i][@"officialIndices"][0]integerValue];
                 }
             };
             self.senatorOne = dict[@"officials"][senatorOneIndex][@"name"];
@@ -140,6 +177,7 @@
             self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
             self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
             self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
+            [self setLabelText];
             [self.tableView reloadData];
         });
         
@@ -154,129 +192,52 @@
     
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 7;
-}
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [UITableViewHeaderFooterView new];
-    header.textLabel.textAlignment = NSTextAlignmentCenter;
-    if (section == 0) {
-        header.textLabel.text = @"Please enter your address";
-    }
-    if (section == 1) {
-        header.textLabel.text = @"Click below to find your representative data";
-    }
-    if (section == 2) {
-        header.textLabel.text = @"Your Governor's name is";
-    }
-    if (section == 3) {
-        header.textLabel.text = @"Your Senator's names are";
-    }
-    if (section == 4) {
-        header.textLabel.text = @"Your Representative's name is";
-    }
-    if (section == 5) {
-        header.textLabel.text = @"Your state capital is";
-    }
-    if (section == 6) {
-        header.textLabel.text = @"Please verify your data prior to submitting";
-    }
-    return header.textLabel.text;
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *cellText = @"Your Senator's names are a senators name, and senators name";
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:22.0];
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
+                                                                         attributes:@{NSFontAttributeName: cellFont}];
+    
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    return rect.size.height + 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TextLabelTableViewCell *civicCells = [tableView dequeueReusableCellWithIdentifier:@"civicCells"];
-    TextLabelTableViewCell *textFieldCell = [tableView dequeueReusableCellWithIdentifier:@"textFieldCell"];
-    civicCells.civicCell.numberOfLines = 0;
-    civicCells.backgroundColor = [UIColor whiteColor];
-    civicCells.civicCell.textAlignment = NSTextAlignmentCenter;
-
-    if (indexPath.section  == 0) {
-        
-
-        return textFieldCell;
-    }
-    if (indexPath.section  == 1) {
-        civicCells.civicCell.text = @"FIND MY DATA";
-        civicCells.civicCell.backgroundColor = [UIColor greenColor];
-        return civicCells;
-    }
-    if (indexPath.section  == 2) {
-        civicCells.civicCell.text = self.governorLabel;
-        return civicCells;
-    }
-    if (indexPath.section  == 3) {
-        civicCells.civicCell.text = self.senatorLabel;
-        return civicCells;
-    }
-    if (indexPath.section  == 4) {
-        civicCells.civicCell.text = self.representativeLabel;
-        return civicCells;
-    }
-    if (indexPath.section  == 5) {
-        civicCells.civicCell.text = self.stateCapitalLabel;
-        return civicCells;
-    }
-    if (indexPath.section  == 6) {
-        civicCells.civicCell.text = @"ACCEPT";
-        civicCells.backgroundColor = [UIColor greenColor];
-        return civicCells;
-    }else {
-    
-        return civicCells; }
+    return 9;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section  == 1) {
+    if (indexPath.row  == 2) {
         [self getData];
-//        [self.textField resignFirstResponder];
+        [self.textField resignFirstResponder];
         [tableView reloadData];
     };
-    if (indexPath.section  == 6) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
+    if (indexPath.row  == 8) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleActionSheet];
         [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self saveData];
-            [self performSegueWithIdentifier:@"acceptSetupData" sender:self];
+            WelcomeViewController *welcomeViewController = (WelcomeViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
+            [self.navigationController pushViewController:welcomeViewController animated:YES];
         }]];
         
         [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-//            self.textField.text = @"";
+            self.textField.text = @"";
             [self needBetterInput];
         }]];
         
+        [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
         [self presentViewController:alertController animated:YES completion:nil];
         
-        //        self.civicsInfo = [[SetupController sharedInstance]storeCivicsInfo:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
     };
 }
 
-//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    [TextLabelTableViewCell]
-//    
-//    return YES;
-//}
-//-(void)textFieldDidBeginEditing:(UITextField *)textField {
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:(TextLabelTableViewCell*)[[textField superview] superview]]; // this should return you your current indexPath
-//    
-//    if (indexPath.section == 0) {
-//        if (indexPath.row == 0) self.textField = textField.text;
-//    } else {
-//        self.textField = textField.text;
-//    }
-//
-//}
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:(TextLabelTableViewCell *)[[textField superview]superview]];
-//    self.textField = [self.tableView[indexPath.row];
     return YES;
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

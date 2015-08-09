@@ -11,7 +11,6 @@
 static NSString *const QuestionNumberKey = @"questionNumber";
 static NSString *const QuestionTitleKey = @"questionTitle";
 static NSString *const AnswerKey = @"answer";
-//static NSString *const AnswersKey = @"answers";
 static NSString *const AnswersNeededKey = @"answersNeeded";
 static NSString *const BadAnswerKey = @"badAnswer";
 static NSString *const ExplanationKey = @"explanationTitle";
@@ -19,67 +18,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
 
 @implementation Study
 
-+(NSInteger)questionCount {
-    return [[self answers]count];
-}
-
-+(NSDictionary *)questionAtIndex:(NSInteger)index {
-    return [self answers][index];
-}
-
-+(NSString *)questionNumberAtIndex:(NSInteger)index {
-    return [self answers][index][QuestionNumberKey];
-}
-
-+(NSString *)questionTitleAtIndex:(NSInteger)index {
-    return [self answers][index][QuestionTitleKey];
-}
-
-+(NSNumber *)answersNeededAtIndex:(NSInteger)index {
-    return [self answers][index][AnswersNeededKey];
-}
-
-+(NSInteger)answerCountAtIndex:(NSInteger)index {
-    return [[self answers][index][AnswerKey]count];
-}
-
-+(NSString *)answerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex {
-    return [self answers][ansIndex][AnswerKey][ingIndex];
-}
-
-+(NSString *)BadAnswerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex {
-    return [self answers][ansIndex][BadAnswerKey][ingIndex];
-}
-
-+(NSString *)explanationAtIndex:(NSInteger)index {
-    return [self answers][index][ExplanationKey];
-}
-
-+(void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName  {
-    self.answers[index][@"AnswerKey"][anIndex] = setName;
-}
-+(NSMutableArray *)answers {
-    NSMutableArray *newAnswers = [[NSMutableArray alloc]initWithArray:[self storedAnswers]];
-    
-    return newAnswers;
-}
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
-    self = [super init];
-    if (self) {
-        self.answers = dictionary[AnswersArrayKey];
-    }
-    return self;
-}
-
-- (NSDictionary *)dictionaryRepresentation {
-    NSDictionary *dictionary = @{
-                                 AnswersArrayKey : self.answers,
-                                 };
-    
-    return dictionary;
-}
 
 +(NSArray *)storedAnswers {
     
@@ -319,18 +257,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
                              @"7"],
                ExplanationKey: @"The Framers of the Constitution wanted senators to be independent from public opinion. They thought a fairly long, six-year term would give them this protection. They also wanted longer Senate terms to balance the shorter two-year terms of the members of the House, who would more closely follow public opinion. The Constitution puts no limit on the number of terms a senator may serve. Elections for U.S. senators take place on even-numbered years. Every two years, one-third of the senators are up for election."
                },
-//             @{QuestionNumberKey: @"20", //need the Senator info from storage
-//               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[@"Answer from storage",
-//                             @"Answer two from storage"],
-//                             BadAnswerKey: @[@"Joe Biden",
-//                             @"Hilary Clinton",
-//                             @"John Kerry",
-//                             @"Bill Clinton",
-//                             @"George Bush"],
-//               ExplanationKey: @"Each State has 2 Senators."
-//               },
              @{QuestionNumberKey: @"20",
                QuestionTitleKey: @"The House of Representatives has how many voting members?",
                AnswersNeededKey: @1,
@@ -353,17 +279,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"9"],
                ExplanationKey: @"People who live in a representative’s district are called “constituents.” Representatives tend to reflect the views of their constituents. If representatives do not do this, they may be voted out of office. The Framers of the Constitution believed that short two-year terms and frequent elections would keep representatives close to their constituents, public opinion, and more aware of local and community concerns. The Constitution puts no limit on the number of terms a representative may serve. All representatives are up for election every two years."
                },
-//             @{QuestionNumberKey: @"23",
-//               QuestionTitleKey: @"Name your U.S. Representative",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[@"answer from storage"],
-//               BadAnswerKey: @[@"John Kerry",
-//                               @"Hillary Clinton",
-//                               @"Bill Clinton",
-//                               @"Joseph Biden",
-//                               @"George Bush"],
-//               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
-//               },
              @{QuestionNumberKey: @"22",
                QuestionTitleKey: @"Who does a U.S. Senator represent?",
                AnswersNeededKey: @1,
@@ -607,28 +522,6 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                @"Select the next Chief Justice"],
                ExplanationKey: @"In the United States, the federal and state governments both hold power. Before the Constitution, the 13 colonies governed themselves individually much like state governments. It was not until the Articles of Confederation and then the Constitution that a national or federal government was established."
                },
-//             @{QuestionNumberKey: @"43",
-//               QuestionTitleKey: @"Who is the Governor of your state now?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[@"Answer from storage"],
-//               BadAnswerKey: @[@"John Kerry",
-//                               @"Hillary Clinton",
-//                               @"Paul Vanduren",
-//                               @"William J. Todd",
-//                               @"Thomas Jefferson"],
-//               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
-//               },
-//             @{QuestionNumberKey: @"44",
-//               QuestionTitleKey: @"What is the capital of your state?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[@"answer from storage"],
-//               BadAnswerKey: @[@"texas",
-//                               @"washington",
-//                               @"Always the city with the most people",
-//                               @"the moon",
-//                               @"hollywood"],
-//               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
-//               },
              @{QuestionNumberKey: @"41",
                QuestionTitleKey: @"What are the two major political parties in the United States?",
                AnswersNeededKey: @1,
@@ -1375,7 +1268,51 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                    @"Boxing Day"],
                ExplanationKey: @"Many Americans celebrate national or federal holidays. These holidays often honor people or events in our American heritage. These holidays are “national” in a legal sense only for federal institutions and in the District of Columbia. Typically, federal offices are closed on these holidays. Each state can decide whether or not to celebrate the holiday. Businesses, schools, and commercial establishments may choose whether or not to close on these days. Since 1971, federal holidays are observed on Mondays except for New Year’s Day, Independence Day, Veterans Day, Thanksgiving, and Christmas."
                    },
-             
+             @{QuestionNumberKey: @"97", //need the Senator info from storage
+               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[],
+               BadAnswerKey: @[@"Joe Biden",
+                               @"Hilary Clinton",
+                               @"John Kerry",
+                               @"Bill Clinton",
+                               @"George Bush"],
+               ExplanationKey: @"Each State has 2 Senators."
+               },
+             @{QuestionNumberKey: @"98",
+               QuestionTitleKey: @"Name your U.S. Representative",
+               AnswersNeededKey: @1,
+               AnswerKey : @[@"answer from storage"],
+               BadAnswerKey: @[@"John Kerry",
+                               @"Hillary Clinton",
+                               @"Bill Clinton",
+                               @"Joseph Biden",
+                               @"George Bush"],
+               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
+               },
+             @{QuestionNumberKey: @"99",
+               QuestionTitleKey: @"Who is the Governor of your state now?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[@"Answer from storage"],
+               BadAnswerKey: @[@"John Kerry",
+                               @"Hillary Clinton",
+                               @"Paul Vanduren",
+                               @"William J. Todd",
+                               @"Thomas Jefferson"],
+               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
+               },
+             @{QuestionNumberKey: @"100",
+               QuestionTitleKey: @"What is the capital of your state?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[@"answer from storage"],
+               BadAnswerKey: @[@"texas",
+                               @"washington",
+                               @"Always the city with the most people",
+                               @"the moon",
+                               @"hollywood"],
+               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
+               },
+
              ];
 }
 

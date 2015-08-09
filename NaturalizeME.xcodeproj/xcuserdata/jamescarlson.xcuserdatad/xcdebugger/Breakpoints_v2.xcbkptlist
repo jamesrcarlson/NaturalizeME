@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NaturalizeME/SetupViewController.m"
-            timestampString = "460774435.720491"
+            filePath = "NaturalizeME/StudyController.m"
+            timestampString = "460791892.061145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
-            landmarkName = "-textFieldShouldReturn:"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "+answers"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NaturalizeME/SetupViewController.m"
-            timestampString = "460774776.019578"
+            filePath = "NaturalizeME/StudyController.m"
+            timestampString = "460840026.625243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-getData"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-createFullArrayWithCivicsInfoGvernor:senatorOneName:senatorTwoName:repName:stateCapitalName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NaturalizeME/StudyController.m"
+            timestampString = "460836071.762376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "+answers"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NaturalizeME/StudyController.m"
+            timestampString = "460840026.625243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-createFullArrayWithCivicsInfoGvernor:senatorOneName:senatorTwoName:repName:stateCapitalName:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NaturalizeME/StudyController.m"
+            timestampString = "460840011.113991"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "-createFullArrayWithCivicsInfoGvernor:senatorOneName:senatorTwoName:repName:stateCapitalName:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,6 +10,7 @@
 #import "QuizViewController.h"
 #import "StudyViewController.h"
 #import "ScoreHistoryViewController.h"
+#import "SetupController.h"
 
 @interface WelcomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -19,6 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSInteger initialSetup = [SetupController sharedInstance].civicsInfo.count;
+    if (initialSetup == 0) {
+        [self performSegueWithIdentifier:@"setupInfo" sender:self];
+    };
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

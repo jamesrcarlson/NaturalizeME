@@ -8,14 +8,38 @@
 
 #import <Foundation/Foundation.h>
 #import "Study.h"
+#import "AnswerList.h"
 
 @interface StudyController : NSObject
 
 + (StudyController *)sharedInstance;
 
-- (Study *)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
+@property (nonatomic, retain) NSString * question;
+@property (nonatomic, strong, readonly) NSMutableArray * answers;
 
-- (void)addArray:(Study *)study;
++(NSInteger)questionCount;
+
++(NSDictionary *)questionAtIndex:(NSInteger)index;
+
++(NSString *)questionNumberAtIndex:(NSInteger)index;
+
++(NSString *)questionTitleAtIndex:(NSInteger)index;
+
++(NSNumber *)answersNeededAtIndex:(NSInteger)index;
+
++(NSInteger)answerCountAtIndex:(NSInteger)index;
+
++(NSString *)answerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex;
+
++(NSString *)BadAnswerAtIndex:(NSInteger)ingIndex inQuestionAtIndex:(NSInteger)ansIndex;
+
++(NSString *)explanationAtIndex:(NSInteger)index;
+
+- (void)setAnswerAtIndex:(NSInteger)anIndex forQuestionAtIndex:(NSInteger)index WithName:(NSString *)setName;
+
+- (void)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
+
+- (void)addArray:(AnswerList *)answerList;
 
 - (void)save;
 
