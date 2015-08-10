@@ -9,7 +9,7 @@
 #import "StudyController.h"
 #import "AnswerList.h"
 #import "Study.h"
-
+static NSArray * anotherAnswerArray;
 static NSString *const QuestionNumberKey = @"questionNumber";
 static NSString *const QuestionTitleKey = @"questionTitle";
 static NSString *const AnswerKey = @"answer";
@@ -19,8 +19,8 @@ static NSString *const ExplanationKey = @"explanationTitle";
 
 @interface StudyController ()
 
-@property (strong, nonatomic)NSArray *localAnswersArray;
-@property (strong, nonatomic)NSMutableArray *answers;
+@property (strong, nonatomic) NSArray *localAnswersArray;
+@property (strong, nonatomic) NSMutableArray *answers;
 
 @end
 
@@ -32,11 +32,9 @@ static NSString *const ExplanationKey = @"explanationTitle";
     dispatch_once(&onceToken, ^{
         sharedInstance = [StudyController new];
         [sharedInstance loadFromPersistentStorage];
-        
     });
     return sharedInstance;
 }
-
 
 +(NSInteger)questionCount {
     return self.answers.count;
@@ -75,7 +73,13 @@ static NSString *const ExplanationKey = @"explanationTitle";
 }
 
 +(NSMutableArray *)answers {
-    NSMutableArray *newAnswers = [[self sharedInstance].localAnswersArray mutableCopy];
+//    [[self sharedInstance]loadFromPersistentStorage];
+//    AnswerList *answerList = [AnswerList new];
+//    NSInteger latestArray = answersArray.count - 1;
+//    self.localAnswersArray = answersArray[latestArray][@"answersArray"];
+    NSMutableArray *newAnswers = [[NSMutableArray alloc]initWithArray:anotherAnswerArray];
+
+    
     
     return newAnswers;
 }
@@ -137,7 +141,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
     //    self.answers[96][@"AnswerKey"][1] = senatorTwo;
     //    self.answers[97][@"AnswerKey"][0] = representative;
     //    self.answers[99][@"AnswerKey"][0] = stateCapital;
-    answerList.answers = self.answers;
+    answerList.answers = [[NSMutableArray alloc]initWithArray:self.answers];
     [self addArray:answerList];
     
 }
@@ -181,9 +185,10 @@ static NSString *const ExplanationKey = @"explanationTitle";
     for (NSDictionary *answer in answersArray) {
         [answersDictionary addObject:[[AnswerList alloc] initWithDictionary:answer]];
     }
-    NSInteger latestArray = answersArray.count - 1;
-    self.localAnswersArray = answersArray[latestArray][@"answersArray"];
     
+    NSInteger latestArray = answersArray.count - 1;
+    self.localAnswersArray = answersDictionary;
+    anotherAnswerArray = [[NSMutableArray alloc]initWithArray:answersArray[latestArray][@"answersArray"]];
 }
 
 - (void)save {
@@ -199,7 +204,7 @@ static NSString *const ExplanationKey = @"explanationTitle";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     //2) Create the full file path by appending the desired file name
-    NSString *pathToFile = [documentsDirectory stringByAppendingPathComponent:@"entries.plist"];
+    NSString *pathToFile = [documentsDirectory stringByAppendingPathComponent:@"answerList.plist"];
     
     return pathToFile;
 }

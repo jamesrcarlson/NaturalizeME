@@ -16,6 +16,9 @@
 
 @property (nonatomic, retain) NSString * question;
 @property (nonatomic, strong, readonly) NSMutableArray * answers;
+@property (strong, nonatomic, readonly) NSArray *localAnswersArray;
+
+//@property (nonatomic, strong)NSArray *anotherAnswersArray;
 
 +(NSInteger)questionCount;
 
@@ -38,7 +41,6 @@
 - (void)createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital;
 
 - (void)addArray:(AnswerList *)answerList;
-//-(void)loadFromPersistentStorage;
 
 - (void)save;
 

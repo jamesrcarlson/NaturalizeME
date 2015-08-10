@@ -41,7 +41,6 @@
     [self saveToPersistentStorage];
 
     return civicsInfo;
-
   
 }
 

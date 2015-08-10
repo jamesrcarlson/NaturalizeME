@@ -18,7 +18,7 @@ static NSString * const AnswersArrayKey = @"answersArray";
 
 - (NSDictionary *)dictionaryRepresentation;
 
-@property (strong)NSMutableArray *answers;
+@property (strong, nonatomic)NSMutableArray *answers;
 
 
 @end

@@ -12,7 +12,7 @@
 #import "StudyController.h"
 #import "WelcomeViewController.h"
 
-@interface SetupViewController () <UITextFieldDelegate>
+@interface SetupViewController () <UITextFieldDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (strong, nonatomic) NSString *governorLabel;
 @property (strong, nonatomic) NSString *senatorLabel;
@@ -47,6 +47,14 @@
     [self loadData:self.civicsInfo];
     
     
+    
+    
+    UIAlertController *firstAlertController = [UIAlertController alertControllerWithTitle:@"Make sure you are entering your Complete address" message:@"Enter your full address" preferredStyle:UIAlertControllerStyleAlert];
+    [firstAlertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [self.tableView reloadData];
+    }]];
+    [self presentViewController:firstAlertController animated:YES completion:nil];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -105,11 +113,6 @@
         self.stateCapitalLabel = @"Your state Capital is";
         [self setLabelText];
         }
-        UIAlertController *firstAlertController = [UIAlertController alertControllerWithTitle:@"Make sure you are entering your Complete address" message:@"Enter your full address" preferredStyle:UIAlertControllerStyleActionSheet];
-        [firstAlertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            [self.tableView reloadData];
-        }]];
     
 }
 
@@ -122,6 +125,8 @@
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"The Address you type in should be exact and accurate?" message:@"If the data is still not loading, please us the 'Enter Manually' option" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
@@ -218,10 +223,14 @@
         [tableView reloadData];
     };
     if (indexPath.row  == 8) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
         [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
             [self saveData];
+            
             WelcomeViewController *welcomeViewController = (WelcomeViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
+            
             [self.navigationController pushViewController:welcomeViewController animated:YES];
         }]];
         
@@ -231,6 +240,7 @@
         }]];
         
         [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+        
         [self presentViewController:alertController animated:YES completion:nil];
         
     };
@@ -243,6 +253,8 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
