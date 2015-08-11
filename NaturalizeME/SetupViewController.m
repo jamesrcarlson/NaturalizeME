@@ -240,7 +240,8 @@
         }]];
         
         [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
-        
+
+        [StudyController sharedInstance];
         [self presentViewController:alertController animated:YES completion:nil];
         
     };

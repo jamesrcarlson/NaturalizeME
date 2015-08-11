@@ -48,15 +48,16 @@ static NSString * const showScoreSegue = @"showScores";
 
 @implementation QuizViewController
 
--(void)viewWillAppear:(BOOL)animated {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [StudyController sharedInstance];
-    });
-}
+//-(void)viewWillAppear:(BOOL)animated {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [StudyController sharedInstance];
+//    });
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [StudyController sharedInstance];
+
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
     
