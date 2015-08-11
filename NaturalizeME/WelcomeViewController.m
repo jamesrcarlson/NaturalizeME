@@ -11,6 +11,7 @@
 #import "StudyViewController.h"
 #import "ScoreHistoryViewController.h"
 #import "SetupController.h"
+#import "StudyController.h"
 
 @interface WelcomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -24,7 +25,12 @@
     NSInteger initialSetup = [SetupController sharedInstance].civicsInfo.count;
     if (initialSetup == 0) {
         [self performSegueWithIdentifier:@"setupInfo" sender:self];
-    };
+    } /*else {
+       dispatch_async(dispatch_get_main_queue(), ^{
+           [StudyController sharedInstance];
+       });
+    }*/
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
