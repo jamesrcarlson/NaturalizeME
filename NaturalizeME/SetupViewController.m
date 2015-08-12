@@ -229,9 +229,8 @@
             
             [self saveData];
             
-            WelcomeViewController *welcomeViewController = (WelcomeViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
-            
-            [self.navigationController pushViewController:welcomeViewController animated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+
         }]];
         
         [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
@@ -239,9 +238,8 @@
             [self needBetterInput];
         }]];
         
-        [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
+//        [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
 
-        [StudyController sharedInstance];
         [self presentViewController:alertController animated:YES completion:nil];
         
     };

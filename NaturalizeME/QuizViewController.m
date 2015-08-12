@@ -56,8 +56,8 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [StudyController sharedInstance];
-
+    NSInteger numberOfQuestions = [StudyController sharedInstance].answers.count;
+    NSLog(@"%ld", numberOfQuestions);
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
     

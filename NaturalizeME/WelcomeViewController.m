@@ -84,6 +84,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
+        [StudyController sharedInstance];
         QuizViewController *quizviewController = (QuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
         [self.navigationController pushViewController:quizviewController animated:YES];
 
