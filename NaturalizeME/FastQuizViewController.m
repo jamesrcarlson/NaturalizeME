@@ -1,12 +1,12 @@
 //
-//  QuizViewController.m
+//  FastQuizViewController.m
 //  NaturalizeME
 //
-//  Created by James Carlson on 7/16/15.
+//  Created by James Carlson on 8/11/15.
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
-#import "QuizViewController.h"
+#import "FastQuizViewController.h"
 #import "TextLabelTableViewCell.h"
 #import "StudyController.h"
 #import "ScoreViewController.h"
@@ -14,13 +14,12 @@
 #import "SetupController.h"
 #import "AnswerStudyViewController.h"
 
-
 static NSString * const showScoreSegue = @"showScores";
 
-@interface QuizViewController () <UITableViewDelegate, UITableViewDataSource>
-
+@interface FastQuizViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong)NSMutableArray *holderArray;
 
 @property (nonatomic, assign)NSInteger holderArrayNumber;
@@ -45,25 +44,24 @@ static NSString * const showScoreSegue = @"showScores";
 
 @end
 
-@implementation QuizViewController
-
-//-(void)viewWillAppear:(BOOL)animated {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [StudyController sharedInstance];
-//    });
-//}
+@implementation FastQuizViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     StudyController *study =[StudyController new];
     [study loadFromPersistentStorage];
-//    NSInteger numberOfQuestions = study.answers.count;
-//    NSLog(@"%ld", numberOfQuestions);
+    //    NSInteger numberOfQuestions = study.answers.count;
+    //    NSLog(@"%ld", numberOfQuestions);
     
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
-    
-    self.holderArray = [[NSMutableArray alloc]initWithArray:[self questionIndexNumbers]];
+    NSMutableArray *tmpArray = [[NSMutableArray alloc]initWithArray:[self questionIndexNumbers]];
+    self.holderArray = [NSMutableArray new];
+    for (NSInteger i=0; i<10; i++) {
+        NSInteger indexToAdd = arc4random_uniform((int)tmpArray.count);
+        [self.holderArray addObject:self.questionIndexNumbers[indexToAdd]];
+        [tmpArray removeObjectAtIndex:indexToAdd];
+    }
     
     self.currentScores = 0;
     self.totalAnswersGiven = 0;
@@ -98,34 +96,34 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
-    cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
-    cell.myLabel.textAlignment = NSTextAlignmentCenter;
-    cell.myLabel.numberOfLines = 0;
+    cell.fastQuizLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
+    cell.fastQuizLabel.textAlignment = NSTextAlignmentCenter;
+    cell.fastQuizLabel.numberOfLines = 0;
     if (indexPath.row == 0) {
-        cell.myLabel.text = self.questionTitle;
-        cell.myLabel.font = [UIFont boldSystemFontOfSize:30];
+        cell.fastQuizLabel.text = self.questionTitle;
+        cell.fastQuizLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
-        cell.myLabel.textColor = [UIColor whiteColor];
+        cell.fastQuizLabel.textColor = [UIColor whiteColor];
         
     }
     if (indexPath.row == 1) {
-        cell.myLabel.text = self.answerOne;
+        cell.fastQuizLabel.text = self.answerOne;
     }
     if (indexPath.row == 2) {
-        cell.myLabel.text = self.answerTwo;
+        cell.fastQuizLabel.text = self.answerTwo;
     }
     if (indexPath.row == 3) {
-        cell.myLabel.text = self.answerThree;
+        cell.fastQuizLabel.text = self.answerThree;
     }
     if (indexPath.row == 4) {
-        cell.myLabel.text = self.answerFour;
+        cell.fastQuizLabel.text = self.answerFour;
     }
     if (indexPath.row == 5) {
-        cell.myLabel.text = @"Quit and see scores";
-        cell.myLabel.backgroundColor = [UIColor lightGrayColor];
+        cell.fastQuizLabel.text = @"Quit and see scores";
+        cell.fastQuizLabel.backgroundColor = [UIColor lightGrayColor];
     }
     if (indexPath.row == 6) {
-        cell.myLabel.text = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
+        cell.fastQuizLabel.text = [NSString stringWithFormat:@"Question %ld of 10", (long)self.totalAnswersGiven + 1];
     }
     
     return cell;
@@ -135,7 +133,7 @@ static NSString * const showScoreSegue = @"showScores";
     
     if (self.questionNumber == 8 || self.questionNumber == 33 || self.questionNumber == 46 || self.questionNumber == 50 || self.questionNumber == 95) {
         
-                
+        
         if (indexPath.row == 1) {
             self.numberOfSelcted++;
             
@@ -409,7 +407,7 @@ static NSString * const showScoreSegue = @"showScores";
             }
         }
         if (indexPath.row == 3) {
-
+            
             for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
                 if (self.answerThree == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
@@ -434,7 +432,7 @@ static NSString * const showScoreSegue = @"showScores";
             
         }
         if (indexPath.row == 4) {
-
+            
             for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
                 if (self.answerFour == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
@@ -502,24 +500,27 @@ static NSString * const showScoreSegue = @"showScores";
         [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
         [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle]];
         [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[StudyController questionNumberAtIndex:self.questionNumber]]];
-    });
-    self.totalAnswersGiven++;
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You got it wrong" message:@"Would you like to see the answer?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You got it wrong" message:@"Would you like to see the answer?" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
+        
         AnswerStudyViewController *answerStudyViewController = (AnswerStudyViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"AnswerStudyViewController"];
         [self.navigationController pushViewController:answerStudyViewController animated:YES];
         
     }]];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-
+        
         [self.tableView reloadData];
         
     }]];
     
     [self presentViewController:alertController animated:YES completion:nil];
+        
+    });
+    self.totalAnswersGiven++;
+    
+    
     
 }
 
@@ -713,4 +714,6 @@ static NSString * const showScoreSegue = @"showScores";
     answerViewController.questionIndex = self.questionNumber;
     
 }
+
+
 @end

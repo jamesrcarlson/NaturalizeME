@@ -46,14 +46,13 @@
     [super viewDidLoad];
     [self loadData:self.civicsInfo];
     
-    
-    
-    
-    UIAlertController *firstAlertController = [UIAlertController alertControllerWithTitle:@"Make sure you are entering your Complete address" message:@"Enter your full address" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *firstAlertController = [UIAlertController alertControllerWithTitle:@"You must complete this step prior to begining your studies \nMake sure you are entering your Complete address\nAnd that you Representative's information is displayed" message:@"Enter your full address" preferredStyle:UIAlertControllerStyleAlert];
     [firstAlertController addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         [self.tableView reloadData];
     }]];
+    
+
     [self presentViewController:firstAlertController animated:YES completion:nil];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -106,7 +105,7 @@
         [self setLabelText];
         
     }else {
-        
+        [self.navigationController setNavigationBarHidden:YES];
         self.governorLabel = @"Your Governor's name is";
         self.senatorLabel = @"Your Senator's names are";
         self.representativeLabel = @"Your Representative's name is";
@@ -151,14 +150,13 @@
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//        NSLog(@"%@", dict);
-               
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            NSInteger senatorOneIndex = 0; //should become 0
-            NSInteger senatorTwoIndex = 0; // should become 1
-            NSInteger governorIndex = 0; // should become 5
-            NSInteger representativeIndex = 0; //should become 4
+            NSInteger senatorOneIndex = 0;
+            NSInteger senatorTwoIndex = 0;
+            NSInteger governorIndex = 0;
+            NSInteger representativeIndex = 0;
             
             for (int i = 0; i < 17; i++) {
                 if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
@@ -238,8 +236,6 @@
             [self needBetterInput];
         }]];
         
-//        [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:self.governor senatorOneName:self.senatorOne senatorTwoName:self.senatorTwo repName:self.representative stateCapitalName:self.stateCapital];
-
         [self presentViewController:alertController animated:YES completion:nil];
         
     };

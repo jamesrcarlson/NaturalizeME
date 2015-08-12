@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    StudyController *study =[StudyController new];
+    [study loadFromPersistentStorage];
     
 //    [StudyController sharedInstance]
     // Do any additional setup after loading the view, typically from a nib.

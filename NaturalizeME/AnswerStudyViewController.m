@@ -20,7 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[self.navigationItem backBarButtonItem]setAction:@selector(popViewController)];
 
+}
+-(void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 

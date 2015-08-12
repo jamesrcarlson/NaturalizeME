@@ -42,6 +42,8 @@
 
 - (void)addArray:(AnswerList *)answerList;
 
+-(void)loadFromPersistentStorage;
+
 - (void)save;
 
 @end

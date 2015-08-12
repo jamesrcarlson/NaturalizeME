@@ -7,9 +7,11 @@
 //
 
 #import "WelcomeViewController.h"
+#import "FastQuizViewController.h"
 #import "QuizViewController.h"
 #import "StudyViewController.h"
 #import "ScoreHistoryViewController.h"
+#import "SetupViewController.h"
 #import "SetupController.h"
 #import "StudyController.h"
 
@@ -24,12 +26,13 @@
     
     NSInteger initialSetup = [SetupController sharedInstance].civicsInfo.count;
     if (initialSetup == 0) {
-        [self performSegueWithIdentifier:@"setupInfo" sender:self];
+        SetupViewController *setupviewController = (SetupViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"SetupViewController"];
+        [self.navigationController pushViewController:setupviewController animated:YES];
     } /*else {
-       dispatch_async(dispatch_get_main_queue(), ^{
-           [StudyController sharedInstance];
-       });
-    }*/
+//       dispatch_async(dispatch_get_main_queue(), ^{
+//           [StudyController sharedInstance];
+//       });
+//    }*/
     
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -84,9 +87,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        [StudyController sharedInstance];
-        QuizViewController *quizviewController = (QuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
-        [self.navigationController pushViewController:quizviewController animated:YES];
+        FastQuizViewController *fastQuizviewController = (FastQuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"FastQuizViewController"];
+        [self.navigationController pushViewController:fastQuizviewController animated:YES];
 
     }
     if (indexPath.row == 1) {
