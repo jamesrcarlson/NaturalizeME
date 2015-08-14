@@ -9,6 +9,7 @@
 #import "ScoreHistoryViewController.h"
 #import "ScoreController.h"
 #import "WrongAnswerViewController.h"
+#import "Scores.h"
 
 @interface ScoreHistoryViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Score History";
+//    self.navigationItem.rightBarButtonItem = self.editButtonItem;//consider adding later. 
 
 }
 
@@ -55,6 +57,13 @@
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
+
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
+        [[ScoreController sharedInstance]removeScore:scores];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
+    }
 }
 
 

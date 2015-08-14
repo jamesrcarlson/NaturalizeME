@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Scores.h"
 
 @interface ScoreHistoryViewController : UIViewController
+
+@property (strong) Scores *scores;
 
 @end
