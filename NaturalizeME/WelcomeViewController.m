@@ -13,7 +13,7 @@
 #import "ScoreHistoryViewController.h"
 #import "SetupViewController.h"
 #import "SetupController.h"
-#import "StudyController.h"
+#import "QuestionController.h"
 
 @interface WelcomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -28,14 +28,8 @@
     if (initialSetup == 0) {
         SetupViewController *setupviewController = (SetupViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"SetupViewController"];
         [self.navigationController pushViewController:setupviewController animated:YES];
-    } /*else {
-//       dispatch_async(dispatch_get_main_queue(), ^{
-//           [StudyController sharedInstance];
-//       });
-//    }*/
+    }
     
-    
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,7 +50,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return 4;
 }
 

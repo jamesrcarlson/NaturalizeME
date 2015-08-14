@@ -6,17 +6,12 @@
 //  Copyright (c) 2015 JC2 Dev. All rights reserved.
 //
 
-#import "Study.h"
-
-static NSString *const QuestionNumberKey = @"questionNumber";
-static NSString *const QuestionTitleKey = @"questionTitle";
-static NSString *const AnswerKey = @"answer";
-static NSString *const AnswersNeededKey = @"answersNeeded";
-static NSString *const BadAnswerKey = @"badAnswer";
-static NSString *const ExplanationKey = @"explanationTitle";
+#import "QuestionTemplateController.h"
 
 
-@implementation Study
+
+
+@implementation QuestionTemplateController
 
 
 +(NSArray *)storedAnswers {
@@ -1268,50 +1263,51 @@ static NSString *const ExplanationKey = @"explanationTitle";
                                    @"Boxing Day"],
                ExplanationKey: @"Many Americans celebrate national or federal holidays. These holidays often honor people or events in our American heritage. These holidays are “national” in a legal sense only for federal institutions and in the District of Columbia. Typically, federal offices are closed on these holidays. Each state can decide whether or not to celebrate the holiday. Businesses, schools, and commercial establishments may choose whether or not to close on these days. Since 1971, federal holidays are observed on Mondays except for New Year’s Day, Independence Day, Veterans Day, Thanksgiving, and Christmas."
                    },
-//             @{QuestionNumberKey: @"97", //need the Senator info from storage
-//               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[],
-//               BadAnswerKey: @[@"Joe Biden",
-//                               @"Hilary Clinton",
-//                               @"John Kerry",
-//                               @"Bill Clinton",
-//                               @"George Bush"],
-//               ExplanationKey: @"Each State has 2 Senators."
-//               },
-//             @{QuestionNumberKey: @"98",
-//               QuestionTitleKey: @"Name your U.S. Representative",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[],
-//               BadAnswerKey: @[@"John Kerry",
-//                               @"Hillary Clinton",
-//                               @"Bill Clinton",
-//                               @"Joseph Biden",
-//                               @"George Bush"],
-//               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
-//               },
-//             @{QuestionNumberKey: @"99",
-//               QuestionTitleKey: @"Who is the Governor of your state now?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[],
-//               BadAnswerKey: @[@"John Kerry",
-//                               @"Hillary Clinton",
-//                               @"Paul Vanduren",
-//                               @"William J. Todd",
-//                               @"Thomas Jefferson"],
-//               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
-//               },
-//             @{QuestionNumberKey: @"100",
-//               QuestionTitleKey: @"What is the capital of your state?",
-//               AnswersNeededKey: @1,
-//               AnswerKey : @[],
-//               BadAnswerKey: @[@"texas",
-//                               @"washington",
-//                               @"Always the city with the most people",
-//                               @"the moon",
-//                               @"hollywood"],
-//               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
-//               },
+#warning make sure you fix this - add the civics data
+             @{QuestionNumberKey: @"97", //need the Senator info from storage
+               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[],
+               BadAnswerKey: @[@"Joe Biden",
+                               @"Hilary Clinton",
+                               @"John Kerry",
+                               @"Bill Clinton",
+                               @"George Bush"],
+               ExplanationKey: @"Each State has 2 Senators."
+               },
+             @{QuestionNumberKey: @"98",
+               QuestionTitleKey: @"Name your U.S. Representative",
+               AnswersNeededKey: @1,
+               AnswerKey : @[],
+               BadAnswerKey: @[@"John Kerry",
+                               @"Hillary Clinton",
+                               @"Bill Clinton",
+                               @"Joseph Biden",
+                               @"George Bush"],
+               ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
+               },
+             @{QuestionNumberKey: @"99",
+               QuestionTitleKey: @"Who is the Governor of your state now?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[],
+               BadAnswerKey: @[@"John Kerry",
+                               @"Hillary Clinton",
+                               @"Paul Vanduren",
+                               @"William J. Todd",
+                               @"Thomas Jefferson"],
+               ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
+               },
+             @{QuestionNumberKey: @"100",
+               QuestionTitleKey: @"What is the capital of your state?",
+               AnswersNeededKey: @1,
+               AnswerKey : @[],
+               BadAnswerKey: @[@"texas",
+                               @"washington",
+                               @"Always the city with the most people",
+                               @"the moon",
+                               @"hollywood"],
+               ExplanationKey: @"The state capital is where the leaders of your state conduct business."
+               },
 
              ];
 }

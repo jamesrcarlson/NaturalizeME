@@ -7,7 +7,7 @@
 //
 
 #import "AnswerStudyViewController.h"
-#import "StudyController.h"
+#import "QuestionController.h"
 #import "TextLabelTableViewCell.h"
 
 //static CGFloat margin = 15;
@@ -56,7 +56,7 @@
     UITableViewHeaderFooterView *header = [UITableViewHeaderFooterView new];
     header.textLabel.textAlignment = NSTextAlignmentCenter;
     if (section == 0) {
-        header.textLabel.text = [NSString stringWithFormat:@"Question #%@",[StudyController questionNumberAtIndex:self.questionIndex]];
+        header.textLabel.text = [NSString stringWithFormat:@"Question #%@",[QuestionController questionNumberAtIndex:self.questionIndex]];
     }
     if (section == 1) {
         header.textLabel.text = @"The possible Answers";
@@ -70,20 +70,21 @@
     
     TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"answerCell"];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     cell.answerStudyLabel.numberOfLines = 0;
     if (indexPath.section == 0) {
-        cell.answerStudyLabel.text = [StudyController questionTitleAtIndex:self.questionIndex];
+        cell.answerStudyLabel.text = [QuestionController questionTitleAtIndex:self.questionIndex];
         cell.answerStudyLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
         cell.answerStudyLabel.textColor = [UIColor whiteColor];
     }
     if (indexPath.section == 1) {
-        cell.answerStudyLabel.text = [StudyController answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
+        cell.answerStudyLabel.text = [QuestionController answerAtIndex:indexPath.row inQuestionAtIndex:self.questionIndex];
     }
     if (indexPath.section == 2) {
         cell.answerStudyLabel.textAlignment = NSTextAlignmentLeft;
-        cell.answerStudyLabel.text = [StudyController explanationAtIndex:self.questionIndex];
-        cell.answerStudyLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0];
+        cell.answerStudyLabel.text = [QuestionController explanationAtIndex:self.questionIndex];
+        cell.answerStudyLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     }
     
     return cell;
@@ -100,7 +101,7 @@
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             
-        NSString *cellText = [StudyController explanationAtIndex:self.questionIndex];
+        NSString *cellText = [QuestionController explanationAtIndex:self.questionIndex];
         UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:22.0];
         
         NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
@@ -125,7 +126,7 @@
         return 1;
     }
     if (section == 1) {
-        return [StudyController answerCountAtIndex:self.questionIndex];
+        return [QuestionController answerCountAtIndex:self.questionIndex];
     }
     if (section == 2) {
         return 1;

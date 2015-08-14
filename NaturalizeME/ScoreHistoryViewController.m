@@ -45,6 +45,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scores"];
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
     cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     cell.textLabel.text = [NSString stringWithFormat:@"Score # %@ \nWith a score of %@ out of %@",@(indexPath.row +1),scores.quizScore, scores.answersCompleted];
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@",[ScoreController sharedInstance].practiceScores[indexPath.row]];
     return cell;

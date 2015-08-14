@@ -9,7 +9,7 @@
 #import "SetupViewController.h"
 #import "SetupInfo.h"
 #import "SetupController.h"
-#import "StudyController.h"
+#import "QuestionController.h"
 #import "WelcomeViewController.h"
 
 @interface SetupViewController () <UITextFieldDelegate, UIPopoverPresentationControllerDelegate>

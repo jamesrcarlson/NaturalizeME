@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Study.h"
+#import "QuestionTemplateController.h"
 
 @interface AnswerStudyViewController : UIViewController
 
-@property (strong, nonatomic) Study *answer;
+@property (strong, nonatomic) QuestionTemplateController *answer;
 @property (assign) NSInteger questionIndex;
 
 @end

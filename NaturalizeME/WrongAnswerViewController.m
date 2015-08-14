@@ -55,7 +55,7 @@
     TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wrongAnswer"];
     cell.wrongAnswerLabel.text = [NSString stringWithFormat:@"Question number %@ \n%@",self.scores.answerNumber[indexPath.row],self.scores.wrongAnswer[indexPath.row]];
     cell.wrongAnswerLabel.numberOfLines = 0;
-    cell.wrongAnswerLabel.font = [UIFont fontWithName:@"Helvetica" size:20.0];
+    cell.wrongAnswerLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20.0];
     return cell;
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSIndexPath *)indexPath {

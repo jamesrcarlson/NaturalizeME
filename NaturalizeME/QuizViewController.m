@@ -8,7 +8,7 @@
 
 #import "QuizViewController.h"
 #import "TextLabelTableViewCell.h"
-#import "StudyController.h"
+#import "QuestionController.h"
 #import "ScoreViewController.h"
 #import "ScoreController.h"
 #import "SetupController.h"
@@ -55,10 +55,6 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    StudyController *study =[StudyController new];
-    [study loadFromPersistentStorage];
-//    NSInteger numberOfQuestions = study.answers.count;
-//    NSLog(@"%ld", numberOfQuestions);
     
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
@@ -81,6 +77,7 @@ static NSString * const showScoreSegue = @"showScores";
     [self.view addSubview:self.wrongAnswer];
     
     [self setQuestionAndAnswers];
+    self.title = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -98,7 +95,7 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
-    cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
+    cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     cell.myLabel.textAlignment = NSTextAlignmentCenter;
     cell.myLabel.numberOfLines = 0;
     if (indexPath.row == 0) {
@@ -122,11 +119,11 @@ static NSString * const showScoreSegue = @"showScores";
     }
     if (indexPath.row == 5) {
         cell.myLabel.text = @"Quit and see scores";
-        cell.myLabel.backgroundColor = [UIColor lightGrayColor];
+        cell.backgroundColor = [UIColor lightGrayColor];
     }
-    if (indexPath.row == 6) {
-        cell.myLabel.text = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
-    }
+//    if (indexPath.row == 6) {
+//        cell.myLabel.text = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
+//    }
     
     return cell;
 }
@@ -139,8 +136,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 1) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerOne == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerOne == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -164,8 +161,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 2) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerTwo == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerTwo == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -190,8 +187,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 3) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerThree == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerThree == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -215,8 +212,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 4) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerFour == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerFour == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -249,8 +246,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 1) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerOne == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerOne == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -275,8 +272,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 2) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerTwo == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerTwo == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -302,8 +299,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 3) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerThree == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerThree == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -327,8 +324,8 @@ static NSString * const showScoreSegue = @"showScores";
         if (indexPath.row == 4) {
             self.numberOfSelcted++;
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerFour == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerFour == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     self.answerStatus++;
                 }
@@ -360,8 +357,8 @@ static NSString * const showScoreSegue = @"showScores";
     } else {
         if (indexPath.row == 1) {
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerOne == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerOne == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     [self gotTheRightAnswer:self.answerOne];
                     self.answerStatus = 1;
@@ -383,8 +380,8 @@ static NSString * const showScoreSegue = @"showScores";
         }
         if (indexPath.row == 2) {
             
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerTwo == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerTwo == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     [self gotTheRightAnswer:self.answerTwo];
                     self.answerStatus = 1;
@@ -410,8 +407,8 @@ static NSString * const showScoreSegue = @"showScores";
         }
         if (indexPath.row == 3) {
 
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerThree == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerThree == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     [self gotTheRightAnswer:self.answerThree];
                     self.answerStatus = 1;
@@ -435,8 +432,8 @@ static NSString * const showScoreSegue = @"showScores";
         }
         if (indexPath.row == 4) {
 
-            for (int i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
-                if (self.answerFour == [StudyController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
+            for (int i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
+                if (self.answerFour == [QuestionController answerAtIndex:i inQuestionAtIndex:self.questionNumber]) {
                     
                     [self gotTheRightAnswer:self.answerFour];
                     self.answerStatus = 1;
@@ -501,7 +498,7 @@ static NSString * const showScoreSegue = @"showScores";
         keyFramAnimation.additive = NO;
         [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
         [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.questionTitle]];
-        [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[StudyController questionNumberAtIndex:self.questionNumber]]];
+        [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",[QuestionController questionNumberAtIndex:self.questionNumber]]];
     });
     self.totalAnswersGiven++;
     
@@ -538,7 +535,7 @@ static NSString * const showScoreSegue = @"showScores";
     if (self.holderArray.count  > 0) {
         self.holderArrayNumber = arc4random_uniform((int)self.holderArray.count);
         self.questionNumber = [self.holderArray[self.holderArrayNumber]integerValue];
-        NSString *randomQuestion = [StudyController questionTitleAtIndex:self.questionNumber];
+        NSString *randomQuestion = [QuestionController questionTitleAtIndex:self.questionNumber];
         
         return randomQuestion;
         
@@ -554,28 +551,28 @@ static NSString * const showScoreSegue = @"showScores";
         
         NSMutableArray *answerNumbers = [[NSMutableArray alloc]initWithObjects:@0, @1, @2, @3, @4, nil];
         NSMutableArray *multipleRightAnswers = [NSMutableArray new];
-        for (NSInteger i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
+        for (NSInteger i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
             [multipleRightAnswers addObject:@(i)];
         }
         
         int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
-        NSString *answerOne = [StudyController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerOne = [QuestionController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumber];
         
         int answerArrayNumberTwo = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerTwoNumber = [answerNumbers[answerArrayNumberTwo]integerValue];
-        NSString *answerTwo = [StudyController BadAnswerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerTwo = [QuestionController BadAnswerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumberTwo];
         
         int answerArrayNumberThree = arc4random_uniform((int)multipleRightAnswers.count);
         NSInteger answerThreeNumber = [multipleRightAnswers[answerArrayNumberThree]integerValue];
-        NSString *answerThree  = [StudyController answerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerThree  = [QuestionController answerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
         [multipleRightAnswers removeObjectAtIndex:answerArrayNumberThree];
         
         int answerFourNumber = arc4random_uniform((int) multipleRightAnswers.count);
         NSInteger answerFourArrayNumber = [multipleRightAnswers[answerFourNumber]integerValue];
-        NSString *answerFour  = [StudyController answerAtIndex:answerFourArrayNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerFour  = [QuestionController answerAtIndex:answerFourArrayNumber inQuestionAtIndex:self.questionNumber];
         
         
         NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];
@@ -602,28 +599,28 @@ static NSString * const showScoreSegue = @"showScores";
     }else if (self.questionNumber == 59) {
         NSMutableArray *answerNumbers = [[NSMutableArray alloc]initWithObjects:@0, @1, @2, @3, @4, nil];
         NSMutableArray *multipleRightAnswers = [NSMutableArray new];
-        for (NSInteger i = 0; i < [StudyController answerCountAtIndex:self.questionNumber]; i++) {
+        for (NSInteger i = 0; i < [QuestionController answerCountAtIndex:self.questionNumber]; i++) {
             [multipleRightAnswers addObject:@(i)];
         }
         
         int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
-        NSString *answerOne = [StudyController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerOne = [QuestionController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumber];
         
         int answerArrayNumberTwo = arc4random_uniform((int)multipleRightAnswers.count);
         NSInteger answerTwoNumber = [multipleRightAnswers[answerArrayNumberTwo]integerValue];
-        NSString *answerTwo = [StudyController answerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerTwo = [QuestionController answerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
         [multipleRightAnswers removeObjectAtIndex:answerArrayNumberTwo];
         
         int answerArrayNumberThree = arc4random_uniform((int)multipleRightAnswers.count);
         NSInteger answerThreeNumber = [multipleRightAnswers[answerArrayNumberThree]integerValue];
-        NSString *answerThree  = [StudyController answerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerThree  = [QuestionController answerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
         [multipleRightAnswers removeObjectAtIndex:answerArrayNumberThree];
         
         int answerFourNumber = arc4random_uniform((int) multipleRightAnswers.count);
         NSInteger answerFourArrayNumber = [multipleRightAnswers[answerFourNumber]integerValue];
-        NSString *answerFour  = [StudyController answerAtIndex:answerFourArrayNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerFour  = [QuestionController answerAtIndex:answerFourArrayNumber inQuestionAtIndex:self.questionNumber];
         
         
         NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];
@@ -652,21 +649,21 @@ static NSString * const showScoreSegue = @"showScores";
         
         int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
-        NSString *answerOne = [StudyController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerOne = [QuestionController BadAnswerAtIndex:answerNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumber];
         
         int answerArrayNumberTwo = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerTwoNumber = [answerNumbers[answerArrayNumberTwo]integerValue];
-        NSString *answerTwo = [StudyController BadAnswerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerTwo = [QuestionController BadAnswerAtIndex:answerTwoNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumberTwo];
         
         int answerArrayNumberThree = arc4random_uniform((int)answerNumbers.count);
         NSInteger answerThreeNumber = [answerNumbers[answerArrayNumberThree]integerValue];
-        NSString *answerThree  = [StudyController BadAnswerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
+        NSString *answerThree  = [QuestionController BadAnswerAtIndex:answerThreeNumber inQuestionAtIndex:self.questionNumber];
         [answerNumbers removeObjectAtIndex:answerArrayNumberThree];
         
-        int answerFourNumber = arc4random_uniform((int)[StudyController answerCountAtIndex:self.questionNumber]);
-        NSString *answerFour  = [StudyController answerAtIndex:answerFourNumber inQuestionAtIndex:self.questionNumber];
+        int answerFourNumber = arc4random_uniform((int)[QuestionController answerCountAtIndex:self.questionNumber]);
+        NSString *answerFour  = [QuestionController answerAtIndex:answerFourNumber inQuestionAtIndex:self.questionNumber];
         
         
         NSMutableArray *completeAnswerList = [[NSMutableArray alloc]initWithObjects:answerOne, answerTwo, answerThree, answerFour, nil];

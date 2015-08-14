@@ -8,8 +8,8 @@
 
 #import "SetupController.h"
 #import "Stack.h"
-#import "Study.h"
-#import "StudyController.h"
+#import "QuestionTemplateController.h"
+#import "QuestionController.h"
 
 @interface SetupController ()
 
@@ -27,7 +27,7 @@
     });
     return sharedInstance;
 }
-
+#warning come back to this
 - (SetupInfo *)storeCivicsInfo:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     
     SetupInfo *civicsInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];
@@ -40,7 +40,6 @@
     
     [self saveToPersistentStorage];
 
-    [[StudyController sharedInstance]createFullArrayWithCivicsInfoGvernor:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital];
     
     return civicsInfo;
   
