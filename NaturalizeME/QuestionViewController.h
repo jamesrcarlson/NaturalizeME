@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Scores.h"
 
-@interface QuizViewController : UIViewController
+typedef NS_ENUM(NSUInteger, StudyMode) {
+    StudyModeFastQuiz,
+    StudyModeAllQuestions,
+};
+
+@interface QuestionViewController : UIViewController
+
+@property (assign, nonatomic) StudyMode studyMode;
 
 @property (strong) Scores *scores;
 

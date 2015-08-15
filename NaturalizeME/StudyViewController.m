@@ -13,6 +13,7 @@
 @interface StudyViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) QuestionController *questionController;
 
 @end
 
@@ -20,8 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    QuestionController *study =[QuestionController new];
-    [study loadFromPersistentStorage];
+    QuestionController *questionController = [QuestionController new];
+    
+    self.questionController = questionController;
     
 //    [StudyController sharedInstance]
     // Do any additional setup after loading the view, typically from a nib.
@@ -50,16 +52,20 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [QuestionController questionCount];
+    return self.questionController.questions.count;
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 //    Study *answer = [StudyController sharedInstance].questions[indexPath.row];
     
+    Question *question = self.questionController.questions[indexPath.row];
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questions"];
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = [NSString stringWithFormat:@"Question # %@ \n%@",@(indexPath.row +1),[QuestionController questionTitleAtIndex:indexPath.row]];
+
+    cell.textLabel.text = [NSString stringWithFormat:@"Question # %@ \n%@",@(indexPath.row +1),question.title];
     
     return cell;
 }

@@ -7,8 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
-#import "FastQuizViewController.h"
-#import "QuizViewController.h"
+#import "QuestionViewController.h"
 #import "StudyViewController.h"
 #import "ScoreHistoryViewController.h"
 #import "SetupViewController.h"
@@ -85,7 +84,7 @@
 
     }
     if (indexPath.row == 1) {
-        QuizViewController *quizviewController = (QuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
+        QuestionViewController *quizviewController = (QuestionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
         [self.navigationController pushViewController:quizviewController animated:YES];
     }
     if (indexPath.row == 2) {

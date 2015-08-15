@@ -30,18 +30,12 @@
 }
 
 -(NSArray *)fastQuizQuestions {
-    NSMutableArray *tmpQuestions = [NSMutableArray new];
-    
-    for (NSDictionary *dictionary in [QuestionTemplateController storedAnswers]) {
-        Question *question = [[Question alloc]initWithDictionary:dictionary];
-        [tmpQuestions addObject:question];
-    }
     
     NSMutableArray *fastQuestions = [NSMutableArray new];
     
     for (NSInteger i = 0; i<10; i++) {
-        NSInteger question = arc4random_uniform((int)tmpQuestions.count);
-        [fastQuestions addObject:tmpQuestions[question]];
+        NSInteger question = arc4random_uniform((int)self.questions.count);
+        [fastQuestions addObject:self.questions[question]];
     }
     return fastQuestions;
 }
