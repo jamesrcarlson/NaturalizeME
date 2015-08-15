@@ -1263,7 +1263,6 @@
                                    @"Boxing Day"],
                ExplanationKey: @"Many Americans celebrate national or federal holidays. These holidays often honor people or events in our American heritage. These holidays are “national” in a legal sense only for federal institutions and in the District of Columbia. Typically, federal offices are closed on these holidays. Each state can decide whether or not to celebrate the holiday. Businesses, schools, and commercial establishments may choose whether or not to close on these days. Since 1971, federal holidays are observed on Mondays except for New Year’s Day, Independence Day, Veterans Day, Thanksgiving, and Christmas."
                    },
-#warning make sure you fix this - add the civics data
 //             @{QuestionNumberKey: @(97), //need the Senator info from storage
 //               QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
 //               AnswersNeededKey: @1,

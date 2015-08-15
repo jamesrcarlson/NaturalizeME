@@ -52,19 +52,51 @@
     NSMutableArray *completeAnswerList = [NSMutableArray new];
     NSMutableArray *finalArray = [NSMutableArray new];
     
-    
-    for (int i = 0; i < 3; i++) {
-        int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
-        NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
-        NSString *answerText = self.incorrectAnswers[answerNumber];
+    if (self.answersNeeded.integerValue == 1) {
+        for (int i = 0; i < 3; i++) {
+            int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
+            NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
+            NSString *answerText = self.incorrectAnswers[answerNumber];
+            [completeAnswerList addObject:answerText];
+            [answerNumbers removeObjectAtIndex:answerArrayNumber];
+        }
+        int answerArrayNumber = arc4random_uniform((int)multipleRightAnswers.count);
+        NSInteger answerNumber = [multipleRightAnswers[answerArrayNumber]integerValue];
+        NSString *answerText = self.correctAnswers[answerNumber];
         [completeAnswerList addObject:answerText];
-        [answerNumbers removeObjectAtIndex:answerArrayNumber];
+    }else if (self.answersNeeded.integerValue == 2) {
+        for (int i = 0; i < 2; i++) {
+            int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
+            NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
+            NSString *answerText = self.incorrectAnswers[answerNumber];
+            [completeAnswerList addObject:answerText];
+            [answerNumbers removeObjectAtIndex:answerArrayNumber];
+        }
+        for (int i = 0; i < 2; i++) {
+            int answerArrayNumber = arc4random_uniform((int)multipleRightAnswers.count);
+            NSInteger answerNumber = [multipleRightAnswers[answerArrayNumber]integerValue];
+            NSString *answerText = self.correctAnswers[answerNumber];
+            [completeAnswerList addObject:answerText];
+            [multipleRightAnswers removeObjectAtIndex:answerArrayNumber];
+        }
+        
+    }else if (self.answersNeeded.integerValue == 3) {
+        for (int i = 0; i < 1; i++) {
+            int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
+            NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
+            NSString *answerText = self.incorrectAnswers[answerNumber];
+            [completeAnswerList addObject:answerText];
+            [answerNumbers removeObjectAtIndex:answerArrayNumber];
+        }
+        for (int i = 0; i < 3; i++) {
+            int answerArrayNumber = arc4random_uniform((int)multipleRightAnswers.count);
+            NSInteger answerNumber = [multipleRightAnswers[answerArrayNumber]integerValue];
+            NSString *answerText = self.correctAnswers[answerNumber];
+            [completeAnswerList addObject:answerText];
+            [multipleRightAnswers removeObjectAtIndex:answerArrayNumber];
+        }
+        
     }
-    int answerArrayNumber = arc4random_uniform((int)multipleRightAnswers.count);
-    NSInteger answerNumber = [multipleRightAnswers[answerArrayNumber]integerValue];
-    NSString *answerText = self.correctAnswers[answerNumber];
-    [completeAnswerList addObject:answerText];
-    
 
     for (int i = 0; i < 4; i++) {
         int myAnswer = arc4random_uniform((int)completeAnswerList.count);

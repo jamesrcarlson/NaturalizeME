@@ -27,7 +27,7 @@
     });
     return sharedInstance;
 }
-#warning come back to this
+
 - (SetupInfo *)storeCivicsInfo:(NSString *)governor senatorOneName:(NSString *)senatorOne senatorTwoName:(NSString *)senatorTwo repName:(NSString *)representative stateCapitalName:(NSString *)stateCapital {
     
     SetupInfo *civicsInfo = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([SetupInfo class]) inManagedObjectContext:[Stack sharedInstance].managedObjectContext];

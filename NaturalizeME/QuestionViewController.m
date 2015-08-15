@@ -56,6 +56,8 @@ static NSString * const showScoreSegue = @"showScores";
     [super viewDidLoad];
     self.answerStatus = 0;
     self.answersAttempted = 0;
+    self.currentScores = 0;
+    self.totalAnswersGiven = 0;
     self.controller = [QuestionController new];
     self.wrongAnswersChosen = [NSMutableArray new];
     self.answerNumberArray = [NSMutableArray new];
@@ -159,19 +161,29 @@ static NSString * const showScoreSegue = @"showScores";
             if (self.answers[indexPath.row] == correctAnswer) {
                 self.answerStatus++;
                 
-                if ([self.question.answersNeeded isEqual: @(1)]) {
+                if (self.question.answersNeeded.integerValue == 1) {
                     [self gotTheRightAnswer:correctAnswer];
-                }else if ([self.question.answersNeeded isEqual: @(2)]) {
-                    if ([self.question.answersNeeded isEqual: @(2)] && self.answerStatus == 2) {
+                }else if (self.question.answersNeeded.integerValue == 2) {
+                    if (self.question.answersNeeded.integerValue == 2 && self.answerStatus == 2) {
+                        [self gotTheRightAnswer:correctAnswer];
+                    }
+                }else if (self.question.answersNeeded.integerValue == 3) {
+                    if (self.question.answersNeeded.integerValue == 3 && self.answerStatus == 3) {
                         [self gotTheRightAnswer:correctAnswer];
                     }
                 }
                 
+            } else if (self.answersAttempted == self.question.answersNeeded.integerValue) {
+                if (self.question.answersNeeded.integerValue > 1 ) {
+                    if (self.answerStatus < self.question.answersNeeded.integerValue || !self.answerStatus) {
+                        [self gotItWrong:self.answers[indexPath.row]];
+                    }
+                }else {
+                    [self gotItWrong:self.answers[indexPath.row]];
+                }
             }
         }
-        if (self.answerStatus == 0) {
-            [self gotItWrong:self.answers[indexPath.row]];
-        }
+                       
     }
     
     if (indexPath.section == TableViewSectionQuit) {
@@ -192,6 +204,8 @@ static NSString * const showScoreSegue = @"showScores";
     
     self.answerStatus = 0;
     self.answersAttempted = 0;
+    self.currentScores++;
+    self.totalAnswersGiven++;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.rightAnswer.text = [NSString stringWithFormat:@"%@ \n Is the correct answer",buttonTitle];
@@ -203,8 +217,7 @@ static NSString * const showScoreSegue = @"showScores";
         keyFramAnimation.additive = NO;
         [self.rightAnswer.layer addAnimation:keyFramAnimation forKey:@"nod"];
     });
-    self.currentScores++;
-    self.totalAnswersGiven++;
+    
     
     if (self.quizType == 1) {
         [self updateWithQuestion:self.controller.questions[arc4random_uniform(10)]];
@@ -212,6 +225,7 @@ static NSString * const showScoreSegue = @"showScores";
         [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
     }
     
+//    [self.question delete:self];
     self.answers = self.question.randomSetOfAnswers;
 
     [self.tableView reloadData];
@@ -250,8 +264,9 @@ static NSString * const showScoreSegue = @"showScores";
         }else if (self.quizType == 2) {
             [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
         }
-        
+        [self.question delete:self];
         self.answers = self.question.randomSetOfAnswers;
+        [self updateTitle];
         [self.tableView reloadData];
         
     }]];
@@ -264,14 +279,13 @@ static NSString * const showScoreSegue = @"showScores";
         }
         
         self.answers = self.question.randomSetOfAnswers;
-
+        
+        [self updateTitle];
         [self.tableView reloadData];
         
     }]];
     
     [self presentViewController:alertController animated:YES completion:nil];
-    
-    [self updateTitle];
     
 }
 
