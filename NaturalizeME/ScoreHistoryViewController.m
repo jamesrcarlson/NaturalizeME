@@ -26,10 +26,6 @@
 
 }
 
-//-(void)viewWillAppear:(BOOL)animated {
-//    [self.tableView reloadData];
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -43,12 +39,17 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scores"];
+    
     Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
+    if (!scores) {
+        cell.textLabel.text = @"You have no quiz scores";
+    }else {
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     cell.textLabel.text = [NSString stringWithFormat:@"Score # %@ \nWith a score of %@ out of %@",@(indexPath.row +1),scores.quizScore, scores.answersCompleted];
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@",[ScoreController sharedInstance].practiceScores[indexPath.row]];
+    }
     return cell;
+    
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

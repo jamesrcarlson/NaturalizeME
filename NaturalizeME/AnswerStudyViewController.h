@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "QuestionTemplateController.h"
+#import "Question.h"
 
 @interface AnswerStudyViewController : UIViewController
 
-@property (strong, nonatomic) QuestionTemplateController *answer;
-@property (assign) NSInteger questionIndex;
+@property (strong, nonatomic) Question *question;
 
 @end

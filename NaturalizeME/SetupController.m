@@ -38,6 +38,7 @@
     civicsInfo.representative = representative;
     civicsInfo.stateCapital = stateCapital;
     
+    
     [self saveToPersistentStorage];
 
     

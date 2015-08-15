@@ -79,13 +79,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        FastQuizViewController *fastQuizviewController = (FastQuizViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"FastQuizViewController"];
-        [self.navigationController pushViewController:fastQuizviewController animated:YES];
+        QuestionViewController *questionViewController = (QuestionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuestionViewController"];
+        questionViewController.quizType = 1;
+        [self.navigationController pushViewController:questionViewController animated:YES];
 
     }
     if (indexPath.row == 1) {
-        QuestionViewController *quizviewController = (QuestionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuizViewController"];
-        [self.navigationController pushViewController:quizviewController animated:YES];
+        QuestionViewController *questionViewController = (QuestionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"QuestionViewController"];
+        questionViewController.quizType = 2;
+        [self.navigationController pushViewController:questionViewController animated:YES];
     }
     if (indexPath.row == 2) {
         StudyViewController *studyViewController = (StudyViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"StudyViewController"];

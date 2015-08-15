@@ -29,16 +29,22 @@ static NSString * const showScoreSegue = @"showScores";
 @interface QuestionViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong) Question *question;
+@property (strong) QuestionController *controller;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (assign) NSInteger currentScores;
-@property (assign) NSInteger totalAnswersGiven;
-
 @property (strong) UILabel *rightAnswer; //animated label
 @property (strong) UILabel *wrongAnswer; //animated label
+
+@property (assign) NSInteger currentScores;
+@property (assign) NSInteger totalAnswersGiven;
 @property (strong) NSMutableArray *wrongAnswersChosen;
 @property (strong) NSMutableArray *answerNumberArray;
+
+@property (strong) NSArray *answers;
+
+@property (assign) NSInteger answerStatus;
+@property (assign) NSInteger answersAttempted;
 
 
 @end
@@ -48,12 +54,30 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.answerStatus = 0;
+    self.answersAttempted = 0;
+    self.controller = [QuestionController new];
+    self.wrongAnswersChosen = [NSMutableArray new];
+    self.answerNumberArray = [NSMutableArray new];
     
-    QuestionController *controller = [QuestionController new];
+    if (self.quizType == 1) {
+        [self updateWithQuestion:self.controller.questions[arc4random_uniform(10)]];
+    }else if (self.quizType == 2) {
+        [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
+    }
     
-    [self updateWithQuestion:controller.questions[5]];
     
-    self.title = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
+    self.answers = [[NSArray alloc]initWithArray: self.question.randomSetOfAnswers];
+    
+}
+
+-(void)updateTitle {
+    if (self.quizType == 1) {
+        self.title = [NSString stringWithFormat:@"Question %ld of 10", (long)self.totalAnswersGiven + 1];
+    }else if (self.quizType == 2) {
+        self.title = [NSString stringWithFormat:@"Question %ld of 100", (long)self.totalAnswersGiven + 1];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -67,7 +91,7 @@ static NSString * const showScoreSegue = @"showScores";
         
         case TableViewSectionAnswers:
             
-            return self.question.randomSetOfAnswers.count;
+            return self.answers.count;
             
         case TableViewSectionQuit:
             
@@ -83,7 +107,7 @@ static NSString * const showScoreSegue = @"showScores";
     switch (tableViewSection) {
         case TableViewSectionQuestion:
             
-            return 70;
+            return 200;
             
         case TableViewSectionAnswers:
             
@@ -100,11 +124,12 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     TextLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
     cell.myLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
     cell.myLabel.textAlignment = NSTextAlignmentCenter;
     cell.myLabel.numberOfLines = 0;
-    if (indexPath.row == 0) {
+    if (indexPath.section == TableViewSectionQuestion) {
         cell.myLabel.text = self.question.title;
         cell.myLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
@@ -113,14 +138,12 @@ static NSString * const showScoreSegue = @"showScores";
     }
     
     if (indexPath.section == TableViewSectionAnswers) {
-        cell.myLabel.text = self.question.randomSetOfAnswers[indexPath.row];
+        cell.myLabel.text = self.answers[indexPath.row];
     }
     
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+    if (indexPath.section == TableViewSectionQuit) {
             cell.myLabel.text = @"Quit and see scores";
             cell.backgroundColor = [UIColor lightGrayColor];
-        }
     }
 
     return cell;
@@ -131,18 +154,32 @@ static NSString * const showScoreSegue = @"showScores";
     // check to see if they have the correct set of answers
     
     if (indexPath.section == TableViewSectionAnswers) {
-        
+        self.answersAttempted++;
         for (NSString *correctAnswer in self.question.correctAnswers) {
-            if ([self.question.randomSetOfAnswers[indexPath.row] isEqualToString:correctAnswer] ) {
-                [self gotTheRightAnswer:correctAnswer];
+            if (self.answers[indexPath.row] == correctAnswer) {
+                self.answerStatus++;
+                
+                if ([self.question.answersNeeded isEqual: @(1)]) {
+                    [self gotTheRightAnswer:correctAnswer];
+                }else if ([self.question.answersNeeded isEqual: @(2)]) {
+                    if ([self.question.answersNeeded isEqual: @(2)] && self.answerStatus == 2) {
+                        [self gotTheRightAnswer:correctAnswer];
+                    }
+                }
+                
             }
+        }
+        if (self.answerStatus == 0) {
+            [self gotItWrong:self.answers[indexPath.row]];
         }
     }
     
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            //save and conduct a transition
-        }
+    if (indexPath.section == TableViewSectionQuit) {
+        self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
+        [[ScoreController sharedInstance]save];
+        
+        ScoreViewController *scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+        [self.navigationController pushViewController:scoreViewController animated:YES];
     }
 }
 
@@ -152,6 +189,9 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 -(void)gotTheRightAnswer:(NSString *)buttonTitle {
+    
+    self.answerStatus = 0;
+    self.answersAttempted = 0;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.rightAnswer.text = [NSString stringWithFormat:@"%@ \n Is the correct answer",buttonTitle];
@@ -165,9 +205,25 @@ static NSString * const showScoreSegue = @"showScores";
     });
     self.currentScores++;
     self.totalAnswersGiven++;
+    
+    if (self.quizType == 1) {
+        [self updateWithQuestion:self.controller.questions[arc4random_uniform(10)]];
+    }else if (self.quizType == 2) {
+        [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
+    }
+    
+    self.answers = self.question.randomSetOfAnswers;
+
+    [self.tableView reloadData];
+    [self updateTitle];
+
 }
 
 -(void)gotItWrong:(NSString *)buttonTitle {
+    
+    self.answerStatus = 0;
+    self.answersAttempted = 0;
+    self.totalAnswersGiven++;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.wrongAnswer.text = [NSString stringWithFormat:@"The answer is NOT %@",buttonTitle];
@@ -181,17 +237,33 @@ static NSString * const showScoreSegue = @"showScores";
         [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.question.title]];
         [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",self.question.questionNumber]];
     });
-    self.totalAnswersGiven++;
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You got it wrong" message:@"Would you like to see the answer?" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 
         AnswerStudyViewController *answerStudyViewController = (AnswerStudyViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"AnswerStudyViewController"];
+        answerStudyViewController.question = self.question;
+        
         [self.navigationController pushViewController:answerStudyViewController animated:YES];
+        if (self.quizType == 1) {
+            [self updateWithQuestion:self.controller.questions[arc4random_uniform(10)]];
+        }else if (self.quizType == 2) {
+            [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
+        }
+        
+        self.answers = self.question.randomSetOfAnswers;
+        [self.tableView reloadData];
         
     }]];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        if (self.quizType == 1) {
+            [self updateWithQuestion:self.controller.questions[arc4random_uniform(10)]];
+        }else if (self.quizType == 2) {
+            [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
+        }
+        
+        self.answers = self.question.randomSetOfAnswers;
 
         [self.tableView reloadData];
         
@@ -199,22 +271,16 @@ static NSString * const showScoreSegue = @"showScores";
     
     [self presentViewController:alertController animated:YES completion:nil];
     
+    [self updateTitle];
+    
 }
 
 -(void)updateWithQuestion:(Question *)question {
     
     self.question = question;
     
-    
     // when you move the question to header view, you set the label for that header view here to the question's .title
 }
 
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    AnswerStudyViewController *answerViewController = segue.destinationViewController;
-    
-    answerViewController.questionIndex = self.question.questionNumber;
-    
-}
 @end

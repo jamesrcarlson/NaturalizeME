@@ -20,4 +20,6 @@ typedef NS_ENUM(NSUInteger, StudyMode) {
 
 @property (strong) Scores *scores;
 
+@property (assign) NSInteger quizType;
+
 @end

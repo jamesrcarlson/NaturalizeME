@@ -66,7 +66,7 @@
         
         NSInteger quesitonNumber = [self.scores.answerNumber[indexPath.row]integerValue]-1;
         
-        answerViewController.questionIndex = quesitonNumber;
+        answerViewController.question.questionNumber = @(quesitonNumber);
     }
 }
 

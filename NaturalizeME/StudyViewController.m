@@ -25,8 +25,6 @@
     
     self.questionController = questionController;
     
-//    [StudyController sharedInstance]
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,14 +77,13 @@
     return UITableViewAutomaticDimension;
 }
 
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     AnswerStudyViewController *answerViewController = segue.destinationViewController;
     
-    answerViewController.questionIndex = indexPath.row;
+    answerViewController.question = self.questionController.questions[indexPath.row];
     
 }
 

@@ -302,7 +302,7 @@
         <!--Question View Controller-->
         <scene sceneID="P38-Ts-l02">
             <objects>
-                <viewController storyboardIdentifier="QuizViewController" id="odJ-Kj-JTd" customClass="QuestionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionViewController" id="odJ-Kj-JTd" customClass="QuestionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dXz-mD-Lap"/>
                         <viewControllerLayoutGuide type="bottom" id="2zD-rc-xCd"/>
@@ -311,7 +311,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="LuV-W1-kPi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="LuV-W1-kPi">
                                 <rect key="frame" x="-4" y="-20" width="610" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -375,7 +375,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="P9T-6p-uvC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scores" id="OGX-NA-ltA">
@@ -397,10 +397,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="P9T-6p-uvC" firstAttribute="leading" secondItem="uhF-xL-DAh" secondAttribute="leadingMargin" constant="-16" id="Dqu-Fe-aU8"/>
-                            <constraint firstItem="VBd-E3-RLG" firstAttribute="top" secondItem="P9T-6p-uvC" secondAttribute="bottom" id="FUK-WL-TFD"/>
-                            <constraint firstItem="P9T-6p-uvC" firstAttribute="top" secondItem="4nE-Zh-e0A" secondAttribute="bottom" constant="-64" id="Jfk-Bo-Bjn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="P9T-6p-uvC" secondAttribute="trailing" constant="-16" id="ow1-4N-Fsm"/>
+                            <constraint firstAttribute="width" secondItem="P9T-6p-uvC" secondAttribute="width" id="CZg-80-vQc"/>
+                            <constraint firstItem="P9T-6p-uvC" firstAttribute="top" secondItem="4nE-Zh-e0A" secondAttribute="bottom" constant="-64" id="Gxw-07-jR4"/>
+                            <constraint firstAttribute="height" secondItem="P9T-6p-uvC" secondAttribute="height" id="MJE-gv-0F0"/>
+                            <constraint firstAttribute="centerX" secondItem="P9T-6p-uvC" secondAttribute="centerX" id="yNv-BY-kTT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ACc-Yu-Uol"/>

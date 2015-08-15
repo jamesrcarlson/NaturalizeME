@@ -39,4 +39,40 @@
     return myDict;
 }
 
+- (NSArray *) randomSetOfAnswers {
+    
+    NSMutableArray *answerNumbers = [[NSMutableArray alloc]initWithObjects:@0, @1, @2, @3, @4, nil];
+    NSMutableArray *multipleRightAnswers = [NSMutableArray new];
+    
+    
+    for (NSInteger i = 0; i < self.correctAnswers.count; i++) {
+        [multipleRightAnswers addObject:@(i)];
+    }
+    
+    NSMutableArray *completeAnswerList = [NSMutableArray new];
+    NSMutableArray *finalArray = [NSMutableArray new];
+    
+    
+    for (int i = 0; i < 3; i++) {
+        int answerArrayNumber = arc4random_uniform((int)answerNumbers.count);
+        NSInteger answerNumber = [answerNumbers[answerArrayNumber]integerValue];
+        NSString *answerText = self.incorrectAnswers[answerNumber];
+        [completeAnswerList addObject:answerText];
+        [answerNumbers removeObjectAtIndex:answerArrayNumber];
+    }
+    int answerArrayNumber = arc4random_uniform((int)multipleRightAnswers.count);
+    NSInteger answerNumber = [multipleRightAnswers[answerArrayNumber]integerValue];
+    NSString *answerText = self.correctAnswers[answerNumber];
+    [completeAnswerList addObject:answerText];
+    
+
+    for (int i = 0; i < 4; i++) {
+        int myAnswer = arc4random_uniform((int)completeAnswerList.count);
+        [finalArray addObject:completeAnswerList[myAnswer]];
+        [completeAnswerList removeObjectAtIndex:myAnswer];
+    }
+    return finalArray;
+
+}
+
 @end

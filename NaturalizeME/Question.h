@@ -11,7 +11,7 @@
 @interface Question : NSObject
 
 @property (strong) NSString *title;
-@property (strong) NSString *questionNumber;
+@property (strong) NSNumber *questionNumber;
 @property (strong) NSNumber *answersNeeded;
 @property (strong) NSArray *correctAnswers;
 @property (strong) NSArray *incorrectAnswers;
