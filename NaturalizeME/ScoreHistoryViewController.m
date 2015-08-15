@@ -36,6 +36,20 @@
     return [ScoreController sharedInstance].scores.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
+    NSString *cellText = scores.wrongAnswer[indexPath.row];
+    UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:25.0];
+    
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
+                                                                         attributes:@{NSFontAttributeName: cellFont}];
+    
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(tableView.bounds.size.width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    return rect.size.height + 30;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"scores"];

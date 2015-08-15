@@ -10,6 +10,7 @@
 #import "AnswerStudyViewController.h"
 #import "ScoreController.h"
 #import "TextLabelTableViewCell.h"
+#import "QuestionController.h"
 
 @interface WrongAnswerViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -58,15 +59,18 @@
     cell.wrongAnswerLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20.0];
     return cell;
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSIndexPath *)indexPath {
     if ([segue.identifier isEqualToString:@"wrongAnswerStudy"]) {
+        
+        QuestionController *questionController = [QuestionController new];
         
         AnswerStudyViewController *answerViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
-        NSInteger quesitonNumber = [self.scores.answerNumber[indexPath.row]integerValue]-1;
+        NSNumber *questionAtNumber = self.scores.answerNumber[indexPath.row];
         
-        answerViewController.question.questionNumber = @(quesitonNumber);
+        answerViewController.question = questionController.questions[questionAtNumber.integerValue - 1];
     }
 }
 
