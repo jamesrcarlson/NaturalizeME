@@ -54,6 +54,9 @@ static NSString * const showScoreSegue = @"showScores";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[self.navigationItem backBarButtonItem]setAction:@selector(popViewController)];
+    
     self.answerStatus = 0;
     self.answersAttempted = 0;
     self.currentScores = 0;
@@ -70,6 +73,12 @@ static NSString * const showScoreSegue = @"showScores";
     
     
     self.answers = [[NSArray alloc]initWithArray: self.question.randomSetOfAnswers];
+    [self updateTitle];
+    
+}
+
+-(void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
@@ -264,7 +273,7 @@ static NSString * const showScoreSegue = @"showScores";
         }else if (self.quizType == 2) {
             [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
         }
-        [self.question delete:self];
+        
         self.answers = self.question.randomSetOfAnswers;
         [self updateTitle];
         [self.tableView reloadData];

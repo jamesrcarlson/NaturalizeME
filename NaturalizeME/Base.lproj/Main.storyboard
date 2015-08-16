@@ -397,10 +397,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="P9T-6p-uvC" secondAttribute="width" id="CZg-80-vQc"/>
-                            <constraint firstItem="P9T-6p-uvC" firstAttribute="top" secondItem="4nE-Zh-e0A" secondAttribute="bottom" constant="-64" id="Gxw-07-jR4"/>
-                            <constraint firstAttribute="height" secondItem="P9T-6p-uvC" secondAttribute="height" id="MJE-gv-0F0"/>
-                            <constraint firstAttribute="centerX" secondItem="P9T-6p-uvC" secondAttribute="centerX" id="yNv-BY-kTT"/>
+                            <constraint firstItem="P9T-6p-uvC" firstAttribute="height" secondItem="uhF-xL-DAh" secondAttribute="height" id="TGe-eT-7Mc"/>
+                            <constraint firstAttribute="centerX" secondItem="P9T-6p-uvC" secondAttribute="centerX" id="c2q-3M-gO5"/>
+                            <constraint firstItem="P9T-6p-uvC" firstAttribute="width" secondItem="uhF-xL-DAh" secondAttribute="width" id="hlE-kN-p5K"/>
+                            <constraint firstItem="P9T-6p-uvC" firstAttribute="top" secondItem="4nE-Zh-e0A" secondAttribute="bottom" constant="-64" id="zO2-ha-ffQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ACc-Yu-Uol"/>
@@ -463,10 +463,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="UZH-tJ-Xab" secondAttribute="width" id="ByB-Yi-L1l"/>
-                            <constraint firstItem="UZH-tJ-Xab" firstAttribute="top" secondItem="xg3-u3-6gO" secondAttribute="bottom" constant="-53" id="DWi-Uo-sew"/>
-                            <constraint firstAttribute="height" secondItem="UZH-tJ-Xab" secondAttribute="height" id="Ebk-4K-Lso"/>
-                            <constraint firstItem="UZH-tJ-Xab" firstAttribute="leading" secondItem="WW9-fH-VWe" secondAttribute="leadingMargin" constant="-16" id="tvd-JF-Yfq"/>
+                            <constraint firstItem="UZH-tJ-Xab" firstAttribute="top" secondItem="xg3-u3-6gO" secondAttribute="bottom" constant="-53" id="FH5-kk-esA"/>
+                            <constraint firstAttribute="centerX" secondItem="UZH-tJ-Xab" secondAttribute="centerX" id="YN6-jy-GeM"/>
+                            <constraint firstAttribute="width" secondItem="UZH-tJ-Xab" secondAttribute="width" id="bPP-Xc-lbf"/>
+                            <constraint firstAttribute="height" secondItem="UZH-tJ-Xab" secondAttribute="height" id="xoH-7k-QLL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -490,7 +490,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Md2-dV-rXj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="questions" rowHeight="26" id="b1e-AE-P7t" customClass="TextLabelTableViewCell">
@@ -512,10 +512,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Md2-dV-rXj" secondAttribute="trailing" constant="-16" id="Q3B-nQ-jb7"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Md2-dV-rXj" secondAttribute="bottom" id="TtB-ME-nyU"/>
-                            <constraint firstItem="Md2-dV-rXj" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-64" id="o9j-g8-OBu"/>
-                            <constraint firstItem="Md2-dV-rXj" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="tnX-FA-Z7W"/>
+                            <constraint firstItem="Md2-dV-rXj" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-64" id="JMY-OM-f7I"/>
+                            <constraint firstItem="Md2-dV-rXj" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" id="Uzp-oU-RQ8"/>
+                            <constraint firstAttribute="centerX" secondItem="Md2-dV-rXj" secondAttribute="centerX" id="nmu-K8-CzO"/>
+                            <constraint firstItem="Md2-dV-rXj" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="u0P-k5-Wsq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Study" id="0yc-GV-vfa"/>
@@ -550,7 +550,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pmw-8Q-Xty">
-                                <rect key="frame" x="-4" y="0.0" width="608" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="answerCell" id="Tnc-4E-ur7" customClass="TextLabelTableViewCell">
@@ -560,7 +560,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tqs-ME-LBb">
-                                                    <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                                    <rect key="frame" x="8" y="8" width="576" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -586,10 +586,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pmw-8Q-Xty" firstAttribute="height" secondItem="vvZ-gd-bn0" secondAttribute="height" id="9e1-wZ-Fh9"/>
-                            <constraint firstItem="Pmw-8Q-Xty" firstAttribute="leading" secondItem="vvZ-gd-bn0" secondAttribute="leadingMargin" constant="-20" id="QfL-tU-PHR"/>
-                            <constraint firstItem="Pmw-8Q-Xty" firstAttribute="width" secondItem="vvZ-gd-bn0" secondAttribute="width" constant="8" id="iMS-FU-rQf"/>
-                            <constraint firstItem="Pmw-8Q-Xty" firstAttribute="top" secondItem="pjY-SA-iuq" secondAttribute="bottom" constant="-64" id="rOV-c2-tA8"/>
+                            <constraint firstAttribute="width" secondItem="Pmw-8Q-Xty" secondAttribute="width" id="AT6-Mf-fqC"/>
+                            <constraint firstItem="Pmw-8Q-Xty" firstAttribute="top" secondItem="pjY-SA-iuq" secondAttribute="bottom" constant="-64" id="Mus-yd-Y2f"/>
+                            <constraint firstAttribute="centerX" secondItem="Pmw-8Q-Xty" secondAttribute="centerX" id="Z6L-6G-44o"/>
+                            <constraint firstAttribute="height" secondItem="Pmw-8Q-Xty" secondAttribute="height" id="jBB-7G-miT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -610,7 +610,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="NdG-wp-Zl7">
-                                <rect key="frame" x="-4" y="-44" width="608" height="600"/>
+                                <rect key="frame" x="0.0" y="-44" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scoreView" id="Suf-sC-9gr" customClass="TextLabelTableViewCell">
@@ -620,7 +620,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0r-Du-Xwo">
-                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <rect key="frame" x="8" y="8" width="576" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -646,10 +646,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="top" secondItem="NHM-Yr-NF7" secondAttribute="bottom" constant="-64" id="1MB-5d-NF4"/>
-                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="width" secondItem="eA3-mh-XEt" secondAttribute="width" constant="8" id="7p8-LM-Ha8"/>
-                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="height" secondItem="eA3-mh-XEt" secondAttribute="height" id="Uha-ym-BLI"/>
-                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="leading" secondItem="eA3-mh-XEt" secondAttribute="leadingMargin" constant="-20" id="ubj-wH-Hcf"/>
+                            <constraint firstAttribute="centerX" secondItem="NdG-wp-Zl7" secondAttribute="centerX" id="OaG-aE-eMV"/>
+                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="top" secondItem="NHM-Yr-NF7" secondAttribute="bottom" constant="-64" id="VId-Rt-cJC"/>
+                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="height" secondItem="eA3-mh-XEt" secondAttribute="height" id="WSd-im-WjH"/>
+                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="width" secondItem="eA3-mh-XEt" secondAttribute="width" id="wIX-Oc-5bJ"/>
                         </constraints>
                     </view>
                 </viewController>

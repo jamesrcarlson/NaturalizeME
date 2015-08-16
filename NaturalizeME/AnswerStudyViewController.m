@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
     [[self.navigationItem backBarButtonItem]setAction:@selector(popViewController)];
 
 }
+
 -(void)popViewController {
     [self.navigationController popViewControllerAnimated:YES];
 
