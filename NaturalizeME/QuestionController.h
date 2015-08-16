@@ -12,8 +12,8 @@
 
 @interface QuestionController : NSObject
 
-@property (strong, readonly) NSArray *questions;
-@property (strong, readonly) NSArray *fastQuizQuestions;
+@property (strong, nonatomic) NSMutableArray *questions;
+@property (strong, nonatomic) NSMutableArray *fastQuizQuestions;
 
 
 @end

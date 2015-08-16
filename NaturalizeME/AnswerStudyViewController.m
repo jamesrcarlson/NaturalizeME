@@ -65,13 +65,15 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
     return 4;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+
     UITableViewHeaderFooterView *header = [UITableViewHeaderFooterView new];
     header.textLabel.textAlignment = NSTextAlignmentCenter;
     if (section == TableViewSectionQuestion) {
         header.textLabel.text = @"Your question";
+        
     }
     if (section == TableViewSectionAnswers) {
-        header.backgroundColor = [UIColor lightGrayColor];
+        header.contentView.backgroundColor = [UIColor lightGrayColor];
         header.textLabel.text = @"The correct Answers";
     }
     if (section == TableViewSectionExplanation) {

@@ -16,6 +16,7 @@
 @property (strong) NSArray *correctAnswers;
 @property (strong) NSArray *incorrectAnswers;
 @property (strong) NSString *explanation;
+@property (strong) NSNumber *didDisplay;
 
 @property (strong, readonly) NSArray *randomSetOfAnswers;
 

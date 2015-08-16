@@ -19,14 +19,14 @@
 
 @implementation QuestionController
 
--(NSArray *)questions {
+- (NSMutableArray *)questions {
     
     NSMutableArray *questionsArray = [NSMutableArray new];
     
     for (NSDictionary *dictionary in [QuestionTemplateController storedAnswers]) {
         Question *question = [[Question alloc]initWithDictionary:dictionary];
+        question.didDisplay = @(1);
         [questionsArray addObject:question];
-        
     }
     
     NSInteger latest = [SetupController sharedInstance].civicsInfo.count - 1;
@@ -81,7 +81,7 @@
     return questionsArray;
 }
 
--(NSArray *)fastQuizQuestions {
+- (NSMutableArray *)fastQuizQuestions {
     
     NSMutableArray *fastQuestions = [NSMutableArray new];
     

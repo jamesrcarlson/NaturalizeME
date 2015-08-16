@@ -14,6 +14,7 @@ static NSString *const AnswerKey = @"answer";
 static NSString *const AnswersNeededKey = @"answersNeeded";
 static NSString *const BadAnswerKey = @"badAnswer";
 static NSString *const ExplanationKey = @"explanationTitle";
+static NSString *const DidDisplayKey = @"didDisplay";
 
 @interface QuestionTemplateController : NSObject
 

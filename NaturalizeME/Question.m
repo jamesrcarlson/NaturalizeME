@@ -22,6 +22,7 @@
         self.explanation = dictionary[ExplanationKey];
         self.correctAnswers = dictionary[AnswerKey];
         self.incorrectAnswers = dictionary[BadAnswerKey];
+        self.didDisplay = dictionary[DidDisplayKey];
     }
     return self;
 
@@ -34,7 +35,8 @@
                              AnswersNeededKey : self.answersNeeded,
                              ExplanationKey : self.explanation,
                              AnswersNeededKey : self.correctAnswers,
-                             BadAnswerKey : self.incorrectAnswers
+                             BadAnswerKey : self.incorrectAnswers,
+                             DidDisplayKey : self.didDisplay
                              };
     return myDict;
 }

@@ -157,9 +157,7 @@
             NSInteger senatorTwoIndex = 0;
             NSInteger governorIndex = 0;
             NSInteger representativeIndex = 0;
-            
-            NSLog(@"%@",dict);
-            
+                        
             for (int i = 0; i < 17; i++) {
                 if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
                     senatorOneIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
