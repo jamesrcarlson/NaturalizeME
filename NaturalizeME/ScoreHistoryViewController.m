@@ -37,8 +37,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Scores *scores = [ScoreController sharedInstance].scores[indexPath.row];
-    NSString *cellText = scores.wrongAnswer[indexPath.row];
+    NSString *cellText = @"Score # 100 \nWith a score of 100 out of 100";
     UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:25.0];
     
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:cellText
