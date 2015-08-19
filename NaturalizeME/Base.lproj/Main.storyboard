@@ -597,10 +597,10 @@
             </objects>
             <point key="canvasLocation" x="635" y="824"/>
         </scene>
-        <!--Score View Controller-->
+        <!--Your Score-->
         <scene sceneID="rNg-7E-eiy">
             <objects>
-                <viewController storyboardIdentifier="ScoreViewController" id="MbB-5b-T89" customClass="ScoreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScoreViewController" title="Your Score" id="MbB-5b-T89" customClass="ScoreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NHM-Yr-NF7"/>
                         <viewControllerLayoutGuide type="bottom" id="7oX-Nl-a7w"/>
@@ -610,7 +610,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="NdG-wp-Zl7">
-                                <rect key="frame" x="0.0" y="-44" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scoreView" id="Suf-sC-9gr" customClass="TextLabelTableViewCell">
@@ -647,7 +647,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="NdG-wp-Zl7" secondAttribute="centerX" id="OaG-aE-eMV"/>
-                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="top" secondItem="NHM-Yr-NF7" secondAttribute="bottom" constant="-64" id="VId-Rt-cJC"/>
+                            <constraint firstItem="NdG-wp-Zl7" firstAttribute="top" secondItem="NHM-Yr-NF7" secondAttribute="bottom" id="VId-Rt-cJC"/>
                             <constraint firstItem="NdG-wp-Zl7" firstAttribute="height" secondItem="eA3-mh-XEt" secondAttribute="height" id="WSd-im-WjH"/>
                             <constraint firstItem="NdG-wp-Zl7" firstAttribute="width" secondItem="eA3-mh-XEt" secondAttribute="width" id="wIX-Oc-5bJ"/>
                         </constraints>

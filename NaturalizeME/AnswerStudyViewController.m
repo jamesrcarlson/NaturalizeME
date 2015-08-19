@@ -32,14 +32,9 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
     
     self.controller = [QuestionController new];
     
-    [[self.navigationItem backBarButtonItem]setAction:@selector(popViewController)];
-
 }
 
--(void)popViewController {
-    [self.navigationController popViewControllerAnimated:YES];
 
-}
 
 //-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
 //    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;

@@ -25,17 +25,17 @@
     
     for (NSDictionary *dictionary in [QuestionTemplateController storedAnswers]) {
         Question *question = [[Question alloc]initWithDictionary:dictionary];
-        question.didDisplay = @(1);
+        question.didDisplay = @1;
         [questionsArray addObject:question];
     }
     
     NSInteger latest = [SetupController sharedInstance].civicsInfo.count - 1;
     self.setupInfo = [SetupController sharedInstance].civicsInfo[latest];
     
-    NSArray *prepData = [[NSArray alloc]initWithObjects: @{QuestionNumberKey: @"97",
+    NSArray *prepData = [[NSArray alloc]initWithObjects: @{QuestionNumberKey: @(97),
                                                            QuestionTitleKey: @"Who is one of your state’s U.S. Senators now?",
                                                            AnswersNeededKey: @(1),
-                                                           DidDisplayKey : @(1),
+                                                           DidDisplayKey : @1,
                                                            AnswerKey : @[self.setupInfo.senatorOne, self.setupInfo.senatorTwo],
                                                            BadAnswerKey: @[@"Joe Biden",
                                                                            @"Hilary Clinton",
@@ -44,10 +44,10 @@
                                                                            @"George Bush"],
                                                            ExplanationKey: @"Each State has 2 Senators."
                                                            },
-                         @{QuestionNumberKey: @"98",
+                         @{QuestionNumberKey: @(98),
                            QuestionTitleKey: @"Name your U.S. Representative",
                            AnswersNeededKey: @(1),
-                           DidDisplayKey : @(1),
+                           DidDisplayKey : @1,
                            AnswerKey : @[self.setupInfo.representative],
                            BadAnswerKey: @[@"John Kerry",
                                            @"Hillary Clinton",
@@ -56,10 +56,10 @@
                                            @"George Bush"],
                            ExplanationKey: @"Your representative represents you and your local community and is elected every 2 years."
                            },
-                         @{QuestionNumberKey: @"99",
+                         @{QuestionNumberKey: @(99),
                            QuestionTitleKey: @"Who is the Governor of your state now?",
                            AnswersNeededKey: @(1),
-                           DidDisplayKey : @(1),
+                           DidDisplayKey : @1,
                            AnswerKey : @[self.setupInfo.governnor],
                            BadAnswerKey: @[@"John Kerry",
                                            @"Hillary Clinton",
@@ -68,10 +68,10 @@
                                            @"Thomas Jefferson"],
                            ExplanationKey: @"Your Governor is elected to be the chief executive of the state in which you live."
                            },
-                         @{QuestionNumberKey: @"100",
+                         @{QuestionNumberKey: @(100),
                            QuestionTitleKey: @"What is the capital of your state?",
                            AnswersNeededKey: @(1),
-                           DidDisplayKey : @(1),
+                           DidDisplayKey : @1,
                            AnswerKey : @[self.setupInfo.stateCapital],
                            BadAnswerKey: @[@"texas",
                                            @"washington",
@@ -80,8 +80,11 @@
                                            @"hollywood"],
                            ExplanationKey: @"The state capital is where the leaders of your state conduct business."
                            }, nil];
-    [questionsArray addObjectsFromArray:prepData];
     
+    for (NSDictionary *dictionary in prepData) {
+        Question *question = [[Question alloc]initWithDictionary:dictionary];
+        [questionsArray addObject:question];
+    }
     return questionsArray;
 }
 

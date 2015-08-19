@@ -27,7 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateScore];
+//    self.navigationItem.hidesBackButton = YES;
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 -(void)updateScore {
     self.scoreHolder = [ScoreController sharedInstance].latestQuizScore;
@@ -40,6 +46,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return 5;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,8 +97,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 4) {
         
-        WelcomeViewController *welcomViewController = (WelcomeViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"WelcomeViewController"];
-        [self.navigationController pushViewController:welcomViewController animated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {

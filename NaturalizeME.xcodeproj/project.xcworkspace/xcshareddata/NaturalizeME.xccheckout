@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F907D3C9-67B3-4947-81D8-68208D020DB3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>NaturalizeME</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3755D59F7B51F07A4793E5ACFFFC97D6EE6BD8F0</key>
 		<string>https://github.com/jamesrcarlson/NaturalizeME.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>NaturalizeME.xcodeproj/project.xcworkspace</string>
+	<string>NaturalizeME.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3755D59F7B51F07A4793E5ACFFFC97D6EE6BD8F0</key>

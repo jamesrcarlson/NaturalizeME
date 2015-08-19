@@ -46,6 +46,10 @@ static NSString * const showScoreSegue = @"showScores";
 @property (assign, nonatomic) NSInteger answerStatus;
 @property (assign, nonatomic) NSInteger answersAttempted;
 
+@property (assign, nonatomic) NSInteger newQuestion;
+
+@property (strong, nonatomic) NSMutableArray *questionsArray;
+
 
 @end
 
@@ -70,8 +74,13 @@ static NSString * const showScoreSegue = @"showScores";
     }else if (self.quizType == 2) {
         [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
     }
+    if (self.quizType == 1) {
+        self.questionsArray = self.controller.questions;
+    }else if (self.quizType == 2) {
+        self.questionsArray = self.controller.fastQuizQuestions;
+    }
     
-    self.answers = [[NSArray alloc]initWithArray: self.question.randomSetOfAnswers];
+    self.answers = [[NSMutableArray alloc]initWithArray: self.question.randomSetOfAnswers];
     [self updateTitle];
     
 }
@@ -209,40 +218,13 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 -(void)gotTheRightAnswer:(NSString *)buttonTitle {
-    self.question.didDisplay = @(2);
     self.answerStatus = 0;
     self.answersAttempted = 0;
     self.currentScores+=1;
     self.totalAnswersGiven+=1;
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        self.rightAnswer.text = [NSString stringWithFormat:@"%@ \n Is the correct answer",buttonTitle];
-//        CAKeyframeAnimation *keyFramAnimation = [CAKeyframeAnimation animation];
-//        keyFramAnimation.keyPath = @"position.y";
-//        keyFramAnimation.values = @[@140, @160, @140, @160, @140, @120];
-//        keyFramAnimation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1, @(7/6.0)];
-//        keyFramAnimation.duration = 2;
-//        keyFramAnimation.additive = NO;
-//        [self.rightAnswer.layer addAnimation:keyFramAnimation forKey:@"nod"];
-//    });
+    [self updateQuestion];
     
-//    [NSThread sleepForTimeInterval:0.5];
-    
-        if (self.quizType == 1) {
-            if (self.totalAnswersGiven == 10) {
-                [self quit];
-            } else {
-                    [self updateWithQuestion:self.controller.fastQuizQuestions[arc4random_uniform(10)]];
-            }
-        }else if (self.quizType == 2) {
-            if (self.totalAnswersGiven == 100) {
-                [self quit];
-            } else {
-                
-                [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
-            }
-        }
-//    [self.question delete:self];
     self.answers = self.question.randomSetOfAnswers;
     [self.tableView reloadData];
     [self updateTitle];
@@ -250,22 +232,10 @@ static NSString * const showScoreSegue = @"showScores";
 }
 
 -(void)gotItWrong:(NSString *)buttonTitle {
-    self.question.didDisplay = @(2);
     self.answerStatus = 0;
     self.answersAttempted = 0;
     self.totalAnswersGiven+=1;
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        self.wrongAnswer.text = [NSString stringWithFormat:@"The answer is NOT %@",buttonTitle];
-//        CAKeyframeAnimation *keyFramAnimation = [CAKeyframeAnimation animation];
-//        keyFramAnimation.keyPath = @"position.y";
-//        keyFramAnimation.values = @[@140, @160, @140, @160, @140, @120];
-//        keyFramAnimation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1, @(7/6.0)];
-//        keyFramAnimation.duration = 2;
-//        keyFramAnimation.additive = NO;
-//        [self.wrongAnswer.layer addAnimation:keyFramAnimation forKey:@"shake"];
-//        
-//    });
     [self.wrongAnswersChosen addObject:[NSString stringWithFormat:@"%@",self.question.title]];
     [self.answerNumberArray addObject:[NSString stringWithFormat:@"%@",self.question.questionNumber]];
     
@@ -277,33 +247,26 @@ static NSString * const showScoreSegue = @"showScores";
         
         [self.navigationController pushViewController:answerStudyViewController animated:YES];
         
-        if (self.quizType == 1) {
-            if (self.totalAnswersGiven == 10) {
-                [self quit];
-            } else {
-                [self updateWithQuestion:self.controller.fastQuizQuestions[arc4random_uniform(10)]];
-            }
-        }else if (self.quizType == 2) {
-            [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
+        if (!self.lastQuestion) {
+            [self updateQuestion];
+            
+            self.answers = self.question.randomSetOfAnswers;
+            [self updateTitle];
+            [self.tableView reloadData];
+        } else {
+            NSMutableArray *mutableViewControllers = self.navigationController.viewControllers.mutableCopy;
+            self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
+            ScoreViewController * scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+
+            [mutableViewControllers insertObject:scoreViewController atIndex:2];
+            [self.navigationController setViewControllers:mutableViewControllers animated:NO];
         }
-//        [NSThread sleepForTimeInterval:0.5];
-        self.answers = self.question.randomSetOfAnswers;
-        [self updateTitle];
-        [self.tableView reloadData];
         
     }]];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Not now" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-        if (self.quizType == 1) {
-            if (self.totalAnswersGiven == 10) {
-                [self quit];
-            } else {
-                [self updateWithQuestion:self.controller.fastQuizQuestions[arc4random_uniform(10)]];
-            }
-        }else if (self.quizType == 2) {
-            [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
-        }
         
+        [self updateQuestion];
         self.answers = self.question.randomSetOfAnswers;
         [self updateTitle];
         [self.tableView reloadData];
@@ -314,14 +277,35 @@ static NSString * const showScoreSegue = @"showScores";
     
 }
 
--(void)updateWithQuestion:(Question *)question {
-    
-    for (int i = 0; i < 100; i++) {
-        self.question = question;
-        if (self.question.didDisplay.integerValue == 1) {
-            break;
+- (BOOL)lastQuestion {
+    if (self.quizType == 1) {
+        if (self.totalAnswersGiven >= 10) {
+            return YES;
+        }
+    } else if (self.quizType == 2) {
+        if (self.totalAnswersGiven >= 100) {
+            return YES;
         }
     }
+    return NO;
+}
+
+- (void) updateQuestion {
+    [self.questionsArray removeObjectAtIndex:self.newQuestion];
+    self.newQuestion = arc4random_uniform((int)self.questionsArray.count);
+    
+    if (self.lastQuestion) {
+        [self quit];
+    } else {
+            [self updateWithQuestion:self.questionsArray[self.newQuestion]];
+        }    
+}
+
+
+-(void)updateWithQuestion:(Question *)question {
+    
+        self.question = question;
+
     // when you move the question to header view, you set the label for that header view here to the question's .title
 }
 
