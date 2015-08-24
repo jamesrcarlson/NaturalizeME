@@ -784,7 +784,7 @@
                BadAnswerKey: @[@"Florida",
                                @"Michigan",
                                @"Maine",
-                               @"Washingnton",
+                               @"Washington",
                                @"Ohio"],
                ExplanationKey: @"The 13 original states were all former British colonies. Representatives from these colonies came together and declared independence from Great Britain in 1776. After the Revolutionary War, the colonies became free and independent states. When the 13 colonies became states, each state set up its own government. They wrote state constitutions. Eventually, the people in these states created a new form of national government that would unite all the states into a single nation under the U.S. Constitution."
                },
