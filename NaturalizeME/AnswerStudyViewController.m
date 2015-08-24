@@ -34,28 +34,6 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
     
 }
 
-
-
-//-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-//    header.textLabel.frame = header.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
-//    header.textLabel.font = [UIFont boldSystemFontOfSize:20];
-//    header.textLabel.numberOfLines = 0;
-//    header.textLabel.backgroundColor = [UIColor lightGrayColor];
-//    //    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    header.textLabel.textAlignment = NSTextAlignmentCenter;
-//}
-
-
-//-(void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-//    UITableViewHeaderFooterView *footer = (UITableViewHeaderFooterView *)view;
-//    footer.textLabel.frame = footer.frame;//CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2.5);
-//    footer.textLabel.font = [UIFont boldSystemFontOfSize:20];
-//    footer.textLabel.numberOfLines = 0;
-//    //    header.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    footer.textLabel.textAlignment = NSTextAlignmentCenter;
-//}
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
 }
@@ -87,15 +65,18 @@ typedef NS_ENUM(NSUInteger, TableViewSection) {
         cell.answerStudyLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
         cell.answerStudyLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = NO;
     }
     if (indexPath.section == TableViewSectionAnswers) {
 //        cell.answerStudyLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
         cell.answerStudyLabel.text = self.question.correctAnswers[indexPath.row];
+        cell.selectionStyle = NO;
     }
     if (indexPath.section == TableViewSectionExplanation) {
         cell.answerStudyLabel.textAlignment = NSTextAlignmentLeft;
         cell.answerStudyLabel.text = self.question.explanation;
         cell.answerStudyLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];
+        cell.selectionStyle = NO;
     }
     if (indexPath.section == TableViewSectionGoBack) {
         cell.answerStudyLabel.text = @"Go Back";

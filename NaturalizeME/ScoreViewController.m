@@ -11,6 +11,12 @@
 #import "WelcomeViewController.h"
 #import "TextLabelTableViewCell.h"
 
+typedef NS_ENUM(NSUInteger, TableViewSection) {
+    TableViewSectionScoreTitle,
+    TableViewSectionScoreContent,
+    TableViewSectionQuit
+};
+
 @interface ScoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSString *numberOfQuestionsRight;
@@ -27,13 +33,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateScore];
-//    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = YES;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 -(void)updateScore {
     self.scoreHolder = [ScoreController sharedInstance].latestQuizScore;
@@ -44,20 +50,44 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 5;
+    
+    TableViewSection tableViewSection = section;
+    
+    switch (tableViewSection) {
+        case TableViewSectionScoreTitle:
+            return 1;
+            break;
+        case TableViewSectionScoreContent:
+            return 3;
+            break;
+        case TableViewSectionQuit:
+            return 1;
+            break;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 3;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        return 200;
-    }else {
-        return 50;
+    
+
+    switch (indexPath.section) {
+        case TableViewSectionScoreTitle:
+            return 200;
+            break;
+        case TableViewSectionScoreContent:
+            return 50;
+            break;
+        case TableViewSectionQuit:
+            return 50;
+            break;
+            
+        default:
+            return 50;
+            break;
     }
 }
 
@@ -67,37 +97,46 @@
     cell.scoreViewLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size:20];//consider using dynamic sizing for font
     cell.scoreViewLabel.textAlignment = NSTextAlignmentCenter;
     cell.scoreViewLabel.numberOfLines = 0;
-    if (indexPath.row == 0) {
-        cell.scoreViewLabel.text = @"You obtained a score of";
-        cell.scoreViewLabel.font = [UIFont boldSystemFontOfSize:30];
-        cell.backgroundColor = [UIColor blueColor];
-        cell.scoreViewLabel.textColor = [UIColor whiteColor];
+    
+    if (indexPath.section == TableViewSectionScoreTitle) {
+            cell.scoreViewLabel.text = @"You obtained a score of";
+            cell.scoreViewLabel.font = [UIFont boldSystemFontOfSize:30];
+            cell.backgroundColor = [UIColor blueColor];
+            cell.scoreViewLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = NO;
     }
-    if (indexPath.row == 1) {
-        cell.scoreViewLabel.text = self.numberOfQuestionsRight;
-    }
-    if (indexPath.row == 2) {
-        cell.scoreViewLabel.text = @"Your percentage is";
-    }
-    if (indexPath.row == 3) {
-        if (self.scoreHolder.integerValue == 0) {
-            cell.scoreViewLabel.text = @"0%";
-        }else {
-        cell.scoreViewLabel.text = self.percentage;
+    if (indexPath.section == TableViewSectionScoreContent) {
+        if (indexPath.row == 0) {
+            cell.scoreViewLabel.text = self.numberOfQuestionsRight;
+            cell.selectionStyle = NO;
+        }
+        if (indexPath.row == 1) {
+            cell.scoreViewLabel.text = @"Your percentage is";
+            cell.selectionStyle = NO;
+        }
+        if (indexPath.row == 2) {
+            if (self.scoreHolder.integerValue == 0) {
+                cell.scoreViewLabel.text = @"0%";
+                cell.selectionStyle = NO;
+            }else {
+                cell.scoreViewLabel.text = self.percentage;
+                cell.selectionStyle = NO;
+            }
         }
     }
-    if (indexPath.row == 4) {
+    if (indexPath.section == TableViewSectionQuit) {
         cell.scoreViewLabel.text = @"Okay";
-        cell.scoreViewLabel.backgroundColor = [UIColor greenColor];
+        cell.backgroundColor = [UIColor greenColor];
     }
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 4) {
+    if (indexPath.section == TableViewSectionQuit) {
         
         [self.navigationController popToRootViewControllerAnimated:YES];
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }
 }
 - (void)didReceiveMemoryWarning {

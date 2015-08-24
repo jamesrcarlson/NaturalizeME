@@ -216,29 +216,47 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row  == 2) {
+        
+        if ([self.textField.text isEqualToString:@""]) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You must enter in your full address" message:@"Ensure your address is entered correctly" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault handler:nil]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        }else {
+        
         [self getData];
         [self.textField resignFirstResponder];
         [tableView reloadData];
+        }
     };
     if (indexPath.row  == 8) {
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (!self.governor) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You must enter in your full address \nAnd ensure that you have an internet connection" message:@"Ensure your address is entered correctly" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Got it" style:UIAlertActionStyleDefault handler:nil]];
             
-            [self saveData];
+            [self presentViewController:alertController animated:YES completion:nil];
+        } else {
+        
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Are you sure your information is correct?" message:@"Verify the Data" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"The data is correct" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                [self saveData];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }]];
             
-            [self.navigationController popViewControllerAnimated:YES];
-
-        }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-            self.textField.text = @"";
-            [self needBetterInput];
-        }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-    };
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Re-enter the information" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+                self.textField.text = @"";
+                [self needBetterInput];
+            }]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+        };
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

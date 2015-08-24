@@ -71,13 +71,10 @@ static NSString * const showScoreSegue = @"showScores";
     
     if (self.quizType == 1) {
         [self updateWithQuestion:self.controller.fastQuizQuestions[arc4random_uniform(10)]];
+        self.questionsArray = self.controller.fastQuizQuestions;
     }else if (self.quizType == 2) {
         [self updateWithQuestion:self.controller.questions[arc4random_uniform(100)]];
-    }
-    if (self.quizType == 1) {
         self.questionsArray = self.controller.questions;
-    }else if (self.quizType == 2) {
-        self.questionsArray = self.controller.fastQuizQuestions;
     }
     
     self.answers = [[NSMutableArray alloc]initWithArray: self.question.randomSetOfAnswers];
@@ -152,6 +149,7 @@ static NSString * const showScoreSegue = @"showScores";
         cell.myLabel.font = [UIFont boldSystemFontOfSize:30];
         cell.backgroundColor = [UIColor blueColor];
         cell.myLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = NO;
         
     }
     
@@ -257,6 +255,7 @@ static NSString * const showScoreSegue = @"showScores";
             NSMutableArray *mutableViewControllers = self.navigationController.viewControllers.mutableCopy;
             self.scores = [[ScoreController sharedInstance]createScoreWithDate:[NSDate date] score:@(self.currentScores) answersAttemped:(NSNumber*)@(self.totalAnswersGiven) wrongAsnwers:self.wrongAnswersChosen answerNumber:self.answerNumberArray];
             ScoreViewController * scoreViewController = (ScoreViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+            scoreViewController.navigationItem.hidesBackButton = YES;
 
             [mutableViewControllers insertObject:scoreViewController atIndex:2];
             [self.navigationController setViewControllers:mutableViewControllers animated:NO];
