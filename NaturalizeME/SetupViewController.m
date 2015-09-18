@@ -55,14 +55,8 @@
 
     [self presentViewController:firstAlertController animated:YES completion:nil];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    
 }
+
 -(void)setLabelText {
     self.labelOne.text = @"Please enter your full address";
     self.labelOne.font = [UIFont fontWithName:@"Helvetica" size:22.0];
@@ -259,13 +253,6 @@
     }
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
 
 
 /*

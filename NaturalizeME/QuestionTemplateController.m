@@ -796,7 +796,7 @@
                BadAnswerKey: @[@"People learned about the Constitution",
                                @"The founding Fathers planned the war",
                                @"The Declaration of Independence was signed",
-                               @"The Bills of rights was publihsed",
+                               @"The Bill of Rights was published",
                                @"The British formally surrendered"],
                ExplanationKey: @"The Constitutional Convention was held in Philadelphia, Pennsylvania, from May to September 1787. Fifty-five delegates from 12 of the original 13 states (except for Rhode Island) met to write amendments to the Articles of Confederation. The delegates met because many American leaders did not like the Articles. The national government under the Articles of Confederation was not strong enough. Instead of changing the Articles of Confederation, the delegates decided to create a new governing document with a stronger national government—the Constitution. Each state sent delegates, who worked for four months in secret to allow for free and open discussion as they wrote the new document. The delegates who attended the Constitutional Convention are called “the Framers.” On September 17, 1787, 39 of the delegates signed the new Constitution."
                },
