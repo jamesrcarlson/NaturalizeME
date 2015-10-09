@@ -142,43 +142,44 @@
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if (!error) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
             
-            NSInteger senatorOneIndex = 0;
-            NSInteger senatorTwoIndex = 0;
-            NSInteger governorIndex = 0;
-            NSInteger representativeIndex = 0;
-                        
-            for (int i = 0; i < 17; i++) {
-                if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
-                    senatorOneIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
-                    senatorTwoIndex = [dict[@"offices"][i][@"officialIndices"][1]integerValue];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSInteger senatorOneIndex = 0;
+                NSInteger senatorTwoIndex = 0;
+                NSInteger governorIndex = 0;
+                NSInteger representativeIndex = 0;
+                
+                for (int i = 0; i < 17; i++) {
+                    if ([dict[@"offices"][i][@"name"]  isEqual: @"United States Senate"]) {
+                        senatorOneIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
+                        senatorTwoIndex = [dict[@"offices"][i][@"officialIndices"][1]integerValue];
+                    };
+                    if ([dict[@"offices"][i][@"roles"][0] isEqual: @"legislatorLowerBody"]) {
+                        representativeIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
+                    }
+                    if ([dict[@"offices"][i][@"name"]  isEqual: @"Governor"]) {
+                        governorIndex =[dict[@"offices"][i][@"officialIndices"][0]integerValue];
+                    }
                 };
-                if ([dict[@"offices"][i][@"roles"][0] isEqual: @"legislatorLowerBody"]) {
-                    representativeIndex = [dict[@"offices"][i][@"officialIndices"][0]integerValue];
-                }
-                if ([dict[@"offices"][i][@"name"]  isEqual: @"Governor"]) {
-                    governorIndex =[dict[@"offices"][i][@"officialIndices"][0]integerValue];
-                }
-            };
-            self.senatorOne = dict[@"officials"][senatorOneIndex][@"name"];
-            self.senatorTwo = dict[@"officials"][senatorTwoIndex][@"name"];
-            self.representative = dict[@"officials"][representativeIndex][@"name"];
-            self.governor = dict[@"officials"][governorIndex][@"name"];
-            self.stateCapital = dict[@"officials"][governorIndex][@"address"][0][@"city"];
+                self.senatorOne = dict[@"officials"][senatorOneIndex][@"name"];
+                self.senatorTwo = dict[@"officials"][senatorTwoIndex][@"name"];
+                self.representative = dict[@"officials"][representativeIndex][@"name"];
+                self.governor = dict[@"officials"][governorIndex][@"name"];
+                self.stateCapital = dict[@"officials"][governorIndex][@"address"][0][@"city"];
+                
+                self.governorLabel= [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
+                self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
+                self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
+                self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
+                [self setLabelText];
+                [self.tableView reloadData];
+            });
+        } else {
             
-            self.governorLabel= [NSString stringWithFormat:@"Your Governor's name is %@", self.governor];
-            self.stateCapitalLabel = [NSString stringWithFormat:@"Your state Capital is %@",self.stateCapital];
-            self.senatorLabel = [NSString stringWithFormat:@"Your Senator's names are %@ and %@", self.senatorOne, self.senatorTwo];
-            self.representativeLabel = [NSString stringWithFormat:@"Your Representative's name is %@",self.representative];
-            [self setLabelText];
-            [self.tableView reloadData];
-        });
-        
-        
+        }
     }];
     
     [task resume];
